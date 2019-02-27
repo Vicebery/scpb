@@ -16,7 +16,7 @@ public class EnterpriseController {
 	@Autowired
 	private EnterpriseService enterpriseService;
 	
-	@RequestMapping(value = "/user", method = RequestMethod.GET)
+	@RequestMapping(value = "/main", method = RequestMethod.GET)
     public ModelAndView login(@RequestParam(value="id",required=true) String id) {
 		Enterprise enterprise = enterpriseService.getEnterpriseById(id);
  
@@ -35,7 +35,7 @@ public class EnterpriseController {
         	mav.addObject("UCC", enterprise.getUCC());
         	mav.addObject("LPC", enterprise.getLPC());
         	mav.addObject("type", enterprise.getType());
-            mav.setViewName("success");
+            mav.setViewName("main");
             return mav;
         }
     }

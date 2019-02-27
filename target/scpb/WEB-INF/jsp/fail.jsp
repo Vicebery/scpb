@@ -5,9 +5,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>失败页</title>
+<title>鏌ヨ澶辫触</title>
 </head>
 <body>
-	根据ID查询用户信息失败
+	璇ョ敤鎴蜂笉瀛樺湪
 </body>
 </html>

@@ -8,5 +8,7 @@ public interface EnterpriseDao {
     int insert(Enterprise record);
  
     Enterprise selectByPrimaryKey(String id);
+    
+    Enterprise getEnterpriseById(String id);
 
 }

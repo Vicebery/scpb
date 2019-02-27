@@ -14,6 +14,6 @@ public class EnterpriseServiceImpl implements EnterpriseService{
 	private EnterpriseDao enterpriseDao;
 	
 	public Enterprise getEnterpriseById(String id){
-		return enterpriseDao.selectByPrimaryKey(id);
+		return enterpriseDao.getEnterpriseById(id);
 	}
 }

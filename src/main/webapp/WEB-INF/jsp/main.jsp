@@ -4,18 +4,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>�ɹ�ҳ</title>
+<title>用户个人信息主页</title>
 </head>
 <body>
-	����ID��ѯ�û���Ϣ�ɹ�<br/>
-	�û���Ϣ���£�<br/>
-	�û�ID:${id}<br/>
-	�û�����${account}<br/>
-	�û����룺${pwd}<br/>
-	��ҵ�����˻���${bank}<br/>
-	��ҵ���ƣ�${name}<br/>
-	UCC��${UCC}<br/>
-	LPC��${LPC}<br/>
-	��ҵ���ͣ�${type}<br/>
+	根据ID查询用户信息成功<br/>
+	用户信息如下：<br/>
+	用户ID:${id}<br/>
+	用户名：${account}<br/>
+	用户密码：${pwd}<br/>
+	企业银行账户：${bank}<br/>
+	企业名称：${name}<br/>
+	UCC：${UCC}<br/>
+	LPC：${LPC}<br/>
+	企业类型：${type}<br/>
 </body>
 </html>
