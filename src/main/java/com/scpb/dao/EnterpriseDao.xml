@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.scpb.dao.EnterpriseDao">
+	<resultMap id="BaseResultMap" type="com.scpb.entity.Enterprise">
+		<id column="id" jdbcType="VARCHAR" property="id" />
+		<result column="account" jdbcType="VARCHAR" property="account" />
+		<result column="pwd" jdbcType="VARCHAR" property="pwd" />
+		<result column="bank" jdbcType="VARCHAR" property="bank" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="UCC" jdbcType="VARCHAR" property="UCC" />
+		<result column="LPC" jdbcType="VARCHAR" property="LPC" />
+		<result column="type" jdbcType="VARCHAR" property="type" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, pwd, account, bank, name, UCC, LPC, type
+	</sql>
+
+	<select id="selectByPrimaryKey" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from enterprise
+		where id = #{id,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from enterprise
+		where id = #{id,jdbcType=VARCHAR}
+	</delete>
+
+	<insert id="insertEnterprise">
+		insert into enterprise(id,account,pwd,bank,name,UCC,LPC,type)
+		values (#{id},#{account},#{pwd},#{bank},#{name},#{UCC},#{LPC},#{type})
+	</insert>
+	<select id="getEnterpriseById" resultType="Enterprise">
+		select id,account,pwd,bank,name,UCC,LPC,type from enterprise where id =
+		#{id}
+	</select>
+</mapper>

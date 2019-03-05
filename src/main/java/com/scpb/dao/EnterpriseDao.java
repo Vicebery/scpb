@@ -5,7 +5,7 @@ import com.scpb.entity.Enterprise;
 public interface EnterpriseDao {
 	int deleteByPrimaryKey(String id);
 	 
-    int insert(Enterprise record);
+    void insertEnterprise(Enterprise enterprise);
  
     Enterprise selectByPrimaryKey(String id);
     
