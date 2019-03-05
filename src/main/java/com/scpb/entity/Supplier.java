@@ -11,5 +11,10 @@ public class Supplier {
 		this.id = id;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Supplier{" +
+				"id='" + id + '\'' +
+				'}';
+	}
 }

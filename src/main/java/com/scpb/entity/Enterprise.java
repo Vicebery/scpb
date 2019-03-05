@@ -10,6 +10,21 @@ public class Enterprise {
 	private String LPC;
 	private String type;
 	
+	public Enterprise() {
+	}
+
+	public Enterprise(String id, String account, String pwd,
+					  String bank, String name, String UCC, String LPC, String type) {
+		this.id = id;
+		this.account = account;
+		this.pwd = pwd;
+		this.bank = bank;
+		this.name = name;
+		this.UCC = UCC;
+		this.LPC = LPC;
+		this.type = type;
+	}
+	
 	public String getId() {
 		return id;
 	}
@@ -57,6 +72,20 @@ public class Enterprise {
 	}
 	public void setType(String type) {
 		this.type = type;
+	}
+	
+	@Override
+	public String toString() {
+		return "Enterprise{" +
+				"id='" + id + '\'' +
+				", account='" + account + '\'' +
+				", pwd='" + pwd + '\'' +
+				", bank='" + bank + '\'' +
+				", name='" + name + '\'' +
+				", UCC='" + UCC + '\'' +
+				", LPC='" + LPC + '\'' +
+				", type='" + type + '\'' +
+				'}';
 	}
 	
 }
