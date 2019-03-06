@@ -11,9 +11,7 @@
                         http://www.springframework.org/schema/context/spring-context.xsd      
                         http://www.springframework.org/schema/mvc      
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">    
-    <!-- 自动扫描 http://www.springframework.org/schema/beans/spring-beans-3.1.xsd-->    
-    <context:component-scan base-package="com.scpb" />    
-    <!-- 引入配置文件 -->    
+    <!-- 引入配置文件 -->
     <bean id="propertyConfigurer"    
         class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">    
         <property name="locations">
@@ -23,15 +21,7 @@
         	</list>
         </property>   
     </bean>   
-    <!-- 配置数据源 -->   
-    <bean id="dataSource"    
-        class="org.springframework.jdbc.datasource.DriverManagerDataSource">    
-        <property name="driverClassName" value="${jdbc.driver}" />    
-        <property name="url" value="${jdbc.url}" />    
-        <property name="username" value="${jdbc.username}" />    
-        <property name="password" value="${jdbc.password}" />    
-    </bean>     
-    
+
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">    
         <property name="configLocation" value="classpath:mybatis.xml"/>
         <property name="dataSource" ref="dataSource" />
