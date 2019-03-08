@@ -8,13 +8,13 @@ public class Enterprise {
 	private String name;
 	private String UCC;
 	private String LPC;
-	private String type;
+	private int type;
 	
 	public Enterprise() {
 	}
 
 	public Enterprise(String id, String account, String pwd,
-					  String bank, String name, String UCC, String LPC, String type) {
+					  String bank, String name, String UCC, String LPC, int type) {
 		this.id = id;
 		this.account = account;
 		this.pwd = pwd;
@@ -67,10 +67,10 @@ public class Enterprise {
 	public void setLPC(String lPC) {
 		LPC = lPC;
 	}
-	public String getType() {
+	public int getType() {
 		return type;
 	}
-	public void setType(String type) {
+	public void setType(int type) {
 		this.type = type;
 	}
 	

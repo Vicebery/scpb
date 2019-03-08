@@ -32,8 +32,11 @@
 		insert into enterprise(id,account,pwd,bank,name,UCC,LPC,type)
 		values (#{id},#{account},#{pwd},#{bank},#{name},#{UCC},#{LPC},#{type})
 	</insert>
-	<select id="getEnterpriseById" resultType="Enterprise">
-		select id,account,pwd,bank,name,UCC,LPC,type from enterprise where id =
-		#{id}
+	<select id="selectEnterpriseById" resultType="Enterprise">
+		select id,account,pwd,bank,name,UCC,LPC,type from enterprise where id = #{id}
+	</select>
+
+	<select id="selectEnterpriseTypeById" resultType="int">
+		select type from enterprise where id =#{id}
 	</select>
 </mapper>
