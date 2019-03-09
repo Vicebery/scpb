@@ -33,13 +33,14 @@ public class EnterpriseController {
         } else {
         	if(pwd.equals(enterprise.getPwd())){
         		//密码匹配成功
-            	mav.addObject("id", enterprise.getId());
-            	mav.addObject("account", enterprise.getAccount());
-            	mav.addObject("bank", enterprise.getBank());
-            	mav.addObject("name", enterprise.getName());
-            	mav.addObject("UCC", enterprise.getUCC());
-            	mav.addObject("LPC", enterprise.getLPC());
-            	mav.addObject("type", enterprise.getType());
+//            	mav.addObject("id", enterprise.getId());
+//            	mav.addObject("account", enterprise.getAccount());
+//            	mav.addObject("bank", enterprise.getBank());
+//            	mav.addObject("name", enterprise.getName());
+//            	mav.addObject("UCC", enterprise.getUCC());
+//            	mav.addObject("LPC", enterprise.getLPC());
+//            	mav.addObject("type", enterprise.getType());
+				mav.addObject(enterprise);
                 mav.setViewName("main");
                 return mav;
         	}else{

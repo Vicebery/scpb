@@ -37,6 +37,6 @@
 	</select>
 
 	<select id="selectEnterpriseTypeById" resultType="int">
-		select type from enterprise where id =#{id}
+		select type from enterprise where id = #{id}
 	</select>
 </mapper>
