@@ -12,10 +12,20 @@ import com.scpb.service.ChainTicketService;
 public class ChainTicketServiceImpl implements ChainTicketService{
 	@Resource(name = "chainTicketDao")
 	private ChainTicketDao chainTicketDao;
-	
+
+	@Override
+	public ChainTicket getChainTicketById(String payCT) {
+		return chainTicketDao.selectChainTicketById(payCT);
+	}
+
 	public void addChainTicket(ChainTicket chainTicket) {
 		chainTicketDao.insertChainTicket(chainTicket);
 		
 	}
+
+	public void changeCTState(ChainTicket chainTicket) {
+		chainTicketDao.updateCTState(chainTicket);
+	}
+
 
 }

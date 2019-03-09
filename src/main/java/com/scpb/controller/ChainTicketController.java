@@ -29,8 +29,7 @@ public class ChainTicketController {
 
 	@RequestMapping("/drawSuccess")
 	public ModelAndView drawChainTicket(String amount, String drawEnterprise, String ownerId, String deadline) {
-		int ownerType = enterpriseService.getEnterpriseTypeById(ownerId);
-		ChainTicket chainTicket = new ChainTicket(amount, deadline, ownerId, ownerType, drawEnterprise);
+		ChainTicket chainTicket = new ChainTicket(amount, deadline, ownerId, drawEnterprise);
 		chainTicketService.addChainTicket(chainTicket);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("id", chainTicket.getId());

@@ -10,7 +10,6 @@ public class ChainTicket {
 	private String drawTime;
 	private String drawEnterprise;
 	private int state;
-    private int ownerType;
     private String ownerId;
     private String deadline;
 
@@ -19,7 +18,7 @@ public class ChainTicket {
     	
     }
     
-	public ChainTicket(String id, String amount, String drawTime, String drawEnterprise, int state, int ownerType,
+	public ChainTicket(String id, String amount, String drawTime, String drawEnterprise, int state,
 			String ownerId, String deadline) {
 		super();
 		this.id = id;
@@ -27,21 +26,20 @@ public class ChainTicket {
 		this.drawTime = drawTime;
 		this.drawEnterprise = drawEnterprise;
 		this.state = 0;
-		this.ownerType = ownerType;
 		this.ownerId = ownerId;
 		this.deadline = deadline;
 	}
 
-	public ChainTicket(String amount, String deadline, String ownerId, int ownerType, String drawEnterprise) {
+	public ChainTicket(String amount, String deadline, String ownerId, String drawEnterprise) {
 		super();
 		Date date=new Date();
 		DateFormat idFormat=new SimpleDateFormat("yyyyMMddHHmmss");
 		DateFormat timeFormat=new SimpleDateFormat("yyyy-MM-dd");
-		this.id = idFormat.format(date);
+		int rad = (int)(1+Math.random()*100);
+		this.id = idFormat.format(date)+String.valueOf(rad);
 		this.drawTime = timeFormat.format(date);
 		this.state = 0;
 		this.amount = amount;
-		this.ownerType = ownerType;
 		this.deadline = deadline;
 		this.ownerId = ownerId;
 		this.drawEnterprise = drawEnterprise;
@@ -95,14 +93,6 @@ public class ChainTicket {
         this.state = state;
     }
 
-    public int getOwnerType() {
-        return ownerType;
-    }
-
-    public void setOwnerType(int ownerType) {
-        this.ownerType = ownerType;
-    }
-
     public String getOwnerId() {
         return ownerId;
     }
@@ -118,7 +108,6 @@ public class ChainTicket {
                 ", amount='" + amount + '\'' +
                 ", drawTime='" + drawTime + '\'' +
                 ", state='" + state + '\'' +
-                ", ownerType='" + ownerType + '\'' +
                 ", ownerId='" + ownerId + '\'' +
                 '}';
     }
