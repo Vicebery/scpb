@@ -6,24 +6,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>用户个人信息主页</title>
+<title>链票信息列表</title>
 </head>
 <body>
-
-	根据ID查询用户信息成功<br/>
-	用户信息如下：<br/>
-	用户ID: ${id}<br/>
-	用户名：${account}<br/>
-	企业银行账户：${bank}<br/>
-	企业名称：${name}<br/>
-	UCC：${UCC}<br/>
-	LPC：${LPC}<br/>
-	企业类型：${type}<br/>
 	<form action="<%=request.getContextPath()%>/chainTickets" method="get">
-	    <input type="hidden" name="id" value="${id }"/>
 		<table width="100%" border=1>
 			<tr>
-			<td><input type="submit" value="链票查询" /></td>
+			<td><input type="submit" value="链票查询"/></td>
 			</tr>
 		</table>
 		链票列表：
@@ -40,7 +29,7 @@
 		<tr>
 			<td>${chainTicket.id }</td>
 			<td>${chainTicket.amount }</td>
-			<td>${chainTicket.drawTime}</td>
+			<td><fmt:formatDate value="${chainTicket.drawTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td> 
 			<td>${chainTicket.drawEnterprise }</td>
 			<td>${chainTicket.deadline }</td>
 			<td>${chainTicket.state }</td>
