@@ -7,9 +7,11 @@
 <title>登录页面</title>
 </head>
 <body>
+<font color="red">${requestScope.message }</font>
 	<form action="<%=request.getContextPath()%>/main" method="get">
-		<p>用户名Id: <input type="text" name="id" /></p>
-		<input type="submit" value="查询用户" />
+		<p>企业Id: <input type="text" name="id" /></p>
+		<p>密码: <input type="text" name="pwd" /></p>
+		<input type="submit" value="登录" />
 	</form>
 </body>
 </html>

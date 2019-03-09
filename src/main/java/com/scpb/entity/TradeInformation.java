@@ -1,5 +1,9 @@
 package com.scpb.entity;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class TradeInformation {
     private String id;
     private String tradeTime;
@@ -7,6 +11,28 @@ public class TradeInformation {
     private String secondParty;
     private String sum;
     private String tradeRemark;
+    private String payCT;
+    private String receiveCT;
+    private String remainCT;
+
+    public TradeInformation() {
+    }
+
+    public TradeInformation(String firstParty, String secondParty, String sum,
+                            String tradeRemark, String payCT, String receiveCT, String remainCT) {
+        Date date=new Date();
+        DateFormat idFormat=new SimpleDateFormat("yyyyMMddHHmmss");
+        DateFormat timeFormat=new SimpleDateFormat("yyyy-MM-dd");
+        this.id = idFormat.format(date);
+        this.tradeTime = timeFormat.format(date);
+        this.firstParty = firstParty;
+        this.secondParty = secondParty;
+        this.sum = sum;
+        this.tradeRemark = tradeRemark;
+        this.payCT = payCT;
+        this.receiveCT = receiveCT;
+        this.remainCT = remainCT;
+    }
 
     public String getId() {
         return id;
@@ -56,6 +82,30 @@ public class TradeInformation {
         this.tradeRemark = tradeRemark;
     }
 
+    public String getPayCT() {
+        return payCT;
+    }
+
+    public void setPayCT(String payCT) {
+        this.payCT = payCT;
+    }
+
+    public String getReceiveCT() {
+        return receiveCT;
+    }
+
+    public void setReceiveCT(String receiveCT) {
+        this.receiveCT = receiveCT;
+    }
+
+    public String getRemainCT() {
+        return remainCT;
+    }
+
+    public void setRemainCT(String remainCT) {
+        this.remainCT = remainCT;
+    }
+
     @Override
     public String toString() {
         return "TradeInformation{" +
@@ -65,6 +115,9 @@ public class TradeInformation {
                 ", secondParty='" + secondParty + '\'' +
                 ", sum='" + sum + '\'' +
                 ", tradeRemark='" + tradeRemark + '\'' +
+                ", payCT='" + payCT + '\'' +
+                ", receiveCT='" + receiveCT + '\'' +
+                ", remainCT='" + remainCT + '\'' +
                 '}';
     }
 }

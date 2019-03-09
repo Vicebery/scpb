@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.scpb.dao.ChainTicketDao">
+
+	<insert id="insertChainTicket">
+		insert into chainTicket(id,amount,drawTime,state,ownerId,deadline,drawEnterprise)
+		values (#{id},#{amount},#{drawTime},#{state},#{ownerId},#{deadline},#{drawEnterprise})
+	</insert>
+
+	<select id="selectChainTicketById" resultType="ChainTicket">
+		select id,amount,drawTime,state,ownerId,deadline,drawEnterprise from chainTicket
+		where id = #{id}
+	</select>
+
+	<update id="updateCTState" parameterType="ChainTicket">
+		update chainTicket set state = #{state} where id = #{id}
+	</update>
+</mapper>

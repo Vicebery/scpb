@@ -1,14 +1,67 @@
 package com.scpb.entity;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class ChainTicket {
     private String id;
     private String amount;
-    private String drawTime;
-    private String state;
-    private String ownerType;
+	private String drawTime;
+	private String drawEnterprise;
+	private int state;
     private String ownerId;
+    private String deadline;
 
-    public String getId() {
+
+    public ChainTicket(){
+    	
+    }
+    
+	public ChainTicket(String id, String amount, String drawTime, String drawEnterprise, int state,
+			String ownerId, String deadline) {
+		super();
+		this.id = id;
+		this.amount = amount;
+		this.drawTime = drawTime;
+		this.drawEnterprise = drawEnterprise;
+		this.state = 0;
+		this.ownerId = ownerId;
+		this.deadline = deadline;
+	}
+
+	public ChainTicket(String amount, String deadline, String ownerId, String drawEnterprise) {
+		super();
+		Date date=new Date();
+		DateFormat idFormat=new SimpleDateFormat("yyyyMMddHHmmss");
+		DateFormat timeFormat=new SimpleDateFormat("yyyy-MM-dd");
+		int rad = (int)(1+Math.random()*100);
+		this.id = idFormat.format(date)+String.valueOf(rad);
+		this.drawTime = timeFormat.format(date);
+		this.state = 0;
+		this.amount = amount;
+		this.deadline = deadline;
+		this.ownerId = ownerId;
+		this.drawEnterprise = drawEnterprise;
+	}
+	
+    public String getDrawEnterprise() {
+		return drawEnterprise;
+	}
+
+	public void setDrawEnterprise(String drawEnterprise) {
+		this.drawEnterprise = drawEnterprise;
+	}
+    
+    public String getDeadline() {
+		return deadline;
+	}
+
+	public void setDeadline(String deadline) {
+		this.deadline = deadline;
+	}
+
+	public String getId() {
         return id;
     }
 
@@ -32,20 +85,12 @@ public class ChainTicket {
         this.drawTime = drawTime;
     }
 
-    public String getState() {
+    public int getState() {
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(int state) {
         this.state = state;
-    }
-
-    public String getOwnerType() {
-        return ownerType;
-    }
-
-    public void setOwnerType(String ownerType) {
-        this.ownerType = ownerType;
     }
 
     public String getOwnerId() {
@@ -63,7 +108,6 @@ public class ChainTicket {
                 ", amount='" + amount + '\'' +
                 ", drawTime='" + drawTime + '\'' +
                 ", state='" + state + '\'' +
-                ", ownerType='" + ownerType + '\'' +
                 ", ownerId='" + ownerId + '\'' +
                 '}';
     }

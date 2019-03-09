@@ -21,11 +21,15 @@ public class EnterpriseServiceImpl implements EnterpriseService{
 
 	public Enterprise getEnterpriseById(String id){
 
-		return enterpriseDao.getEnterpriseById(id);
+		return enterpriseDao.selectEnterpriseById(id);
 	}
 
 	public void addEnterprise(Enterprise enterprise) {
 
 		enterpriseDao.insertEnterprise(enterprise);
+	}
+
+	public int getEnterpriseTypeById(String owerId) {
+		return enterpriseDao.selectEnterpriseTypeById(owerId);
 	}
 }

@@ -9,6 +9,8 @@ public interface EnterpriseDao {
  
     Enterprise selectByPrimaryKey(String id);
     
-    Enterprise getEnterpriseById(String id);
+    Enterprise selectEnterpriseById(String id);
+
+	int selectEnterpriseTypeById(String owerId);
 
 }

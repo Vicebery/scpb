@@ -9,13 +9,13 @@
 <body>
 	根据ID查询用户信息成功<br/>
 	用户信息如下：<br/>
-	用户ID:${id}<br/>
-	用户名：${account}<br/>
-	用户密码：${pwd}<br/>
-	企业银行账户：${bank}<br/>
-	企业名称：${name}<br/>
-	UCC：${UCC}<br/>
-	LPC：${LPC}<br/>
-	企业类型：${type}<br/>
+	用户ID: ${enterprise.id}<br/>
+	用户名：${enterprise.account}<br/>
+	企业银行账户：${enterprise.bank}<br/>
+	企业名称：${enterprise.name}<br/>
+	UCC：${enterprise.UCC}<br/>
+	LPC：${enterprise.LPC}<br/>
+	企业类型：${enterprise.type}<br/>
+
 </body>
 </html>

@@ -10,6 +10,7 @@ import com.scpb.entity.Enterprise;
 import com.scpb.service.EnterpriseService;
 
 import javax.annotation.Resource;
+import javax.enterprise.inject.Model;
 
 @Controller
 public class EnterpriseController {
@@ -21,32 +22,39 @@ public class EnterpriseController {
 	}
 	
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
-    public ModelAndView login(@RequestParam(value="id",required=true) String id) {
+    public ModelAndView login(String id, String pwd) {
 		Enterprise enterprise = enterpriseService.getEnterpriseById(id);
  
         ModelAndView mav = new ModelAndView();
         if (enterprise == null) {
-        	//Ã¯◊™÷¡ ß∞‹“≥
+        	mav.addObject("message", "ÁôªÂΩïÂ§±Ë¥• !!");
         	mav.setViewName("fail");
             return mav;
         } else {
-        	//Ã¯◊™÷¡≥…π¶“≥
-        	mav.addObject("id", enterprise.getId());
-        	mav.addObject("account", enterprise.getAccount());
-        	mav.addObject("pwd", enterprise.getPwd());
-        	mav.addObject("bank", enterprise.getBank());
-        	mav.addObject("name", enterprise.getName());
-        	mav.addObject("UCC", enterprise.getUCC());
-        	mav.addObject("LPC", enterprise.getLPC());
-        	mav.addObject("type", enterprise.getType());
-            mav.setViewName("main");
-            return mav;
+        	if(pwd.equals(enterprise.getPwd())){
+        		//ÂØÜÁ†ÅÂåπÈÖçÊàêÂäü
+//            	mav.addObject("id", enterprise.getId());
+//            	mav.addObject("account", enterprise.getAccount());
+//            	mav.addObject("bank", enterprise.getBank());
+//            	mav.addObject("name", enterprise.getName());
+//            	mav.addObject("UCC", enterprise.getUCC());
+//            	mav.addObject("LPC", enterprise.getLPC());
+//            	mav.addObject("type", enterprise.getType());
+				mav.addObject(enterprise);
+                mav.setViewName("main");
+                return mav;
+        	}else{
+        		mav.addObject("message", "password wrong !!");
+        		mav.setViewName("main");
+        		return mav;
+        	}
+        	
         }
     }
 	
 	@RequestMapping(value = "/registerFin", method = RequestMethod.GET)
     public ModelAndView register(String id,String account,String pwd,
-								 String bank,String name,String UCC,String LPC,String type){
+								 String bank,String name,String UCC,String LPC,int type){
 		Enterprise enterprise = new Enterprise(id,account,pwd,bank,name,UCC,LPC,type);
 		enterpriseService.addEnterprise(enterprise);
 		ModelAndView mav = new ModelAndView();
