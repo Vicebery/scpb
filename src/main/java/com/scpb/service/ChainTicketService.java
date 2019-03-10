@@ -9,4 +9,6 @@ public interface ChainTicketService {
     void addChainTicket(ChainTicket chainTicket);
 
     void changeCTState(ChainTicket chainTicket);
+
+    void modifyCTStateById(int state, String id);
 }

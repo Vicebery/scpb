@@ -31,8 +31,9 @@ public class TradeController {
     public ModelAndView trade(String firstParty, String secondParty, String sum, String payCT,String tradeRemark) {
 
         ChainTicket chainTicket = chainTicketService.getChainTicketById(payCT);
-        chainTicket.setState(1);
-        chainTicketService.changeCTState(chainTicket);
+        chainTicketService.modifyCTStateById(1,payCT);
+//        chainTicket.setState(1);
+//        chainTicketService.changeCTState(chainTicket);
         ChainTicket receiveCT = new ChainTicket(sum, chainTicket.getDeadline(), secondParty, chainTicket.getDrawEnterprise());
         String remainCTAmount = Double.toString((Double.valueOf(chainTicket.getAmount())-Double.valueOf(sum)));
         ChainTicket remainCT = new ChainTicket(remainCTAmount, chainTicket.getDeadline(),
