@@ -33,9 +33,34 @@ public class EnterpriseController {
 	public void setEnterpriseService(EnterpriseService enterpriseService) {
 		this.enterpriseService = enterpriseService;
 	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String goLogin(){
+		return "login";
+	}
+	
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public String goRegister(){
+		return "register";
+	}
+	
+	@RequestMapping(value = "/managerInfo", method = RequestMethod.GET)
+	public ModelAndView goManagerInfo(HttpSession session){
+		String id = (String) session.getAttribute("id");
+		Enterprise enterprise = enterpriseService.getEnterpriseById(id);
+		ModelAndView mav = new ModelAndView();
+		if (enterprise != null)
+			mav.addObject(enterprise);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/drawCT", method = RequestMethod.GET)
+	public String goDrawCT(){
+		return "drawCT";
+	}
 
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
-	public ModelAndView login(String id, String pwd) {
+	public ModelAndView login(String id, String pwd, HttpSession session) {
 		Enterprise enterprise = enterpriseService.getEnterpriseById(id);
 
 		ModelAndView mav = new ModelAndView();
@@ -47,18 +72,19 @@ public class EnterpriseController {
 			if (pwd.equals(enterprise.getPwd())) {
 				// 密码匹配成功
 				 mav.addObject("id", enterprise.getId());
-				 mav.addObject("account", enterprise.getAccount());
-				 mav.addObject("bank", enterprise.getBank());
-				 mav.addObject("name", enterprise.getName());
-				 mav.addObject("UCC", enterprise.getUCC());
-				 mav.addObject("LPC", enterprise.getLPC());
-				 mav.addObject("type", enterprise.getType());
+//				 mav.addObject("account", enterprise.getAccount());
+//				 mav.addObject("bank", enterprise.getBank());
+//				 mav.addObject("name", enterprise.getName());
+//				 mav.addObject("UCC", enterprise.getUCC());
+//				 mav.addObject("LPC", enterprise.getLPC());
+//				 mav.addObject("type", enterprise.getType());
 //				mav.addObject(enterprise);
 				mav.setViewName("main");
+				session.setAttribute("id",id);
 				return mav;
 			} else {
 				mav.addObject("message", "password wrong !!");
-				mav.setViewName("main");
+				mav.setViewName("login");
 				return mav;
 			}
 
@@ -84,7 +110,8 @@ public class EnterpriseController {
 	}
 
 	@RequestMapping(value = "/chainTickets", method = RequestMethod.GET)
-	public ModelAndView queryChainTicketsByEnterpriseId(String id) {
+	public ModelAndView queryChainTicketsByEnterpriseId(HttpSession session) {
+		String id = (String) session.getAttribute("id");
 		//测试是否输出
 		System.out.println("企业ID:"+id);
 		List<ChainTicket> chainTicketList = chainTicketService.getChainTicketsByEnterpriseId(id);
@@ -93,7 +120,7 @@ public class EnterpriseController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("chainTicketList", chainTicketList);
 
-		mav.setViewName("main");
+		mav.setViewName("chainTickets");
 		return mav;
 	}
 }
