@@ -16,7 +16,15 @@
 	<update id="updateCTState" parameterType="ChainTicket">
 		update chainTicket set state = #{state} where id = #{id}
 	</update>
+
 	<update id="updateCTStateById">
 		update chainTicket set state = #{state} where id = #{id}
 	</update>
+	
+	<!-- 企业链票查询  -->
+	<select id="selectChainTicketsByEnterpriseId" resultType="ChainTicket">
+		select id,amount,drawTime,state,ownerId,deadline,drawEnterprise from chainTicket
+		where ownerId = #{ownerId}
+	</select>
+
 </mapper>

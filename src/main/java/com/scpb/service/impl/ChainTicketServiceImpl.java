@@ -1,5 +1,7 @@
 package com.scpb.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -27,9 +29,12 @@ public class ChainTicketServiceImpl implements ChainTicketService{
 		chainTicketDao.updateCTState(chainTicket);
 	}
 
+
 	public void modifyCTStateById(int state, String id) {
 		chainTicketDao.updateCTStateById(state,id);
+  }
+  
+	public List<ChainTicket> getChainTicketsByEnterpriseId(String ownerId) {
+		return chainTicketDao.selectChainTicketsByEnterpriseId(ownerId);
 	}
-
-
 }
