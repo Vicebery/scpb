@@ -9,10 +9,6 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:spring-*.xml</param-value>
 	</context-param>
-    <context-param>
-        <param-name/>
-        <param-value/>
-    </context-param>
     <!-- 编码过滤器 -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
@@ -53,6 +49,6 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
-		<welcome-file>trade.jsp</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 </web-app>
