@@ -13,4 +13,5 @@ public interface EnterpriseDao {
 
 	int selectEnterpriseTypeById(String owerId);
 
+	void updateEnterprise(Enterprise enterprise);
 }

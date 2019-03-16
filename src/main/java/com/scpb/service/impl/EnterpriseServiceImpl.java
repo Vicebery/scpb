@@ -32,4 +32,8 @@ public class EnterpriseServiceImpl implements EnterpriseService{
 	public int getEnterpriseTypeById(String owerId) {
 		return enterpriseDao.selectEnterpriseTypeById(owerId);
 	}
+	
+	public void updateEnterprise(Enterprise enterprise) {
+		enterpriseDao.updateEnterprise(enterprise);
+	}
 }

@@ -123,4 +123,24 @@ public class EnterpriseController {
 		mav.setViewName("chainTickets");
 		return mav;
 	}
+	
+	@RequestMapping(value = "/modifyInfo", method = RequestMethod.GET)
+	public ModelAndView modifyInfo(HttpSession session){
+		String id = (String) session.getAttribute("id");
+		Enterprise enterprise = enterpriseService.getEnterpriseById(id);
+		ModelAndView mav = new ModelAndView();
+		if (enterprise != null)
+			mav.addObject(enterprise);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/execModifyInfo", method = RequestMethod.GET)
+	public ModelAndView execmodifyInfo(String id, String account, String pwd, String bank, String name, String UCC,
+			String LPC, int type){
+		Enterprise enterprise = new Enterprise(id, account, pwd, bank, name, UCC, LPC, type);
+		enterpriseService.updateEnterprise(enterprise);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("main");
+		return mav;
+	}
 }
