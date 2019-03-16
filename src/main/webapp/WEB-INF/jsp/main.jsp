@@ -15,6 +15,7 @@
 		<a target="aaa" href="managerInfo">企业信息管理</a>
 		<a target="aaa" href="chainTickets">链票查询</a>
 		<a target="aaa" href="drawCT">开具链票</a>
+		<a target="aaa" href="modifyInfo">企业信息修改</a>		
         <a target="aaa" href="fail">失败页面测试</a>
     </div>
     <iframe name="aaa" width="100%" src="managerInfo">
