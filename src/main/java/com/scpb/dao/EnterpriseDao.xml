@@ -39,4 +39,7 @@
 	<select id="selectEnterpriseTypeById" resultType="int">
 		select type from enterprise where id = #{id}
 	</select>
+	<update id="updateEnterprise">
+		update enterprise set account = #{account}, pwd = #{pwd}, bank = #{bank}, name = #{name}, UCC = #{UCC}, LPC = #{LPC}, type = #{type} where id = #{id}
+	</update>
 </mapper>

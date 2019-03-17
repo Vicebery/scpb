@@ -53,4 +53,23 @@ public class CoreEnterpriseController {
         mav.setViewName("coreEnterpriseDrawCTSuccess");
         return mav;
     }
+    
+	@RequestMapping("/allocateLimit")
+	 public ModelAndView allocate(String id, String limit) {
+		coreEnterpriseService.modifyLimitById(limit, id);
+		String result = "额度设置成功";
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("result",result);
+		mav.setViewName("Limit");
+		return mav;
+	}
+	
+	@RequestMapping("/queryLimit")
+	 public ModelAndView queryLimit(String id) {
+		String result = coreEnterpriseService.getLimitById(id);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("result",result);
+		mav.setViewName("Limit");
+		return mav;
+	}
 }
