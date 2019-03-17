@@ -28,7 +28,7 @@ public class TradeController {
     }
 
     @RequestMapping("/tradeSuccess")
-    public ModelAndView trade(String firstParty, String secondParty, String sum, String payCT,String tradeRemark) {
+    public ModelAndView trade(String firstParty, String secondParty, String sum, String payCT,String tradeInfId) {
 
         ChainTicket chainTicket = chainTicketService.getChainTicketById(payCT);
         chainTicketService.modifyCTStateById(1,payCT);
@@ -41,9 +41,8 @@ public class TradeController {
         chainTicketService.addChainTicket(receiveCT);
         chainTicketService.addChainTicket(remainCT);
 
-        TradeInformation tradeInformation = new TradeInformation(firstParty,secondParty,sum,
-                tradeRemark,payCT,receiveCT.getId(),remainCT.getId());
-        tradeService.addTradeInformation(tradeInformation);
+        tradeService.modifyTradeInfById(tradeInfId,2,receiveCT.getId(),remainCT.getId());
+        TradeInformation tradeInformation = tradeService.getTradeInfById(tradeInfId);
 
         ModelAndView mav = new ModelAndView();
         mav.addObject(tradeInformation);

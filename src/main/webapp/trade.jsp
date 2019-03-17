@@ -9,9 +9,9 @@
         乙方企业：<input type="text" name="secondParty"/><br>
         交易金额：<input type="text" name="sum"/><br>
         支付链票：<input type="text" name="payCT"/><br>
-        交易备注：<input type="text" name="tradeRemark"/><br>
+        交易ID：<input type="text" name="tradeInfId"/><br>
 
-        <input type="submit" value="确认交易" />
+        <input type="submit" value="确认交易" name="verify" />
     </form>
 </body>
 </html>

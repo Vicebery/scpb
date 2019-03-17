@@ -14,8 +14,23 @@ public class TradeInformation {
     private String payCT;
     private String receiveCT;
     private String remainCT;
+    private int verifyInf;
 
     public TradeInformation() {
+    }
+
+    public TradeInformation(String firstParty, String secondParty, String sum, String tradeRemark,String payCT) {
+        Date date=new Date();
+        DateFormat idFormat=new SimpleDateFormat("yyyyMMddHHmmss");
+        DateFormat timeFormat=new SimpleDateFormat("yyyy-MM-dd");
+        this.id = idFormat.format(date);
+        this.tradeTime = timeFormat.format(date);
+        this.firstParty = firstParty;
+        this.secondParty = secondParty;
+        this.sum = sum;
+        this.tradeRemark = tradeRemark;
+        this.payCT = payCT;
+        this.verifyInf = 0;
     }
 
     public TradeInformation(String firstParty, String secondParty, String sum,
@@ -32,6 +47,7 @@ public class TradeInformation {
         this.payCT = payCT;
         this.receiveCT = receiveCT;
         this.remainCT = remainCT;
+        this.verifyInf = 0;
     }
 
     public String getId() {
@@ -106,6 +122,14 @@ public class TradeInformation {
         this.remainCT = remainCT;
     }
 
+    public int getVerifyInf() {
+        return verifyInf;
+    }
+
+    public void setVerifyInf(int verifyInf) {
+        this.verifyInf = verifyInf;
+    }
+
     @Override
     public String toString() {
         return "TradeInformation{" +
@@ -118,6 +142,7 @@ public class TradeInformation {
                 ", payCT='" + payCT + '\'' +
                 ", receiveCT='" + receiveCT + '\'' +
                 ", remainCT='" + remainCT + '\'' +
+                ", verifyInf=" + verifyInf +
                 '}';
     }
 }

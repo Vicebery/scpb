@@ -12,6 +12,7 @@
          申请企业：<input type="text" name="applicant"/><br>
          链票金额：<input type="text" name="amount"/><br>
          到期日：<input type="text" name="deadline"/><br>
+         开具备注：<input type="text" name="tradeRemark"/><br>
 
          <input type="submit" value="确认开具" />
      </form>

@@ -4,8 +4,24 @@
 <mapper namespace="com.scpb.dao.TradeDao">
 
 	<insert id="insertTradeInformation">
-		insert into tradeInformation(id,tradeTime,firstParty,secondParty,sum,tradeRemark,payCT,receiveCT,remainCT)
-		values (#{id},#{tradeTime},#{firstParty},#{secondParty},#{sum},#{tradeRemark},#{payCT},#{receiveCT},#{remainCT})
+		insert into tradeInformation(id,tradeTime,firstParty,secondParty,sum,tradeRemark,payCT,receiveCT,remainCT,verifyInf)
+		values (#{id},#{tradeTime},#{firstParty},#{secondParty},#{sum},#{tradeRemark},#{payCT},#{receiveCT},#{remainCT},
+		#{verifyInf})
 	</insert>
+
+	<insert id="insertPartTradeInformation">
+		insert into tradeInformation(id,tradeTime,firstParty,secondParty,sum,tradeRemark,payCT,verifyInf)
+		values (#{id},#{tradeTime},#{firstParty},#{secondParty},#{sum},#{tradeRemark},#{payCT},#{verifyInf})
+	</insert>
+
+	<select id="selectTradeInfById" resultType="TradeInformation">
+		select id,tradeTime,firstParty,secondParty,sum,tradeRemark,payCT,receiveCT,remainCT,verifyInf
+		from tradeinformation where id = #{id}
+	</select>
+
+	<update id="updateTradeInfById">
+		update tradeinformation set verifyInf = #{verifyInf}, receiveCT = #{receiveCT},
+		remainCT = #{remainCT} where id = #{id}
+	</update>
 
 </mapper>

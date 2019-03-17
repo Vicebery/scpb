@@ -36,13 +36,17 @@ public class CoreEnterpriseController {
     }
 
     @RequestMapping("/coreEnterpriseDrawSuccess")
-    public ModelAndView drawCT(String drawEnterprise, String applicant, String amount, String deadline) {
+    public ModelAndView drawCT(String drawEnterprise, String applicant, String amount, String deadline,String tradeRemark) {
 
         ChainTicket chainTicket = new ChainTicket(amount, deadline, drawEnterprise, drawEnterprise);
         chainTicketService.addChainTicket(chainTicket);
         double limit = Double.valueOf(coreEnterpriseService.getLimitById(drawEnterprise));
         String newLimit = Double.toString(limit-Double.valueOf(amount));
         coreEnterpriseService.modifyLimitById(newLimit,drawEnterprise);
+
+        TradeInformation tradeInformation = new TradeInformation(drawEnterprise,applicant,amount,
+                chainTicket.getId(),tradeRemark);
+        tradeService.addPartTradeInformation(tradeInformation);
 
         ModelAndView mav = new ModelAndView();
         mav.addObject(chainTicket);
