@@ -1,0 +1,82 @@
+*{
+	margin:0;
+	padding:0;
+}
+.container{
+	width:100%;
+	margin:0;
+	padding:0;
+}
+.header{
+	width:100%;
+	height:150px;
+	background:#000;
+		
+}
+.content{
+	width:70%;
+	height:550px;
+	margin:0 auto;
+	border:solid;
+}
+.title-line{
+	height:28px;
+	margin:0 auto;	
+	border-bottom: solid 1px;
+	text-align: center;
+}
+span{
+	
+	height:56px;
+	line-height: 56px;
+	font-size:38px;
+	margin-left:0 auto;
+	text-align: center;
+	background:#fff;
+}
+.login-part{
+	width:100%;
+	height: 450px;
+	
+    margin-top:50px;	
+	
+}
+.input-div{
+	width:80%;
+	margin-left:10%;
+}
+label{
+	font-size: 1.2em;
+     width:14%;
+}
+input{
+	width:70%;
+	height:2em;
+	font-size:1.2em;
+	margin-left: 10px;
+	margin-top: 20px;
+	border-radius: 4px;
+}
+.btn-login{
+	width:40%;
+	height:23m;
+	margin-top:20px;
+	font-size:1.2em;
+	border:1px solid blue;
+	display:inline-block;
+	border-radius:4px;	
+}
+.btn-reg{
+	width:40%;
+	height:23m;
+	margin-top:20px;
+	margin-left:5%;
+	font-size:1.2em;
+	border:1px solid blue;
+	display:inline-block;
+	border-radius:4px;	
+}
+.btn-container{
+	width:50%;
+	margin-left:25%;
+}

@@ -59,10 +59,10 @@ public class EnterpriseController {
 		return "drawCT";
 	}
 
-	@RequestMapping(value = "/main", method = RequestMethod.GET)
+	@RequestMapping(value = "/userLogin", method = RequestMethod.GET)
 	public ModelAndView login(String id, String pwd, HttpSession session) {
 		Enterprise enterprise = enterpriseService.getEnterpriseById(id);
-
+		System.out.println(id);
 		ModelAndView mav = new ModelAndView();
 		if (enterprise == null) {
 			mav.addObject("message", "登录失败 !!");
@@ -79,7 +79,7 @@ public class EnterpriseController {
 //				 mav.addObject("LPC", enterprise.getLPC());
 //				 mav.addObject("type", enterprise.getType());
 //				mav.addObject(enterprise);
-				mav.setViewName("main");
+				mav.setViewName("hexin");
 				session.setAttribute("id",id);
 				return mav;
 			} else {
