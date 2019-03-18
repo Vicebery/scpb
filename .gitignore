@@ -1,9 +1,0 @@
-/target/
-.classpath
-.project
-.settings
-.idea
-scpb.iml
-.gitignore
-/src/main/resources/jdbc.properties
-pom.xml
