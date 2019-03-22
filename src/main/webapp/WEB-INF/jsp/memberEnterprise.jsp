@@ -3,14 +3,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<!DOCTYPE html>
 <html>
 	<head>
-		<title>核心企业主界面</title>
+		<title>成员企业主界面</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="js/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="css/heixin.css">
+		<link rel="stylesheet" type="text/css" href="css/chengyuan.css">
 		<script src="js/jquery-3.3.1.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 	</head>
@@ -26,7 +25,6 @@
 							<li data-toggle="collapse" data-target="#ex1"><a>我的额度</a>
 								<ul id="ex1" class="collapse">
 									<li id="limitquery"><a>额度查询</a></li>
-									<li id="limitdistribution"><a>额度分配</a></li>	
 										
 								</ul>
 							</li>
@@ -34,11 +32,6 @@
 								<ul id="ex2" class="collapse">
 									<li id="ctquery"><a target="showcontent" href="chainTickets">链票查询</a></li>
 									<li id="drawct"><a target="showcontent" href="drawCT">链票开具</a></li>	
-								</ul>
-							</li>
-							<li data-toggle="collapse" data-target="#ex3"><a>待办任务</a>
-								<ul id="ex3" class="collapse">
-									<li id="ctexamine"><a>链票开具初审</a></li>	
 								</ul>
 							</li>
 							
@@ -54,61 +47,45 @@
 						</ul>
 					</div>
 					<div class="col-sm-9 col-md-9 right-part">
-						
-						<div id="limitquery-page">
+
+						<div id="limitquery-page" style="display:none">
 							<p>我的额度:</p>
 							<div id="limitquery-showcontent"></div>
 						</div>
-						
-				        <div id="limitdistribution-page" style="display:none">
-							<p>额度分配:</p>
-							<div id="limitdistribution-showcontent"></div>
-						</div>
-						
+
 						<div id="ctquery-page" style="display:none">
 							<p>链票查询:</p>
-							<div id="ctquery-showcontent">
-							<iframe name="showcontent" width="100%">
-    						</iframe>
-							</div>
+							<div id="ctquery-showcontent"></div>
 						</div>
-						
+
 						<div id="drawct-page" style="display:none">
 							<p>链票开具:</p>
-							<div id="drawct-showcontent">
-								<iframe name="showcontent" width="100%">
-    							</iframe>
+							<div id="ctquery-showcontent">
+								<lable>收票企业:</lable><input type="text">
 							</div>
 						</div>
-						
-						<div id="ctexamine-page" style="display:none">
-							<p>链票开具初审:</p>
-							<div id="ct-examine-showcontent"></div>
-						</div>
-						
+
+
 						<div id="qyInforManage-page" style="display:none">
 							<p>企业信息管理:</p>
-							<div id="qyInforManage-showcontent">
-								<iframe name="showcontent">
-    							</iframe>
-							</div>
+							<div id="qyInforManage-showcontent"></div>
 						</div>
-						
+
 						<div id="qyUserManage-page" style="display:none">
 							<p>企业用户管理:</p>
 							<div id="qyUserManage-showcontent"></div>
 						</div>
-						
+
 						<div id="bankManage-page" style="display:none">
 							<p>银行账户管理:</p>
 							<div id="bankManage-showcontent"></div>
 						</div>
-						
+
 						<div id="sureInforManage-page" style="display:none">
 							<p>认证资料管理:</p>
 							<div id="sureInforManage-showcontent"></div>
 						</div>
-						
+
 						<div id="supply-page" style="display:none">
 							<p>我的供应商:</p>
 							<div id="supply-showcontent"></div>
@@ -118,6 +95,6 @@
 				</div>
 			</div>
 		</div>
-		<script src="js/hexin.js"></script>
+		<script src="js/chengyuan.js"></script>
 	</body>
 </html>

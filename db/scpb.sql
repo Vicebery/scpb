@@ -11,7 +11,7 @@
  Target Server Version : 50724
  File Encoding         : 65001
 
- Date: 09/03/2019 12:13:27
+ Date: 22/03/2019 15:59:21
 */
 
 SET NAMES utf8mb4;
@@ -37,10 +37,9 @@ CREATE TABLE `chainticket`  (
 -- ----------------------------
 -- Records of chainticket
 -- ----------------------------
-INSERT INTO `chainticket` VALUES ('20190308163928', '500', '2019-03-08', 1, '2019001', '20191111', '2019001');
+INSERT INTO `chainticket` VALUES ('20190308163928', '500', '2019-03-08', 0, '2019001', '20191111', '2019001');
 INSERT INTO `chainticket` VALUES ('20190308215931', '300', '2019-03-08', 0, '2019002', '20200101', '2019002');
-INSERT INTO `chainticket` VALUES ('2019030912123666', '400.0', '2019-03-09', 0, '2019001', '20191111', '2019001');
-INSERT INTO `chainticket` VALUES ('2019030912123685', '100', '2019-03-09', 0, '2019002', '20191111', '2019001');
+INSERT INTO `chainticket` VALUES ('2019032022460280', '120', '2019-03-20', 0, '2019001', '20190202', '2019001');
 
 -- ----------------------------
 -- Table structure for coreenterprise
@@ -55,7 +54,7 @@ CREATE TABLE `coreenterprise`  (
 -- ----------------------------
 -- Records of coreenterprise
 -- ----------------------------
-INSERT INTO `coreenterprise` VALUES ('2019001', '50000');
+INSERT INTO `coreenterprise` VALUES ('2019001', '49240.0');
 
 -- ----------------------------
 -- Table structure for enterprise
@@ -76,9 +75,11 @@ CREATE TABLE `enterprise`  (
 -- ----------------------------
 -- Records of enterprise
 -- ----------------------------
-INSERT INTO `enterprise` VALUES ('2019001', '13612345678', '123456', '62080000', 'baidu', '10000001', '123456789012345678', 1);
-INSERT INTO `enterprise` VALUES ('2019002', '13123886950', '123456', '111', '趣链', 'qulain', '11', 1);
-INSERT INTO `enterprise` VALUES ('2019003', '13045009900', '123456', '1111', 'xiaomi', '1111', '1111', 2);
+INSERT INTO `enterprise` VALUES ('2019001', '13612345678', '123456', '62080000', '核心企业1', '10000001', '123456789012345678', 1);
+INSERT INTO `enterprise` VALUES ('2019002', '13123886950', '123456', '111', '核心企业2', 'qulain', '11', 1);
+INSERT INTO `enterprise` VALUES ('2019003', '13045009900', '123456', '1111', '成员企业1', '1111', '1111', 2);
+INSERT INTO `enterprise` VALUES ('2019004', '15071429552', '123456', '2333', '供应商1', '11', '1', 3);
+INSERT INTO `enterprise` VALUES ('2019005', '15938870043', '123456', '11111', '保理商1', '11111', '11111', 4);
 
 -- ----------------------------
 -- Table structure for factor
@@ -125,6 +126,7 @@ CREATE TABLE `tradeinformation`  (
   `payCT` varchar(80) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `receiveCT` varchar(80) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `remainCT` varchar(80) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `verifyInf` int(3) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `firstParty`(`firstParty`) USING BTREE,
   INDEX `secondParty`(`secondParty`) USING BTREE,
@@ -135,6 +137,7 @@ CREATE TABLE `tradeinformation`  (
 -- ----------------------------
 -- Records of tradeinformation
 -- ----------------------------
-INSERT INTO `tradeinformation` VALUES ('20190309121237', '2019-03-09', '2019001', '2019002', '100', '测试', '20190308163928', '2019030912123685', '2019030912123666');
+INSERT INTO `tradeinformation` VALUES ('20190309121237', '2019-03-09', '2019001', '2019002', '100', '测试', '20190308163928', '2019030912123685', '2019030912123666', NULL);
+INSERT INTO `tradeinformation` VALUES ('20190320224602', '2019-03-20', '2019001', '2019004', '120', '测试开具功能', '2019032022460280', NULL, NULL, 0);
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -62,7 +62,7 @@ public class EnterpriseController {
 	@RequestMapping(value = "/userLogin", method = RequestMethod.GET)
 	public ModelAndView login(String id, String pwd, HttpSession session) {
 		Enterprise enterprise = enterpriseService.getEnterpriseById(id);
-		System.out.println(id);
+//		System.out.println(id);
 		ModelAndView mav = new ModelAndView();
 		if (enterprise == null) {
 			mav.addObject("message", "登录失败 !!");
@@ -72,14 +72,15 @@ public class EnterpriseController {
 			if (pwd.equals(enterprise.getPwd())) {
 				// 密码匹配成功
 				 mav.addObject("id", enterprise.getId());
-//				 mav.addObject("account", enterprise.getAccount());
-//				 mav.addObject("bank", enterprise.getBank());
-//				 mav.addObject("name", enterprise.getName());
-//				 mav.addObject("UCC", enterprise.getUCC());
-//				 mav.addObject("LPC", enterprise.getLPC());
-//				 mav.addObject("type", enterprise.getType());
-//				mav.addObject(enterprise);
-				mav.setViewName("hexin");
+				 //判断企业类型
+				 if(enterprise.getType()==1)
+					 mav.setViewName("coreEnterprise");
+				 else if(enterprise.getType()==2)
+					 mav.setViewName("memberEnterprise");
+				 else if(enterprise.getType()==3)
+					 mav.setViewName("supplier");
+				 else if(enterprise.getType()==4)
+					 mav.setViewName("factor");
 				session.setAttribute("id",id);
 				return mav;
 			} else {

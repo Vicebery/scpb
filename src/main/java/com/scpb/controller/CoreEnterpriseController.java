@@ -1,6 +1,7 @@
 package com.scpb.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import com.scpb.entity.TradeInformation;
 import com.scpb.service.ChainTicketService;
@@ -35,8 +36,13 @@ public class CoreEnterpriseController {
         this.tradeService = tradeService;
     }
 
+    @RequestMapping(value = "/coreEnterpriseDrawCT", method = RequestMethod.GET)
+    public String goCoreEnterpriseDrawCT(){
+        return "coreEnterpriseDrawCT";
+    }
     @RequestMapping("/coreEnterpriseDrawSuccess")
-    public ModelAndView drawCT(String drawEnterprise, String applicant, String amount, String deadline,String tradeRemark) {
+    public ModelAndView drawCT(String drawEnterprise, String applicant, String amount,
+                               HttpSession session,String deadline, String tradeRemark) {
 
         ChainTicket chainTicket = new ChainTicket(amount, deadline, drawEnterprise, drawEnterprise);
         chainTicketService.addChainTicket(chainTicket);
@@ -45,8 +51,10 @@ public class CoreEnterpriseController {
         coreEnterpriseService.modifyLimitById(newLimit,drawEnterprise);
 
         TradeInformation tradeInformation = new TradeInformation(drawEnterprise,applicant,amount,
-                chainTicket.getId(),tradeRemark);
+                tradeRemark,chainTicket.getId());
         tradeService.addPartTradeInformation(tradeInformation);
+        session.setAttribute("tradeInfId",tradeInformation.getId());
+        session.setAttribute("amount",amount);
 
         ModelAndView mav = new ModelAndView();
         mav.addObject(chainTicket);

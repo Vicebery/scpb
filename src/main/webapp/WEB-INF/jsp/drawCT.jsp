@@ -10,7 +10,7 @@
  <form action="<%=request.getContextPath()%>/chainTicket/drawSuccess" method="get">
        链票金额：<input type="text" name="amount"/><br>
        开票企业：<input type="text" name="drawEnterprise"/><br>
-       持有企业：<input type="text" name="ownerId"/><br>
+       <%--持有企业：<input type="text" name="ownerId"/><br>--%>
          到期日：<input type="text" name="deadline"/><br>
 
         <input type="submit" value="确认开具" />

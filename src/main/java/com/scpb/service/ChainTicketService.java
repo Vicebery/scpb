@@ -6,7 +6,7 @@ import com.scpb.entity.ChainTicket;
 
 public interface ChainTicketService {
 
-    ChainTicket getChainTicketById(String payCT);
+    ChainTicket getChainTicketById(String id);
 
     void addChainTicket(ChainTicket chainTicket);
 

@@ -19,6 +19,15 @@
 		from tradeinformation where id = #{id}
 	</select>
 
+	<select id="selectCTidBySecondParty" resultType="String">
+		select payCT from tradeinformation where secondParty = #{id}
+	</select>
+
+	<select id="selectTradeInfByPayCT" resultType="TradeInformation">
+		select id,tradeTime,firstParty,secondParty,sum,tradeRemark,payCT,receiveCT,remainCT,verifyInf
+		from tradeinformation where payCT = #{payCT}
+	</select>
+
 	<update id="updateTradeInfById">
 		update tradeinformation set verifyInf = #{verifyInf}, receiveCT = #{receiveCT},
 		remainCT = #{remainCT} where id = #{id}
