@@ -36,25 +36,24 @@ public class CoreEnterpriseController {
         this.tradeService = tradeService;
     }
 
-    @RequestMapping(value = "/coreEnterpriseDrawCT", method = RequestMethod.GET)
-    public String goCoreEnterpriseDrawCT(){
-        return "coreEnterpriseDrawCT";
-    }
     @RequestMapping("/coreEnterpriseDrawSuccess")
-    public ModelAndView drawCT(String drawEnterprise, String applicant, String amount,
+    public ModelAndView drawCT(String applicant, String amount,
                                HttpSession session,String deadline, String tradeRemark) {
 
-        ChainTicket chainTicket = new ChainTicket(amount, deadline, drawEnterprise, drawEnterprise);
+        String drawEnterprise = (String) session.getAttribute("id");
+        ChainTicket chainTicket = new ChainTicket(1,amount, deadline, drawEnterprise, drawEnterprise);
         chainTicketService.addChainTicket(chainTicket);
         double limit = Double.valueOf(coreEnterpriseService.getLimitById(drawEnterprise));
         String newLimit = Double.toString(limit-Double.valueOf(amount));
         coreEnterpriseService.modifyLimitById(newLimit,drawEnterprise);
 
+        ChainTicket receiveCT = chainTicket;
+        ChainTicket remainCT = new ChainTicket(3,"0", chainTicket.getDeadline(),
+                drawEnterprise, drawEnterprise);
         TradeInformation tradeInformation = new TradeInformation(drawEnterprise,applicant,amount,
-                tradeRemark,chainTicket.getId());
-        tradeService.addPartTradeInformation(tradeInformation);
-        session.setAttribute("tradeInfId",tradeInformation.getId());
-        session.setAttribute("amount",amount);
+                tradeRemark,chainTicket.getId(),receiveCT.getId(),remainCT.getId());
+        tradeService.addTradeInformation(tradeInformation);
+        tradeService.modifyTradeInfStateById(tradeInformation.getId(),2);
 
         ModelAndView mav = new ModelAndView();
         mav.addObject(chainTicket);

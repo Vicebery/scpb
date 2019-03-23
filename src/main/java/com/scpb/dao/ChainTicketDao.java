@@ -18,4 +18,5 @@ public interface ChainTicketDao {
     //查找某企业的所有链票
     List<ChainTicket> selectChainTicketsByEnterpriseId(String ownerId);
 
+    void updateOwnerById(@Param("ownerId") String ownerId, @Param("id") String id);
 }

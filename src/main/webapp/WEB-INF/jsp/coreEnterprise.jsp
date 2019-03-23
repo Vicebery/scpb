@@ -34,7 +34,7 @@
 							<li data-toggle="collapse" data-target="#ex2"><a>我的链票</a>
 								<ul id="ex2" class="collapse">
 									<li id="ctquery"><a target="ctquery-showcontent" href="chainTickets">链票查询</a></li>
-									<li id="drawct"><a target="drawct-showcontent" href="coreEnterprise/coreEnterpriseDrawCT">链票开具</a></li>
+									<li id="drawct"><a>链票开具</a></li>
 								</ul>
 							</li>
 							<li data-toggle="collapse" data-target="#ex3"><a>待办任务</a>
@@ -77,8 +77,13 @@
 						<div id="drawct-page" style="display:none">
 							<p>链票开具:</p>
 							<div id="drawct-showcontent">
-								<iframe name="drawct-showcontent" width="100%">
-    							</iframe>
+								<form action="<%=request.getContextPath()%>/coreEnterprise/coreEnterpriseDrawSuccess" method="get">
+									申请企业：<input type="text" name="applicant"/><br>
+									链票金额：<input type="text" name="amount"/><br>
+									到期日：<input type="text" name="deadline"/><br>
+									开具备注：<input type="text" name="tradeRemark"/><br>
+									<input type="submit" value="确认开具" />
+								</form>
 							</div>
 						</div>
 						

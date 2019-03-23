@@ -6,10 +6,30 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>链票信息列表</title>
+<title>链票列表</title>
 </head>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+<%--<script type="text/javascript">--%>
+	<%--function transfer(obj) {--%>
+		<%--var thisTR=obj.parentNode.parentNode;--%>
+		<%--var chainTicketId=thisTR.getElementsByTagName('td')[0].innerHTML;--%>
+		<%--// alert(chainTicketId);--%>
+        <%--$.ajax({--%>
+            <%--type:"POST",--%>
+            <%--url:"http://localhost:9090/scpb_war_exploded/supplier/transferCTSuccess",--%>
+            <%--data:{'chainTicketId':chainTicketId},--%>
+            <%--success:function(data){--%>
+                <%--alert("申请转让成功");--%>
+            <%--}--%>
+        <%--});--%>
+	<%--}--%>
+<%--</script>--%>
+
+
+
 <body>
-		链票列表：
+		已有链票列表：
 		<table width="100%" border=1>
 		<tr>
 			<td>链票ID</td>

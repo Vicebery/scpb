@@ -16,4 +16,5 @@ public interface ChainTicketService {
     
     List<ChainTicket> getChainTicketsByEnterpriseId(String ownerId);
 
+    void modifyCTOwnerIdById(String secondParty, String receiveCT);
 }

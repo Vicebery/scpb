@@ -15,7 +15,13 @@ public interface TradeDao {
 
     void updateTradeInfById(@Param("id")String id, @Param("verifyInf")int verifyInf, @Param("receiveCT")String receiveCT, @Param("remainCT")String remainCT);
 
-    List<String> selectCTidBySecondParty(String id);
+    List<String> selectPayCTidBySecondParty(String id);
 
     TradeInformation selectTradeInfByPayCT(String payCT);
+
+    List<String> selectReceiveCTidBySecondParty(String id);
+
+    TradeInformation selectTradeInfByReceiveCT(String receiveCT);
+
+    void updateTradeInfStateById(@Param("id")String id, @Param("verifyInf")int verifyInf);
 }

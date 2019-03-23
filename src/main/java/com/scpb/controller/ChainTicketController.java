@@ -27,19 +27,19 @@ public class ChainTicketController {
         this.chainTicketService = chainTicketService;
     }
 
-    @RequestMapping("/drawSuccess")
-    public ModelAndView drawChainTicket(String amount, String drawEnterprise, String ownerId, String deadline) {
-        ChainTicket chainTicket = new ChainTicket(amount, deadline, ownerId, drawEnterprise);
-        chainTicketService.addChainTicket(chainTicket);
-        ModelAndView mav = new ModelAndView();
-        mav.addObject("id", chainTicket.getId());
-        mav.addObject("drawTime", chainTicket.getDrawTime());
-        mav.addObject("amount", amount);
-        mav.addObject("state", chainTicket.getState());
-        mav.addObject("drawEnterprise", drawEnterprise);
-        mav.addObject("ownerEnterprise", ownerId);
-        mav.addObject("deadline", deadline);
-        mav.setViewName("drawSuccess");
-        return mav;
-    }
+//    @RequestMapping("/drawSuccess")
+//    public ModelAndView drawChainTicket(String amount, String drawEnterprise, String ownerId, String deadline) {
+//        ChainTicket chainTicket = new ChainTicket(0,amount, deadline, ownerId, drawEnterprise);
+//        chainTicketService.addChainTicket(chainTicket);
+//        ModelAndView mav = new ModelAndView();
+//        mav.addObject("id", chainTicket.getId());
+//        mav.addObject("drawTime", chainTicket.getDrawTime());
+//        mav.addObject("amount", amount);
+//        mav.addObject("state", chainTicket.getState());
+//        mav.addObject("drawEnterprise", drawEnterprise);
+//        mav.addObject("ownerEnterprise", ownerId);
+//        mav.addObject("deadline", deadline);
+//        mav.setViewName("drawSuccess");
+//        return mav;
+//    }
 }

@@ -34,9 +34,9 @@ public class TradeController {
         chainTicketService.modifyCTStateById(1,payCT);
 //        chainTicket.setState(1);
 //        chainTicketService.changeCTState(chainTicket);
-        ChainTicket receiveCT = new ChainTicket(sum, chainTicket.getDeadline(), secondParty, chainTicket.getDrawEnterprise());
+        ChainTicket receiveCT = new ChainTicket(1,sum, chainTicket.getDeadline(), secondParty, chainTicket.getDrawEnterprise());
         String remainCTAmount = Double.toString((Double.valueOf(chainTicket.getAmount())-Double.valueOf(sum)));
-        ChainTicket remainCT = new ChainTicket(remainCTAmount, chainTicket.getDeadline(),
+        ChainTicket remainCT = new ChainTicket(3,remainCTAmount, chainTicket.getDeadline(),
                 firstParty, chainTicket.getDrawEnterprise());
         chainTicketService.addChainTicket(receiveCT);
         chainTicketService.addChainTicket(remainCT);

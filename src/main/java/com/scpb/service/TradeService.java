@@ -15,7 +15,13 @@ public interface TradeService {
 
     void modifyTradeInfById(String tradeInfId, int verifyInf, String receiveCT, String remainCT);
 
-    List<String> getCTidBySecondParty(String id);
+    List<String> getPayCTidBySecondParty(String id);
+
+    List<String> getReceiveCTidBySecondParty(String id);
 
     TradeInformation getTradeInfByPayCT(String payCT);
+
+    TradeInformation getTradeInfByReceiveCT(String receiveCT);
+
+    void modifyTradeInfStateById(String id, int verifyInf);
 }

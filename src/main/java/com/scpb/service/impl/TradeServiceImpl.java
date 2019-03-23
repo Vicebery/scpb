@@ -35,13 +35,26 @@ public class TradeServiceImpl implements TradeService {
         tradeDao.updateTradeInfById(id,verifyInf,receiveCT,remainCT);
     }
 
-    @Override
-    public List<String> getCTidBySecondParty(String id) {
-        return tradeDao.selectCTidBySecondParty(id);
+    public List<String> getPayCTidBySecondParty(String id) {
+
+        return tradeDao.selectPayCTidBySecondParty(id);
     }
 
-    @Override
+    public List<String> getReceiveCTidBySecondParty(String id) {
+
+        return tradeDao.selectReceiveCTidBySecondParty(id);
+    }
+
     public TradeInformation getTradeInfByPayCT(String payCT) {
+
         return tradeDao.selectTradeInfByPayCT(payCT);
+    }
+
+    public TradeInformation getTradeInfByReceiveCT(String receiveCT) {
+        return tradeDao.selectTradeInfByReceiveCT(receiveCT);
+    }
+
+    public void modifyTradeInfStateById(String id, int verifyInf) {
+        tradeDao.updateTradeInfStateById(id,verifyInf);
     }
 }

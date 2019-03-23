@@ -13,12 +13,16 @@
 		where id = #{id}
 	</select>
 
-	<update id="updateCTState" parameterType="ChainTicket">
+	<!--<update id="updateCTState" parameterType="ChainTicket">
 		update chainTicket set state = #{state} where id = #{id}
-	</update>
+	</update>-->
 
 	<update id="updateCTStateById">
 		update chainTicket set state = #{state} where id = #{id}
+	</update>
+
+	<update id="updateOwnerById">
+		update chainTicket set ownerId = #{ownerId} where id = #{id}
 	</update>
 	
 	<!-- 企业链票查询  -->

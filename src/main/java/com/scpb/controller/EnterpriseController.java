@@ -54,15 +54,10 @@ public class EnterpriseController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/drawCT", method = RequestMethod.GET)
-	public String goDrawCT(){
-		return "drawCT";
-	}
-
 	@RequestMapping(value = "/userLogin", method = RequestMethod.GET)
 	public ModelAndView login(String id, String pwd, HttpSession session) {
 		Enterprise enterprise = enterpriseService.getEnterpriseById(id);
-//		System.out.println(id);
+		System.out.println("企业id" + id);
 		ModelAndView mav = new ModelAndView();
 		if (enterprise == null) {
 			mav.addObject("message", "登录失败 !!");

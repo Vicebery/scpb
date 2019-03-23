@@ -33,7 +33,7 @@
 								<ul id="ex2" class="collapse">
 									<li id="ctSecondExam"><a>开具复审</a></li>
 									<%--<li id="financeExam"><a>融资初审</a></li>--%>
-									<li id="financeExam"><a target="financeExam-showcontent" href="financingExamine">融资审核</a></li>
+									<li id="financeExam"><a target="financeExam-showcontent" href="factor/financingExamine">融资审核</a></li>
 								</ul>
 							</li>
 
@@ -75,9 +75,9 @@
 							<div id="financeExam-showcontent"></div>
 						</div>--%>
 
-						<div id="financeSecondExam-page" style="display:none">
-							<p>融资复审:</p>
-							<div id="financeSecondExam-showcontent">
+						<div id="financeExam-page" style="display:none">
+							<p>融资审核:</p>
+							<div id="financeExam-showcontent">
 								<iframe name="financeExam-showcontent" width="100%">
 								</iframe>
 							</div>
