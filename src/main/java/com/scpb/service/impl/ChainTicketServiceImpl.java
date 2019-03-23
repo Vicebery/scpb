@@ -41,7 +41,12 @@ public class ChainTicketServiceImpl implements ChainTicketService{
 	public List<ChainTicket> getChainTicketsByEnterpriseId(String ownerId) {
 		return chainTicketDao.selectChainTicketsByEnterpriseId(ownerId);
 	}
-
+	
+	@Transactional
+	public void modifyCTOwnerIdById(String secondParty, String receiveCT) {
+		chainTicketDao.updateOwnerById(secondParty,receiveCT);
+	}
+	
 	@Transactional
 	public List<ChainTicket> getUncheckedCTsByCEId(String coreEnterpriseId) {
 		return chainTicketDao.selectUncheckedCTsByCEId(coreEnterpriseId);

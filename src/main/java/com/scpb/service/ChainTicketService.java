@@ -15,6 +15,8 @@ public interface ChainTicketService {
     void modifyCTStateById(int state, String id);
     
     List<ChainTicket> getChainTicketsByEnterpriseId(String ownerId);
+    
+    void modifyCTOwnerIdById(String secondParty, String receiveCT);
 
 	List<ChainTicket> getUncheckedCTsByCEId(String coreEnterpriseId);
 

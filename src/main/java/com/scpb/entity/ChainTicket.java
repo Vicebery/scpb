@@ -45,6 +45,20 @@ public class ChainTicket {
 		this.drawEnterprise = drawEnterprise;
 	}
 	
+	public ChainTicket(int state,String amount, String deadline, String ownerId, String drawEnterprise) {
+		Date date=new Date();
+		DateFormat idFormat=new SimpleDateFormat("yyyyMMddHHmmss");
+		DateFormat timeFormat=new SimpleDateFormat("yyyy-MM-dd");
+		int rad = (int)(1+Math.random()*100);
+		this.id = idFormat.format(date)+String.valueOf(rad);
+		this.drawTime = timeFormat.format(date);
+		this.state = state;
+		this.amount = amount;
+		this.deadline = deadline;
+		this.ownerId = ownerId;
+		this.drawEnterprise = drawEnterprise;
+	}
+	
     public String getDrawEnterprise() {
 		return drawEnterprise;
 	}

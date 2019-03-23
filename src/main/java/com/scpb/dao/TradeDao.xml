@@ -19,8 +19,12 @@
 		from tradeinformation where id = #{id}
 	</select>
 
-	<select id="selectCTidBySecondParty" resultType="String">
-		select payCT from tradeinformation where secondParty = #{id}
+	<select id="selectPayCTidBySecondParty" resultType="String">
+		select payCT from tradeinformation where secondParty = #{id} and verifyInf = 2
+	</select>
+
+	<select id="selectReceiveCTidBySecondParty" resultType="String">
+		select ReceiveCT from tradeinformation where secondParty = #{id} and verifyInf = 2
 	</select>
 
 	<select id="selectTradeInfByPayCT" resultType="TradeInformation">
@@ -28,9 +32,19 @@
 		from tradeinformation where payCT = #{payCT}
 	</select>
 
+	<select id="selectTradeInfByReceiveCT" resultType="TradeInformation">
+		select id,tradeTime,firstParty,secondParty,sum,tradeRemark,payCT,receiveCT,remainCT,verifyInf
+		from tradeinformation where receiveCT = #{receiveCT}
+	</select>
+
 	<update id="updateTradeInfById">
 		update tradeinformation set verifyInf = #{verifyInf}, receiveCT = #{receiveCT},
 		remainCT = #{remainCT} where id = #{id}
+	</update>
+
+	<update id="updateTradeInfStateById">
+		update tradeinformation set verifyInf = #{verifyInf}
+		 where id = #{id}
 	</update>
 	
 	<update id="updateVerifyInfByPayCTId">
