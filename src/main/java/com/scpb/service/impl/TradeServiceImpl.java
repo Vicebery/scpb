@@ -44,4 +44,9 @@ public class TradeServiceImpl implements TradeService {
     public TradeInformation getTradeInfByPayCT(String payCT) {
         return tradeDao.selectTradeInfByPayCT(payCT);
     }
+
+    @Transactional
+	public void setVerifyInfByPayCTId(String chainTicketId, int verifyInf) {
+		tradeDao.updateVerifyInfByPayCTId(chainTicketId, verifyInf);
+	}
 }

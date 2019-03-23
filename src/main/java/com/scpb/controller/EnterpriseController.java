@@ -22,30 +22,30 @@ import javax.servlet.http.HttpSession;
 public class EnterpriseController {
 	@Resource(name = "enterpriseService")
 	private EnterpriseService enterpriseService;
-	
-    @Resource(name = "chainTicketService")
-    private ChainTicketService chainTicketService;
-    
-    public void setChainTicketService(ChainTicketService chainTicketService) {
-        this.chainTicketService = chainTicketService;
-    }
+
+	@Resource(name = "chainTicketService")
+	private ChainTicketService chainTicketService;
+
+	public void setChainTicketService(ChainTicketService chainTicketService) {
+		this.chainTicketService = chainTicketService;
+	}
 
 	public void setEnterpriseService(EnterpriseService enterpriseService) {
 		this.enterpriseService = enterpriseService;
 	}
-	
+
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String goLogin(){
+	public String goLogin() {
 		return "login";
 	}
-	
+
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public String goRegister(){
+	public String goRegister() {
 		return "register";
 	}
-	
+
 	@RequestMapping(value = "/managerInfo", method = RequestMethod.GET)
-	public ModelAndView goManagerInfo(HttpSession session){
+	public ModelAndView goManagerInfo(HttpSession session) {
 		String id = (String) session.getAttribute("id");
 		Enterprise enterprise = enterpriseService.getEnterpriseById(id);
 		ModelAndView mav = new ModelAndView();
@@ -53,43 +53,43 @@ public class EnterpriseController {
 			mav.addObject(enterprise);
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "/drawCT", method = RequestMethod.GET)
-	public String goDrawCT(){
+	public String goDrawCT() {
 		return "drawCT";
 	}
 
 	@RequestMapping(value = "/userLogin", method = RequestMethod.GET)
 	public ModelAndView login(String id, String pwd, HttpSession session) {
-		Enterprise enterprise = enterpriseService.getEnterpriseById(id);
-//		System.out.println(id);
-		ModelAndView mav = new ModelAndView();
-		if (enterprise == null) {
-			mav.addObject("message", "登录失败 !!");
-			mav.setViewName("fail");
-			return mav;
-		} else {
-			if (pwd.equals(enterprise.getPwd())) {
-				// 密码匹配成功
-				 mav.addObject("id", enterprise.getId());
-				 //判断企业类型
-				 if(enterprise.getType()==1)
-					 mav.setViewName("coreEnterprise");
-				 else if(enterprise.getType()==2)
-					 mav.setViewName("memberEnterprise");
-				 else if(enterprise.getType()==3)
-					 mav.setViewName("supplier");
-				 else if(enterprise.getType()==4)
-					 mav.setViewName("factor");
-				session.setAttribute("id",id);
-				return mav;
-			} else {
-				mav.addObject("message", "password wrong !!");
-				mav.setViewName("login");
-				return mav;
-			}
-
-		}
+		 Enterprise enterprise = enterpriseService.getEnterpriseById(id);
+		// System.out.println(id);
+		 ModelAndView mav = new ModelAndView();
+		 if (enterprise == null) {
+		 mav.addObject("message", "登录失败 !!");
+		 mav.setViewName("fail");
+		 return mav;
+		 } else {
+		 if (pwd.equals(enterprise.getPwd())) {
+		 // 密码匹配成功
+		 mav.addObject("id", enterprise.getId());
+		 //判断企业类型
+		 if(enterprise.getType()==1)
+		 mav.setViewName("coreEnterprise");
+		 else if(enterprise.getType()==2)
+		 mav.setViewName("memberEnterprise/home");
+		 else if(enterprise.getType()==3)
+		 mav.setViewName("supplier");
+		 else if(enterprise.getType()==4)
+		 mav.setViewName("factor");
+		 session.setAttribute("id",id);
+		 return mav;
+		 } else {
+		 mav.addObject("message", "password wrong !!");
+		 mav.setViewName("login");
+		 return mav;
+		 }
+		
+		 }
 	}
 
 	@RequestMapping(value = "/registerFin", method = RequestMethod.GET)
@@ -113,20 +113,22 @@ public class EnterpriseController {
 	@RequestMapping(value = "/chainTickets", method = RequestMethod.GET)
 	public ModelAndView queryChainTicketsByEnterpriseId(HttpSession session) {
 		String id = (String) session.getAttribute("id");
-		//测试是否输出
-		System.out.println("企业ID:"+id);
+		// 测试是否输出
+//		System.out.println("企业ID:" + id);
+		
 		List<ChainTicket> chainTicketList = chainTicketService.getChainTicketsByEnterpriseId(id);
-		//测试是否获取查询结果集
-		System.out.println(Arrays.toString(chainTicketList.toArray())); 
+		// 测试是否获取查询结果集
+//		System.out.println(Arrays.toString(chainTicketList.toArray()));
+		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("chainTicketList", chainTicketList);
 
 		mav.setViewName("chainTickets");
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "/modifyInfo", method = RequestMethod.GET)
-	public ModelAndView modifyInfo(HttpSession session){
+	public ModelAndView modifyInfo(HttpSession session) {
 		String id = (String) session.getAttribute("id");
 		Enterprise enterprise = enterpriseService.getEnterpriseById(id);
 		ModelAndView mav = new ModelAndView();
@@ -134,10 +136,10 @@ public class EnterpriseController {
 			mav.addObject(enterprise);
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "/execModifyInfo", method = RequestMethod.GET)
 	public ModelAndView execmodifyInfo(String id, String account, String pwd, String bank, String name, String UCC,
-			String LPC, int type){
+			String LPC, int type) {
 		Enterprise enterprise = new Enterprise(id, account, pwd, bank, name, UCC, LPC, type);
 		enterpriseService.updateEnterprise(enterprise);
 		ModelAndView mav = new ModelAndView();

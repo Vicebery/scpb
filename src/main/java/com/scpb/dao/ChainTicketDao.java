@@ -17,5 +17,7 @@ public interface ChainTicketDao {
 
     //查找某企业的所有链票
     List<ChainTicket> selectChainTicketsByEnterpriseId(String ownerId);
-
+    
+    //查询核心企业的所有成员企业开具的未审核的链票
+    List<ChainTicket> selectUncheckedCTsByCEId(String coreEnterpriseId);
 }

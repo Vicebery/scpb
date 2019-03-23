@@ -18,4 +18,6 @@ public interface TradeDao {
     List<String> selectCTidBySecondParty(String id);
 
     TradeInformation selectTradeInfByPayCT(String payCT);
+
+	void updateVerifyInfByPayCTId(@Param("payCT")String chainTicketId, @Param("verifyInf")int verifyInf);
 }

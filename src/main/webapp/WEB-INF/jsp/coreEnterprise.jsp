@@ -39,7 +39,7 @@
 							</li>
 							<li data-toggle="collapse" data-target="#ex3"><a>待办任务</a>
 								<ul id="ex3" class="collapse">
-									<li id="ctexamine"><a>链票开具初审</a></li>	
+									<li id="ctexamine"><a target="uncheckedCT-showcontent" href="coreEnterprise/checkCTs">链票开具初审</a></li>	
 								</ul>
 							</li>
 							
@@ -84,7 +84,10 @@
 						
 						<div id="ctexamine-page" style="display:none">
 							<p>链票开具初审:</p>
-							<div id="ct-examine-showcontent"></div>
+							<div id="ct-examine-showcontent">
+								<iframe name="uncheckedCT-showcontent" width="100%">
+    							</iframe>
+							</div>
 						</div>
 						
 						<div id="qyInforManage-page" style="display:none">

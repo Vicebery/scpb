@@ -32,5 +32,9 @@
 		update tradeinformation set verifyInf = #{verifyInf}, receiveCT = #{receiveCT},
 		remainCT = #{remainCT} where id = #{id}
 	</update>
+	
+	<update id="updateVerifyInfByPayCTId">
+		update tradeinformation set verifyInf = #{verifyInf} where payCT = #{payCT}
+	</update>
 
 </mapper>

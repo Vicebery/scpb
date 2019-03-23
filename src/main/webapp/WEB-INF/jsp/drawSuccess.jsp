@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>链票开具</title>
+<title>链票开具成功</title>
 </head>
 <body>
     链票开具成功<br/>

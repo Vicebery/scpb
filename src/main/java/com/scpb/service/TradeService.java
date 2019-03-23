@@ -18,4 +18,6 @@ public interface TradeService {
     List<String> getCTidBySecondParty(String id);
 
     TradeInformation getTradeInfByPayCT(String payCT);
+
+	void setVerifyInfByPayCTId(String chainTicketId, int verifyInf);
 }

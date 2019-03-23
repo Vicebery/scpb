@@ -1,5 +1,8 @@
 package com.scpb.controller;
 
+import java.util.Arrays;
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
@@ -78,6 +81,47 @@ public class CoreEnterpriseController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("result",result);
 		mav.setViewName("Limit");
+		return mav;
+	}
+	
+	//链票开具初审
+	@RequestMapping("/checkCTs")
+	 public ModelAndView checkCTs(HttpSession session) {
+		String coreEnterpriseId = (String) session.getAttribute("id");
+		
+		//test code
+		System.out.println("当前企业:"+coreEnterpriseId);
+		
+		//获取当前企业的成员企业开具的未审核的链票
+		List<ChainTicket> chainTicketList = chainTicketService.getUncheckedCTsByCEId(coreEnterpriseId);
+		
+		// 测试是否获取查询结果集
+		System.out.println(Arrays.toString(chainTicketList.toArray()));
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("chainTicketList",chainTicketList);
+		mav.setViewName("checkCTs");
+		return mav;
+	}
+	
+	
+	@RequestMapping("/passCheckCT")
+	 public ModelAndView passCheckCT(String id, String state) {
+		String chainTicketId = id;
+		int changedState = Integer.parseInt(state);
+		//test code
+		System.out.println("当前企业:"+chainTicketId+"state:"+state);
+		
+		//修改当前选中链票状态
+		chainTicketService.setStateByChainTicketId(chainTicketId,changedState);
+		//修改交易信息状态
+		tradeService.setVerifyInfByPayCTId(chainTicketId,changedState);
+		// 测试是否获取查询结果集
+		System.out.println("修改状态成功");
+		ModelAndView mav = new ModelAndView();
+//		mav.addObject("chainTicketList",chainTicketList);
+		mav.setViewName("checkCTs");
+
 		return mav;
 	}
 }

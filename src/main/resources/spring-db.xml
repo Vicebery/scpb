@@ -22,5 +22,4 @@
 			<value>classpath:jdbc.properties</value>
 		</property>
 	</bean>
-	<!--<context:property-placeholder location="classpath:jdbc.properties" />    -->
 </beans>

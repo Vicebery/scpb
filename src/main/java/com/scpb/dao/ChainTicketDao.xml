@@ -26,5 +26,11 @@
 		select id,amount,drawTime,state,ownerId,deadline,drawEnterprise from chainTicket
 		where ownerId = #{ownerId}
 	</select>
+	
+	<select id="selectUncheckedCTsByCEId" resultType="ChainTicket">
+		select chainTicket.id,amount,drawTime,state,ownerId,deadline,drawEnterprise from chainTicket,memberenterprise
+		where memberenterprise.coreEnterprise = #{coreEnterpriseId} and memberenterprise.id = chainTicket.drawEnterprise
+		and chainTicket.state = 0
+	</select>
 
 </mapper>
