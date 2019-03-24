@@ -23,7 +23,7 @@
 		<tr>
 			<td>${chainTicket.id }</td>
 			<td>${chainTicket.amount }</td>
-			<td>${chainTicket.drawTime}"</td> 
+			<td>${chainTicket.drawTime}</td>
 			<td>${chainTicket.drawEnterprise }</td>
 			<td>${chainTicket.deadline }</td>
 			<td>${chainTicket.state }</td>

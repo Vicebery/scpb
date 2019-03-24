@@ -17,7 +17,7 @@
 			<div class="content">
 				<div class="title-line"><span>登录</span></div>
 				<div class="login-part">
-					<form  action="<%=request.getContextPath()%>/userLogin" method="get" id="loginForm">
+					<form  action="<%=request.getContextPath()%>/userLogin" method="post" id="loginForm">
 						<div class="input-div">
 							<label for="userName">企业ID:</label><input type="text" id="id" name="id"  placeholder="请输入企业ID">
 						</div>
@@ -29,11 +29,8 @@
 							<a class="btn btn-reg" href="register">注册</a>
 						    <a class="btn btn-login" onclick="document:loginForm.submit()">登录</a>
 						</div>
-						
 					</form>
 				</div>
-				
-							
 			</div>
 		</div>
 </body>

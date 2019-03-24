@@ -16,7 +16,7 @@
         <div class="content">
             <div class="title-line"><span>注册</span></div>
             <div>
-                <form action="<%=request.getContextPath()%>/registerFin" method="get">
+                <form action="<%=request.getContextPath()%>/registerFin" method="post">
                     <div >
                         <label for="qiyeNumber">企业编号:</label><input type="text" id="id" name="id">
                     </div>
