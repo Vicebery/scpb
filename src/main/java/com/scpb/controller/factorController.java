@@ -42,7 +42,7 @@ public class factorController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("chainTicketList", chainTicketList);
 
-		mav.setViewName("financingExamine");
+		mav.setViewName("factor/financingExamine");
 		return mav;
 	}
 
@@ -56,7 +56,7 @@ public class factorController {
 		chainTicketService.modifyCTOwnerIdById(factorId, receiveCT);
 		chainTicketService.modifyCTStateById(3, receiveCT);
 		tradeService.modifyTradeInfStateById(tradeInformation.getId(), 3);
-		return "success";
+		return "factor/success";
 	}
 
 	@RequestMapping("/rejectFinancing")
@@ -67,6 +67,6 @@ public class factorController {
 		TradeInformation tradeInformation = tradeService.getTradeInfByReceiveCT(receiveCT);
 		chainTicketService.modifyCTStateById(3, receiveCT);
 		tradeService.modifyTradeInfStateById(tradeInformation.getId(), 1);
-		return "success";
+		return "factor/fail";
 	}
 }

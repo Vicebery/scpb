@@ -74,13 +74,13 @@ public class EnterpriseController {
 		 mav.addObject("id", enterprise.getId());
 		 //判断企业类型
 		 if(enterprise.getType()==1)
-		 mav.setViewName("coreEnterprise");
+		 mav.setViewName("coreEnterprise/home");
 		 else if(enterprise.getType()==2)
 		 mav.setViewName("memberEnterprise/home");
 		 else if(enterprise.getType()==3)
-		 mav.setViewName("supplier");
+		 mav.setViewName("supplier/home");
 		 else if(enterprise.getType()==4)
-		 mav.setViewName("factor");
+		 mav.setViewName("factor/home");
 		 session.setAttribute("id",id);
 		 return mav;
 		 } else {

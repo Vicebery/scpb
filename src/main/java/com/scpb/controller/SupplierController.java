@@ -58,7 +58,7 @@ public class SupplierController {
 				receiveCT.getId(), remainCT.getId());
 		tradeService.addTradeInformation(tradeInformation);
 		tradeService.modifyTradeInfStateById(tradeInformation.getId(), 2);
-		return "financingApplySuccess";
+		return "supplier/financingApplySuccess";
 	}
 
 	@RequestMapping(value = "/queryCT", method = RequestMethod.GET)
@@ -70,7 +70,7 @@ public class SupplierController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("chainTicketList", chainTicketList);
 
-		mav.setViewName("queryCT");
+		mav.setViewName("supplier/queryCT");
 		return mav;
 	}
 
@@ -92,7 +92,7 @@ public class SupplierController {
 				receiveCT.getId(), remainCT.getId());
 		tradeService.addTradeInformation(tradeInformation);
 		tradeService.modifyTradeInfStateById(tradeInformation.getId(), 2);
-		return "success";
+		return "supplier/success";
 	}
 
 	@RequestMapping(value = "/receiveCT", method = RequestMethod.GET)
@@ -112,7 +112,7 @@ public class SupplierController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("chainTicketList", chainTicketList);
 
-		mav.setViewName("receiveCT");
+		mav.setViewName("supplier/receiveCT");
 		return mav;
 	}
 
@@ -124,7 +124,7 @@ public class SupplierController {
 		chainTicketService.modifyCTOwnerIdById(tradeInformation.getSecondParty(), tradeInformation.getReceiveCT());
 
 		tradeService.modifyTradeInfStateById(tradeInformation.getId(), 3);
-		return "receiveCTSuccess";
+		return "supplier/receiveCTSuccess";
 	}
 
 	@RequestMapping(value = "/receiveCTFail")
@@ -143,6 +143,6 @@ public class SupplierController {
 			String newLimit = Double.toString(Double.valueOf(limit) + Double.valueOf(chainTicket.getAmount()));
 			coreEnterpriseService.modifyLimitById(newLimit, enterpriseId);
 		}
-		return "success";
+		return "supplier/receiveCTFail";
 	}
 }

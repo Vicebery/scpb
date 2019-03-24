@@ -41,7 +41,7 @@ public class CoreEnterpriseController {
 
 	@RequestMapping(value = "/coreEnterpriseDrawCT", method = RequestMethod.GET)
 	public String goCoreEnterpriseDrawCT() {
-		return "coreEnterpriseDrawCT";
+		return "coreEnterprise/drawCT";
 	}
 
 	@RequestMapping("/coreEnterpriseDrawSuccess")
@@ -64,7 +64,7 @@ public class CoreEnterpriseController {
 
 		ModelAndView mav = new ModelAndView();
 		mav.addObject(chainTicket);
-		mav.setViewName("coreEnterpriseDrawCTSuccess");
+		mav.setViewName("coreEnterprise/drawCTSuccess");
 		return mav;
 	}
 
