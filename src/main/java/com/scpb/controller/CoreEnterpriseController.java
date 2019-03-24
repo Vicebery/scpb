@@ -48,7 +48,7 @@ public class CoreEnterpriseController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("chainTicketList", chainTicketList);
 
-		mav.setViewName("coreEnterprise/chainTickets");
+		mav.setViewName("chainTickets");
 		return mav;
 	}
 
