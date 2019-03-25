@@ -7,11 +7,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>链票信息列表</title>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 </head>
 <body>
 		链票列表：
-		<table width="100%" border=1>
-		<tr>
+		<table width="100%" class="table table-bordered table-hover">
+		<thead><tr>
 			<td>链票ID</td>
 			<td>金额</td>
 			<td>生成时间</td>
@@ -19,8 +22,9 @@
 			<td>过期时间</td>
 			<td>链票状态</td>
 		</tr>
+		</thead>
 		<c:forEach items="${chainTicketList }" var="chainTicket">
-		<tr>
+		<tbody><tr>
 			<td>${chainTicket.id }</td>
 			<td>${chainTicket.amount }</td>
 			<td>${chainTicket.drawTime}</td>
@@ -28,6 +32,7 @@
 			<td>${chainTicket.deadline }</td>
 			<td>${chainTicket.state }</td>
 		</tr>
+		</tbody>
 		</c:forEach>
 		
 		</table>

@@ -5,12 +5,34 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>额度分配</title>
+<style>
+form{
+    width:60%;
+	font-size:1.2em;
+	margin:0 auto;
+}
+label{
+
+    display:inline-block;
+	width:128px;
+	margin-right:5px;
+	margin-top:4px;
+	text-align:right;
+}
+input{
+    width:160px;
+    height:26px;
+    margin-top:4px;
+    border:2px solid black;
+    border-radius:5px;
+}
+</style>
 </head>
 <body>
  <form action="<%=request.getContextPath()%>/coreEnterprise/allocateLimit" method="get">
-        企业id：<input type="text" name="id"/><br>
-       额度设置：<input type="text" name="limit"/><br>
-        <input type="submit" value="确认" />
+       <label>企业id:</label><input type="text" name="id"/><br>
+       <label>额度设置：</label><input type="text" name="limit"/><br>
+        <input style="margin-left:66px;margin-top:8px"type="submit" value="确认" />
     </form>
 </body>
 </html>

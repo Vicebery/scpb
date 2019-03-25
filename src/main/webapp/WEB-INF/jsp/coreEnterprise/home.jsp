@@ -8,12 +8,10 @@
 		<title>核心企业主界面</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="js/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/heixin.css">
 		<script src="js/jquery-3.3.1.js"></script>
 		<script src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.3.1.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 	</head>
 	<body>
 		<div class="container">
@@ -90,7 +88,7 @@
 						
 						<div id="ctexamine-page" style="display:none">
 							<p>链票开具初审:</p>
-							<div id="ct-examine-showcontent">
+							<div id="ct-examine-showcontent" style="width:90%">
 								<iframe name="uncheckedCT-sc" width="100%">
     							</iframe>
 							</div>
@@ -99,7 +97,7 @@
 						<div id="qyInforManage-page" style="display:none">
 							<p>企业信息管理:</p>
 							<div id="qyInforManage-showcontent">
-								<iframe name="qyInforManage-sc">
+								<iframe name="qyInforManage-sc" width="100%">
     							</iframe>
 							</div>
 						</div>
