@@ -12,7 +12,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <body>
 		待审核链票列表：
-		<table width="100%" border=1>
+		<table width="100%">
 		<tr>
 			<td>链票ID</td>
 			<td>金额</td>

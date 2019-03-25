@@ -26,26 +26,26 @@
 						<ul>
 							<li data-toggle="collapse" data-target="#ex1"><a>我的额度</a>
 								<ul id="ex1" class="collapse">
-									<li id="limitquery"><a>额度查询</a></li>
-									<li id="limitdistribution"><a>额度分配</a></li>	
+									<li id="limitquery"><a target="limitquery-sc" href="coreEnterprise/queryLimit">额度查询</a></li>
+									<li id="limitdistribution"><a target="limitdistribution-sc" href="coreEnterprise/allocateLimit">额度分配</a></li>	
 										
 								</ul>
 							</li>
 							<li data-toggle="collapse" data-target="#ex2"><a>我的链票</a>
 								<ul id="ex2" class="collapse">
-									<li id="ctquery"><a target="ctquery-showcontent" href="coreEnterprise/chainTickets">链票查询</a></li>
-									<li id="drawct"><a target="drawct-showcontent" href="coreEnterprise/coreEnterpriseDrawCT">链票开具</a></li>
+									<li id="ctquery"><a target="ctquery-sc" href="coreEnterprise/chainTickets">链票查询</a></li>
+									<li id="drawct"><a target="drawct-sc" href="coreEnterprise/coreEnterpriseDrawCT">链票开具</a></li>
 								</ul>
 							</li>
 							<li data-toggle="collapse" data-target="#ex3"><a>待办任务</a>
 								<ul id="ex3" class="collapse">
-									<li id="ctexamine"><a target="uncheckedCT-showcontent" href="coreEnterprise/checkCTs">链票开具初审</a></li>	
+									<li id="ctexamine"><a target="uncheckedCT-sc" href="coreEnterprise/checkCTs">链票开具初审</a></li>	
 								</ul>
 							</li>
 							
 							<li data-toggle="collapse" data-target="#ex4"><a>产品管理</a>
 								<ul id="ex4" class="collapse">
-									<li id="qyInforManage"><a target="showcontent" href="managerInfo">企业信息管理</a></li>
+									<li id="qyInforManage"><a target="qyInforManage-sc" href="managerInfo">企业信息管理</a></li>
 									<li id="qyUserManage"><a>企业用户管理</a></li>
 									<li id="bankManage"><a>银行账户管理</a></li>
 									<li id="sureInforManage"><a>认证资料管理</a></li>
@@ -58,18 +58,24 @@
 						
 						<div id="limitquery-page">
 							<p>我的额度:</p>
-							<div id="limitquery-showcontent"></div>
+							<div id="limitquery-showcontent">
+								<iframe name="limitquery-sc" width="100%">
+	    						</iframe>
+							</div>
 						</div>
 						
 				        <div id="limitdistribution-page" style="display:none">
 							<p>额度分配:</p>
-							<div id="limitdistribution-showcontent"></div>
+							<div id="limitdistribution-showcontent">
+								<iframe name="limitdistribution-sc" width="100%">
+	    						</iframe>
+							</div>
 						</div>
 						
 						<div id="ctquery-page" style="display:none">
 							<p>链票查询:</p>
 							<div id="ctquery-showcontent">
-								<iframe name="ctquery-showcontent" width="100%">
+								<iframe name="ctquery-sc" width="100%">
 	    						</iframe>
 							</div>
 						</div>
@@ -77,7 +83,7 @@
 						<div id="drawct-page" style="display:none">
 							<p>链票开具:</p>
 							<div id="drawct-showcontent">
-								<iframe name="drawct-showcontent" width="100%">
+								<iframe name="drawct-sc" width="100%">
     							</iframe>
 							</div>
 						</div>
@@ -85,7 +91,7 @@
 						<div id="ctexamine-page" style="display:none">
 							<p>链票开具初审:</p>
 							<div id="ct-examine-showcontent">
-								<iframe name="uncheckedCT-showcontent" width="100%">
+								<iframe name="uncheckedCT-sc" width="100%">
     							</iframe>
 							</div>
 						</div>
@@ -93,7 +99,7 @@
 						<div id="qyInforManage-page" style="display:none">
 							<p>企业信息管理:</p>
 							<div id="qyInforManage-showcontent">
-								<iframe name="showcontent">
+								<iframe name="qyInforManage-sc">
     							</iframe>
 							</div>
 						</div>

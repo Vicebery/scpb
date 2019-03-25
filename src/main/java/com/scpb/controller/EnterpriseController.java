@@ -48,13 +48,9 @@ public class EnterpriseController {
 		ModelAndView mav = new ModelAndView();
 		if (enterprise != null)
 			mav.addObject(enterprise);
+		mav.setViewName("modifyInfo");
 		return mav;
 	}
-
-//	@RequestMapping(value = "/drawCT", method = RequestMethod.GET)
-//	public String goDrawCT() {
-//		return "drawCT";
-//	}
 
 	@RequestMapping(value = "/userLogin", method = RequestMethod.POST)
 	public ModelAndView login(String id, String pwd, HttpSession session) {
@@ -107,22 +103,22 @@ public class EnterpriseController {
 		return mav;
 	}
 
-//	@RequestMapping(value = "/chainTickets", method = RequestMethod.GET)
-//	public ModelAndView queryChainTicketsByEnterpriseId(HttpSession session) {
-//		String id = (String) session.getAttribute("id");
-//		// 测试是否输出
-////		System.out.println("企业ID:" + id);
-//
-//		List<ChainTicket> chainTicketList = chainTicketService.getChainTicketsByEnterpriseId(id);
-//		// 测试是否获取查询结果集
-////		System.out.println(Arrays.toString(chainTicketList.toArray()));
-//
-//		ModelAndView mav = new ModelAndView();
-//		mav.addObject("chainTicketList", chainTicketList);
-//
-//		mav.setViewName("coreEnterprise/chainTickets");
-//		return mav;
-//	}
+	@RequestMapping(value = "/chainTickets", method = RequestMethod.GET)
+	public ModelAndView queryChainTicketsByEnterpriseId(HttpSession session) {
+		String id = (String) session.getAttribute("id");
+		// 测试是否输出
+//		System.out.println("企业ID:" + id);
+
+		List<ChainTicket> chainTicketList = chainTicketService.getChainTicketsByEnterpriseId(id);
+		// 测试是否获取查询结果集
+//		System.out.println(Arrays.toString(chainTicketList.toArray()));
+
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("chainTicketList", chainTicketList);
+
+		mav.setViewName("chainTickets");
+		return mav;
+	}
 
 	@RequestMapping(value = "/modifyInfo", method = RequestMethod.GET)
 	public ModelAndView modifyInfo(HttpSession session) {
@@ -131,6 +127,7 @@ public class EnterpriseController {
 		ModelAndView mav = new ModelAndView();
 		if (enterprise != null)
 			mav.addObject(enterprise);
+		mav.setViewName("modifyInfo");
 		return mav;
 	}
 
@@ -140,7 +137,8 @@ public class EnterpriseController {
 		Enterprise enterprise = new Enterprise(id, account, pwd, bank, name, UCC, LPC, type);
 		enterpriseService.updateEnterprise(enterprise);
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("main");
+		mav.addObject(enterprise);
+		mav.setViewName("modifyInfo");
 		return mav;
 	}
 }

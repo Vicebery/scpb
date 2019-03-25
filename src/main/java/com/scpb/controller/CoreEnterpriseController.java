@@ -87,16 +87,17 @@ public class CoreEnterpriseController {
 		String result = "额度设置成功";
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("result", result);
-		mav.setViewName("Limit");
+		mav.setViewName("coreEnterprise/allocateLimit");
 		return mav;
 	}
 
 	@RequestMapping("/queryLimit")
-	public ModelAndView queryLimit(String id) {
+	public ModelAndView queryLimit(HttpSession session) {
+		String id = (String) session.getAttribute("id");
 		String result = coreEnterpriseService.getLimitById(id);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("result", result);
-		mav.setViewName("Limit");
+		mav.setViewName("coreEnterprise/Limit");
 		return mav;
 	}
 
@@ -116,7 +117,7 @@ public class CoreEnterpriseController {
 
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("chainTicketList", chainTicketList);
-		mav.setViewName("checkCTs");
+		mav.setViewName("coreEnterprise/checkCTs");
 		return mav;
 	}
 
@@ -135,7 +136,7 @@ public class CoreEnterpriseController {
 		System.out.println("修改状态成功");
 		ModelAndView mav = new ModelAndView();
 		// mav.addObject("chainTicketList",chainTicketList);
-		mav.setViewName("checkCTs");
+		mav.setViewName("coreEnterprise/checkCTs");
 
 		return mav;
 	}

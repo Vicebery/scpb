@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>结果</title>
+<title>敞口额度</title>
 </head>
 <body>
  <form action="<%=request.getContextPath()%>/coreEnterprise/queryLimit" method="get">
-        结果： ${result}
+        敞口额度： ${result}
     </form>
 </body>
 </html>
