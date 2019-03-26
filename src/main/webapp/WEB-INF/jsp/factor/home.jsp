@@ -51,11 +51,11 @@
 					</div>
 					<div class="col-sm-9 col-md-9 right-part">
 
-						<div id="limitset-page" style="display:non">
+						<div id="limitset-page" style="display:none">
 							<p>额度设置:</p>
 							<div id="limitset-showcontent"></div>
 						</div>
-e
+
 						<div id="ctcollect-page" style="display:none">
 							<p>链票催收:</p>
 							<div id="ctcollect-showcontent"></div>
