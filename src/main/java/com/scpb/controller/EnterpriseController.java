@@ -35,6 +35,10 @@ public class EnterpriseController {
 	public String goLogin() {
 		return "login";
 	}
+	@RequestMapping(value = "/signout", method = RequestMethod.GET)
+	public String signout() {
+		return "login";
+	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String goRegister() {

@@ -15,6 +15,7 @@
 <div class="container">
 			<div class="header">
 				<p>当前用户：<span>${id}</span></p>
+				<a href="signout">注销</a>
 			</div>
 			<div class="content">
 				<div class="row">
