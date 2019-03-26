@@ -17,6 +17,7 @@
 		<div class="container">
 			<div class="header">
 				<p>当前用户：<span>${id}</span></p>
+				<a href="signout">注销</a>
 			</div>
 			<div class="content">
 				<div class="row">
@@ -50,11 +51,11 @@
 					</div>
 					<div class="col-sm-9 col-md-9 right-part">
 
-						<div id="limitset-page" style="display:none">
+						<div id="limitset-page" style="display:non">
 							<p>额度设置:</p>
 							<div id="limitset-showcontent"></div>
 						</div>
-
+e
 						<div id="ctcollect-page" style="display:none">
 							<p>链票催收:</p>
 							<div id="ctcollect-showcontent"></div>

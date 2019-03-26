@@ -156,6 +156,9 @@ supply.onclick=function(){
 	sureInforManagePage.style.display="none";
 	supplyPage.style.display="block";
 }
-
+var signout=document.getElementById("signout");
+signout.onclick=function(){
+    window.history.forward(1);
+}
 
 

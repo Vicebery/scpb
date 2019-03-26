@@ -8,7 +8,7 @@
 		<title>成员企业主界面</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="js/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/chengyuan.css">
 		<script src="js/jquery-3.3.1.js"></script>
 		<script src="js/bootstrap.min.js"></script>
@@ -17,6 +17,7 @@
 		<div class="container">
 			<div class="header">
 				<p>当前用户：<span>${id}</span></p>
+				<a href="signout">注销</a>
 			</div>
 			<div class="content">
 				<div class="row">

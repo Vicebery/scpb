@@ -7,3 +7,4 @@ scpb.iml
 .gitignore
 /src/main/resources/jdbc.properties
 pom.xml
+/bin/
