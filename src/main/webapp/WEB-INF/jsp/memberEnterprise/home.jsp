@@ -49,7 +49,7 @@
 					</div>
 					<div class="col-sm-9 col-md-9 right-part">
 
-						<div id="limitquery-page" style="display:none">
+						<div id="limitquery-page">
 							<p>我的额度:</p>
 							<div id="limitquery-showcontent"></div>
 						</div>

@@ -8,7 +8,7 @@
 		<title>保理商主界面</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="js/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/baolishang.css">
 		<script src="js/jquery-3.3.1.js"></script>
 		<script src="js/bootstrap.min.js"></script>
@@ -52,7 +52,8 @@
 					<div class="col-sm-9 col-md-9 right-part">
 
 
-						<div id="limitset-page" style="display:none">
+						<div id="limitset-page" style="display:block">
+
 							<p>额度设置:</p>
 							<div id="limitset-showcontent"></div>
 						</div>
