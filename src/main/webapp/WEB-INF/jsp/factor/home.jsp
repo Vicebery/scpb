@@ -25,7 +25,7 @@
 						<ul>
 							<li data-toggle="collapse" data-target="#ex1"><a>链票业务</a>
 								<ul id="ex1" class="collapse">
-									<li id="limitset"><a>额度设置</a></li>
+									<li id="limitset"><a target="limitset-sc" href="factor/goSetLimit">额度设置</a></li>
 									<li id="ctcollect"><a>链票催收</a></li>
 									<li id="ctquery"><a>链票查询</a></li>
 								</ul>
@@ -53,7 +53,10 @@
 
 						<div id="limitset-page" style="display:block">
 							<p>额度设置:</p>
-							<div id="limitset-showcontent"></div>
+							<div id="limitset-showcontent">
+								<iframe name="limitset-sc" width="100%">
+	    						</iframe>
+							</div>
 						</div>
 
 						<div id="ctcollect-page" style="display:none">

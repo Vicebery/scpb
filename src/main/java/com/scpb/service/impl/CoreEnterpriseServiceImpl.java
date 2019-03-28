@@ -14,8 +14,8 @@ public class CoreEnterpriseServiceImpl implements CoreEnterpriseService {
     private CoreEnterpriseDao coreEnterpriseDao;
 
     @Transactional
-    public void modifyLimitById(String limit, String id) {
-        coreEnterpriseDao.updateLimitById(limit,id);
+    public int modifyLimitById(String limit, String id) {
+        return coreEnterpriseDao.updateLimitById(limit,id);
     }
 
     @Transactional

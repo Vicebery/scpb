@@ -3,6 +3,7 @@ package com.scpb.controller;
 import com.scpb.entity.ChainTicket;
 import com.scpb.entity.TradeInformation;
 import com.scpb.service.ChainTicketService;
+import com.scpb.service.CoreEnterpriseService;
 import com.scpb.service.TradeService;
 
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,8 @@ public class factorController {
 	private ChainTicketService chainTicketService;
 	@Resource(name = "tradeService")
 	private TradeService tradeService;
+	@Resource(name = "coreEnterpriseService")
+	private CoreEnterpriseService coreEnterpriseService;
 
 	@RequestMapping(value = "/financingExamine", method = RequestMethod.GET)
 	public ModelAndView receiveCT(HttpSession session) {
@@ -68,5 +71,26 @@ public class factorController {
 		chainTicketService.modifyCTStateById(3, receiveCT);
 		tradeService.modifyTradeInfStateById(tradeInformation.getId(), 1);
 		return "factor/fail";
+	}
+	
+	@RequestMapping("/goSetLimit")
+	public String goSetLimit() {
+		return "factor/setLimit";
+	}
+	
+	@RequestMapping("/setLimit")
+	public ModelAndView setLimit(String id, String limit) {
+		//返回影响行数
+		int result = coreEnterpriseService.modifyLimitById(limit, id);
+		ModelAndView mav = new ModelAndView();
+		if(result==1){
+			mav.addObject("id", id);
+			mav.addObject("limit", limit);
+			mav.setViewName("factor/setLimitSuccess");
+			return mav;
+		}else{
+			mav.setViewName("factor/setLimitFail");
+			return mav; 
+		}
 	}
 }

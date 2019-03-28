@@ -4,17 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>敞口额度</title>
-  <style>
-  label{
-  font-size:2em;
-  margin-left:30%;
-  }
-  </style>
+<title>额度分配失败</title>
+
 </head>
 <body>
- <label>
-        敞口额度： ${result}
-    </label>
+该企业ID不存在
 </body>
 </html>
