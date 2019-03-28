@@ -35,7 +35,7 @@ border-radius:5px;
 	
 		<p><label>企业Id:</label><input type="text" name="id" value="${enterprise.id}" readonly="true"/></p>
 		<p><label>企业账户:</label> <input type="text" name="account" value="${enterprise.account}"/></p>
-		<p><label>企业银行账户:</label> <input type="text" name="bank" value="${enterprise.bank}"/></p>
+		<%--<p><label>企业银行账户:</label> <input type="text" name="bank" value="${enterprise.bank}"/></p>--%>
 		<p><label>企业名称:</label> <input type="text" name="name" value="${enterprise.name}"/></p>
 		<p><label>企业类型:</label> <input type="text" name="type" value="${enterprise.type}"/></p>
 		<p><label>UCC:</label> <input type="text" name="UCC" value="${enterprise.UCC}"/></p>
