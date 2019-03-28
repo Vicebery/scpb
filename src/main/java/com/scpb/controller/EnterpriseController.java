@@ -56,6 +56,19 @@ public class EnterpriseController {
 		return mav;
 	}
 
+	@RequestMapping(value = "/bankInfo", method = RequestMethod.GET)
+	public ModelAndView gobankManageInfo(HttpSession session) {
+		String id = (String) session.getAttribute("id");
+		Enterprise enterprise = enterpriseService.getEnterpriseById(id);
+		ModelAndView mav = new ModelAndView();
+		if (enterprise != null)
+			mav.addObject(enterprise);
+		mav.setViewName("bankManageInfo");
+		return mav;
+	}
+
+
+
 	@RequestMapping(value = "/userLogin", method = RequestMethod.POST)
 	public ModelAndView login(String id, String pwd, HttpSession session) {
 		 Enterprise enterprise = enterpriseService.getEnterpriseById(id);
