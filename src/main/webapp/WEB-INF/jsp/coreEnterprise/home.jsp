@@ -112,7 +112,7 @@
 							<p>银行账户管理:</p>
 							<div id="bankManage-showcontent">
 								<iframe name="bankManage-sc" width="100%">
-									    							</iframe>
+								</iframe>
 							</div>
 						</div>
 						

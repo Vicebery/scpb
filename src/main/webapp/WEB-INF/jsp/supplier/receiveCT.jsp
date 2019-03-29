@@ -10,7 +10,7 @@
 </head>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-<script type="text/javascript">
+<%--<script type="text/javascript">
 	function received(obj) {
 		var thisTR=obj.parentNode.parentNode;
 		var chainTicketId=thisTR.getElementsByTagName('td')[0].innerHTML;
@@ -36,7 +36,7 @@
             }
         });
 	}
-</script>
+</script>--%>
 
 
 
@@ -59,8 +59,10 @@
 			<td>${chainTicket.drawEnterprise }</td>
 			<td>${chainTicket.deadline }</td>
 			<td>${chainTicket.state }</td>
-			<td><input name="received" type="submit" value="签收" onclick="received(this)"></td>
-			<td><input name="unreceived" type="submit" value="拒签" onclick="unreceived(this)"></td>
+			<td> <a href="receiveCTSuccess?id=${chainTicket.id}">签收</a></td>
+			<td> <a href="receiveCTFail?id=${chainTicket.id}">拒签</a></td>
+			<%--<td><input name="received" type="submit" value="签收" onclick="received(this)"></td>
+			<td><input name="unreceived" type="submit" value="拒签" onclick="unreceived(this)"></td>--%>
 		</tr>
 	</c:forEach>
 </table>

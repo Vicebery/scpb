@@ -23,9 +23,9 @@
 						<ul>
 							<li data-toggle="collapse" data-target="#ex2"><a>我的链票</a>
 								<ul id="ex2" class="collapse">
-									<li id="ctfinance"><a target="ctfinance-showcontent" href="supplier/queryCT">链票融资</a></li>
+									<li id="ctfinance"><a target="ctfinance-showcontent" href="supplier/chooseFinancCT">链票融资</a></li>
 									<li id="ctsign"><a target="ctsign-showcontent" href="supplier/receiveCT">链票签收</a></li>
-									<li id="cttransfer"><a target="cttransfer-showcontent" href="supplier/queryCT">链票转让</a></li>
+									<li id="cttransfer"><a target="cttransfer-showcontent" href="supplier/chooseTransferCT">链票转让</a></li>
 									<li id="ctquery"><a target="ctquery-showcontent" href="supplier/queryCT">链票查询</a></li>
 								</ul>
 							</li>
@@ -33,9 +33,9 @@
 
 							<li data-toggle="collapse" data-target="#ex4"><a>产品管理</a>
 								<ul id="ex4" class="collapse">
-									<li id="qyInforManage"><a>企业信息管理</a></li>
+									<li id="qyInforManage"><a target="qyInforManage-sc" href="managerInfo">企业信息管理</a></li>
 									<li id="qyUserManage"><a>企业用户管理</a></li>
-									<li id="bankManage"><a>银行账户管理</a></li>
+									<li id="bankManage"><a target="bankManage-sc" href="bankInfo">银行账户管理</a></li>
 									<li id="sureInforManage"><a>认证资料管理</a></li>
 									<li id="supply"><a>我的供应商</a></li>
 								</ul>
@@ -49,13 +49,7 @@
 							<div id="ctfinance-showcontent">
 								<iframe name="ctfinance-showcontent" width="100%">
 								</iframe>
-								<form action="<%=request.getContextPath()%>/supplier/financing" method="get">
-									链票ID：<input type="text" name="ctid"/><br>
-									融资金额：<input type="text" name="amount"/><br>
-									融资企业：<input type="text" name="factor"/><br>
-									申请备注：<input type="text" name="tradeRemark"/><br>
-									<input type="submit" value="确认融资" />
-                                </form>
+
 							</div>
 						</div>
 
@@ -72,13 +66,6 @@
 							<div id="cttransfer-showcontent">
 								<iframe name="cttransfer-showcontent" width="100%">
 								</iframe>
-								<form action="<%=request.getContextPath()%>/supplier/transferCTSuccess" method="get">
-									链票ID：<input type="text" name="ctid"/><br>
-									转让金额：<input type="text" name="amount"/><br>
-									接受企业：<input type="text" name="secondParty"/><br>
-									转让备注：<input type="text" name="tradeRemark"/><br>
-									<input type="submit" value="确认转让" />
-								</form>
 							</div>
 						</div>
 
@@ -93,7 +80,10 @@
 
 						<div id="qyInforManage-page" style="display:none">
 							<p>企业信息管理:</p>
-							<div id="qyInforManage-showcontent"></div>
+							<div id="qyInforManage-showcontent">
+								<iframe name="qyInforManage-sc" width="100%">
+								</iframe>
+							</div>
 						</div>
 
 						<div id="qyUserManage-page" style="display:none">
@@ -103,7 +93,10 @@
 
 						<div id="bankManage-page" style="display:none">
 							<p>银行账户管理:</p>
-							<div id="bankManage-showcontent"></div>
+							<div id="bankManage-showcontent">
+								<iframe name="bankManage-sc" width="100%">
+								</iframe>
+							</div>
 						</div>
 
 						<div id="sureInforManage-page" style="display:none">

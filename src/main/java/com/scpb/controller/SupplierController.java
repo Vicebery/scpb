@@ -41,9 +41,47 @@ public class SupplierController {
 		this.tradeService = tradeService;
 	}
 
-	@RequestMapping("/financing")
-	public String financing(String ctid, String amount, String factor, String tradeRemark, HttpSession session) {
+	@RequestMapping("/gofinancing")
+	public String gofinancing(String id,HttpSession session){
+		session.setAttribute("ctid",id);
+		return "supplier/financing";
+	}
 
+	@RequestMapping("/gotransferCT")
+	public String gotransferCT(String id,HttpSession session){
+		session.setAttribute("ctid",id);
+		return "supplier/transfer";
+	}
+
+	@RequestMapping(value = "/chooseFinancCT", method = RequestMethod.GET)
+	public ModelAndView financing(HttpSession session) {
+		String id = (String) session.getAttribute("id");
+		List<ChainTicket> chainTicketList = chainTicketService.getAliveChainTicketsByEnterpriseId(id);
+		// 测试是否获取查询结果集
+		// System.out.println(Arrays.toString(chainTicketList.toArray()));
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("chainTicketList", chainTicketList);
+
+		mav.setViewName("supplier/chooseFinancCT");
+		return mav;
+	}
+	@RequestMapping(value = "/chooseTransferCT", method = RequestMethod.GET)
+	public ModelAndView chooseTransferCT(HttpSession session) {
+		String id = (String) session.getAttribute("id");
+		List<ChainTicket> chainTicketList = chainTicketService.getAliveChainTicketsByEnterpriseId(id);
+		// 测试是否获取查询结果集
+		// System.out.println(Arrays.toString(chainTicketList.toArray()));
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("chainTicketList", chainTicketList);
+
+		mav.setViewName("supplier/chooseTransferCT");
+		return mav;
+	}
+
+	@RequestMapping("/financing")
+	public String financing( String amount, String factor, String tradeRemark, HttpSession session) {
+
+		String ctid = (String) session.getAttribute("ctid");
 		String ownerId = (String) session.getAttribute("id");
 		String firstParty = (String) session.getAttribute("id");
 		ChainTicket chainTicket = chainTicketService.getChainTicketById(ctid);
@@ -52,6 +90,7 @@ public class SupplierController {
 		String remainCTAmount = Double.toString((Double.valueOf(chainTicket.getAmount()) - Double.valueOf(amount)));
 		ChainTicket remainCT = new ChainTicket(3, remainCTAmount, chainTicket.getDeadline(), firstParty,
 				chainTicket.getDrawEnterprise());
+		chainTicketService.modifyCTStateById(6,ctid);
 		chainTicketService.addChainTicket(receiveCT);
 		chainTicketService.addChainTicket(remainCT);
 		TradeInformation tradeInformation = new TradeInformation(ownerId, factor, amount, tradeRemark, ctid,
@@ -69,14 +108,14 @@ public class SupplierController {
 		// System.out.println(Arrays.toString(chainTicketList.toArray()));
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("chainTicketList", chainTicketList);
-
 		mav.setViewName("supplier/queryCT");
 		return mav;
 	}
 
 	@RequestMapping("/transferCTSuccess")
-	public String transferCT(String ctid, String amount, String secondParty, String tradeRemark, HttpSession session) {
+	public String transferCT( String amount, String secondParty, String tradeRemark, HttpSession session) {
 
+		String ctid = (String) session.getAttribute("ctid");
 		String ownerId = (String) session.getAttribute("id");
 		String firstParty = (String) session.getAttribute("id");
 		ChainTicket chainTicket = chainTicketService.getChainTicketById(ctid);
@@ -86,6 +125,7 @@ public class SupplierController {
 		String remainCTAmount = Double.toString((Double.valueOf(chainTicket.getAmount()) - Double.valueOf(amount)));
 		ChainTicket remainCT = new ChainTicket(3, remainCTAmount, chainTicket.getDeadline(), firstParty,
 				chainTicket.getDrawEnterprise());
+		chainTicketService.modifyCTStateById(6,ctid);
 		chainTicketService.addChainTicket(receiveCT);
 		chainTicketService.addChainTicket(remainCT);
 		TradeInformation tradeInformation = new TradeInformation(ownerId, secondParty, amount, tradeRemark, ctid,
@@ -117,20 +157,23 @@ public class SupplierController {
 	}
 
 	@RequestMapping(value = "/receiveCTSuccess")
-	public String handleReceive(HttpServletRequest request) {
-		String receiveCT = request.getParameter("chainTicketId");
-		System.out.println(receiveCT);
+	public ModelAndView handleReceive(String id) {
+		String receiveCT = id;
+//		System.out.println(receiveCT);
+		ChainTicket chainTicket = chainTicketService.getChainTicketById(receiveCT);
 		TradeInformation tradeInformation = tradeService.getTradeInfByReceiveCT(receiveCT);
 		chainTicketService.modifyCTOwnerIdById(tradeInformation.getSecondParty(), tradeInformation.getReceiveCT());
-
 		tradeService.modifyTradeInfStateById(tradeInformation.getId(), 3);
-		return "supplier/receiveCTSuccess";
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("chainTicket",chainTicket);
+		mav.setViewName("supplier/receiveCTSuccess");
+		return mav;
 	}
 
 	@RequestMapping(value = "/receiveCTFail")
-	public String handleUnreceive(HttpServletRequest request) {
-		String receiveCT = request.getParameter("chainTicketId");
-		System.out.println("receiveCT" + receiveCT);
+	public String handleUnreceive(String id) {
+		String receiveCT = id;
+//		System.out.println("receiveCT" + receiveCT);
 		TradeInformation tradeInformation = tradeService.getTradeInfByReceiveCT(receiveCT);
 		// chainTicketService.modifyCTStateById(3,receiveCT);
 		tradeService.modifyTradeInfStateById(tradeInformation.getId(), 4);
