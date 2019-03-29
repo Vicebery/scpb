@@ -98,7 +98,7 @@ public class EnterpriseController {
 		}
 		return "fail";
 	}
-
+	
 	@RequestMapping(value = "/registerFin", method = RequestMethod.POST)
 	public ModelAndView register(String id, String account, String pwd, String bank, String name, String UCC,
 			String LPC, int type) {
