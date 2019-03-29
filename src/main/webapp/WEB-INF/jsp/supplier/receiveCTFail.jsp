@@ -11,6 +11,7 @@
     <title>签收状态</title>
 </head>
 <body>
-    链票签收失败！
+    拒签链票成功！<br/>
+    <input type="button" value="返回" onclick="window.location.href='receiveCT'" />
 </body>
 </html>

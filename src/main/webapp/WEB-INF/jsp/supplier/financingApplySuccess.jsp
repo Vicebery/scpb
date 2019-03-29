@@ -11,6 +11,10 @@
     <title>融资申请</title>
 </head>
 <body>
-    融资申请成功！
+    融资申请成功！<br>
+    <br>
+    <br>
+    <br>
+    <input type="button" value="返回" onclick="window.location.href='chooseFinancCT'" />
 </body>
 </html>

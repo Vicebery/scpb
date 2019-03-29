@@ -56,4 +56,9 @@ public class ChainTicketServiceImpl implements ChainTicketService{
 	public void setStateByChainTicketId(String chainTicketId, int state) {
 		chainTicketDao.updateCTStateById(state,chainTicketId);
 	}
+
+	@Override
+	public List<ChainTicket> getAliveChainTicketsByEnterpriseId(String id) {
+		return chainTicketDao.selectAliveCTByEnterpriseId(id);
+	}
 }

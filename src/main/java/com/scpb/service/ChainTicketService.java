@@ -22,4 +22,5 @@ public interface ChainTicketService {
 
 	void setStateByChainTicketId(String chainTicketId, int state);
 
+    List<ChainTicket> getAliveChainTicketsByEnterpriseId(String id);
 }
