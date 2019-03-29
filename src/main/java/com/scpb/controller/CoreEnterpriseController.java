@@ -19,6 +19,7 @@ import com.mysql.fabric.xmlrpc.base.Array;
 import com.scpb.entity.ChainTicket;
 import com.scpb.entity.Enterprise;
 import com.scpb.service.EnterpriseService;
+import com.scpb.service.MemberEnterpriseService;
 
 @Controller
 @RequestMapping("/coreEnterprise")
@@ -31,6 +32,9 @@ public class CoreEnterpriseController {
 
 	@Resource(name = "coreEnterpriseService")
 	private CoreEnterpriseService coreEnterpriseService;
+	
+	@Resource(name = "memberEnterpriseService")
+	private MemberEnterpriseService memberEnterpriseService;
 
 	public void setChainTicketService(ChainTicketService chainTicketService) {
 		this.chainTicketService = chainTicketService;
@@ -82,13 +86,30 @@ public class CoreEnterpriseController {
 		return mav;
 	}
 
+	@RequestMapping("/goAllocateLimit")
+	public String goAllocateLimit(){
+		return "coreEnterprise/allocateLimit";
+	}
+	
 	@RequestMapping("/allocateLimit")
-	public ModelAndView allocate(String id, String limit) {
-		coreEnterpriseService.modifyLimitById(limit, id);
-		String result = "额度设置成功";
+	public ModelAndView allocate(String memberId, String limit, HttpSession session) {
+		//核心企业额度减去limit
+		String coreEnterpriseId = (String) session.getAttribute("id");
+
+		String oldLimitForCE = coreEnterpriseService.getLimitById(coreEnterpriseId);		
+		double oldLimitCE = Double.valueOf(oldLimitForCE);
+		String currentLimitForCE = Double.toString(oldLimitCE - Double.valueOf(limit));
+		coreEnterpriseService.modifyLimitById(currentLimitForCE, coreEnterpriseId);
+		//成员企业额度加上limit
+		String oldLimitForME = memberEnterpriseService.getLimitById(memberId);
+		double oldLimitME = Double.valueOf(oldLimitForME);
+		String currentLimitForME = Double.toString(oldLimitME+Double.valueOf(limit));
+		memberEnterpriseService.modifyLimitById(currentLimitForME, memberId);
+		
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("result", result);
-		mav.setViewName("coreEnterprise/allocateLimit");
+		mav.setViewName("coreEnterprise/allocateLimitSuccess");		
+		mav.addObject("memberId", memberId);
+		mav.addObject("limit",currentLimitForME);
 		return mav;
 	}
 

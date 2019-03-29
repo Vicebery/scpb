@@ -4,7 +4,7 @@
 <mapper namespace="com.scpb.dao.MemberEnterpriseDao">
 
 	<select id="selectLimitById" resultType="java.lang.String">
-		select `limit` from memberenterprise where id = #{id}
+		select `limit` from memberEnterprise where id = #{id}
 	</select>
 
 	<update id="updateLimitById">

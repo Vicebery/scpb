@@ -26,7 +26,7 @@
 							<li data-toggle="collapse" data-target="#ex1"><a>我的额度</a>
 								<ul id="ex1" class="collapse">
 									<li id="limitquery"><a target="limitquery-sc" href="coreEnterprise/queryLimit">额度查询</a></li>
-									<li id="limitdistribution"><a target="limitdistribution-sc" href="coreEnterprise/allocateLimit">额度分配</a></li>	
+									<li id="limitdistribution"><a target="limitdistribution-sc" href="coreEnterprise/goAllocateLimit">额度分配</a></li>	
 										
 								</ul>
 							</li>
