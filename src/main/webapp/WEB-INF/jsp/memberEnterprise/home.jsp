@@ -31,8 +31,8 @@
 							</li>
 							<li data-toggle="collapse" data-target="#ex2"><a>我的链票</a>
 								<ul id="ex2" class="collapse">
-									<li id="ctquery"><a target="ctquery-showcontent" href="chainTickets">链票查询</a></li>
-									<li id="drawct"><a target="drawct-showcontent" href="memberEnterprise/goDrawCT">链票开具</a></li>	
+									<li id="ctquery"><a target="ctquery-sc" href="chainTickets">链票查询</a></li>
+									<li id="drawct"><a target="drawct-sc" href="memberEnterprise/goDrawCT">链票开具</a></li>	
 								</ul>
 							</li>
 							
@@ -51,13 +51,13 @@
 
 						<div id="limitquery-page">
 							<p>我的额度:</p>
-							<div id="limitquery-showcontent"></div>
+							<div id="limitquery-sc"></div>
 						</div>
 
 						<div id="ctquery-page" style="display:none">
 							<p>链票查询:</p>
 							<div id="ctquery-showcontent">
-								<iframe name="ctquery-showcontent" width="100%">
+								<iframe name="ctquery-sc" width="100%">
     							</iframe>
 							</div>
 						</div>
@@ -65,7 +65,7 @@
 						<div id="drawct-page" style="display:none">
 							<p>链票开具:</p>
 							<div id="drawct-showcontent">
-								<iframe name="drawct-showcontent" width="100%">
+								<iframe name="drawct-sc" width="100%">
     							</iframe>
 							</div>
 						</div>

@@ -11,6 +11,7 @@ import com.scpb.service.ChainTicketService;
 import com.scpb.service.EnterpriseService;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -67,39 +68,35 @@ public class EnterpriseController {
 		return mav;
 	}
 
-
-
 	@RequestMapping(value = "/userLogin", method = RequestMethod.POST)
-	public ModelAndView login(String id, String pwd, HttpSession session) {
-		 Enterprise enterprise = enterpriseService.getEnterpriseById(id);
+	public String login(String id, String pwd, Map<String, Object> map, HttpSession session) {
+		Enterprise enterprise = enterpriseService.getEnterpriseById(id);
 		// System.out.println(id);
-		 ModelAndView mav = new ModelAndView();
-		 if (enterprise == null) {
-		 mav.addObject("message", "登录失败 !!");
-		 mav.setViewName("fail");
-		 return mav;
-		 } else {
-		 if (pwd.equals(enterprise.getPwd())) {
-		 // 密码匹配成功
-		 mav.addObject("id", enterprise.getId());
-		 //判断企业类型
-		 if(enterprise.getType()==1)
-		 mav.setViewName("coreEnterprise/home");
-		 else if(enterprise.getType()==2)
-		 mav.setViewName("memberEnterprise/home");
-		 else if(enterprise.getType()==3)
-		 mav.setViewName("supplier/home");
-		 else if(enterprise.getType()==4)
-		 mav.setViewName("factor/home");
-		 session.setAttribute("id",id);
-		 return mav;
-		 } else {
-		 mav.addObject("message", "password wrong !!");
-		 mav.setViewName("login");
-		 return mav;
-		 }
-		
-		 }
+		if (enterprise == null) {
+			map.put("msg", "该用户不存在");
+			return "login";
+		} else {
+			if (pwd!=null && pwd.equals(enterprise.getPwd())) {
+				// 密码匹配成功
+				session.setAttribute("id", id);
+				session.setAttribute("name", enterprise.getName());
+				// 判断企业类型
+//				System.out.println("判断企业类型："+enterprise.getName());
+				if (enterprise.getType() == 1)
+					return "coreEnterprise/home";
+				else if (enterprise.getType() == 2)
+					return "memberEnterprise/home";
+				else if (enterprise.getType() == 3)
+					return "supplier/home";
+				else if (enterprise.getType() == 4)
+					return "factor/home";
+
+			} else {
+				map.put("msg", "用户与密码不匹配");
+				return "login";
+			}
+		}
+		return "fail";
 	}
 
 	@RequestMapping(value = "/registerFin", method = RequestMethod.POST)
