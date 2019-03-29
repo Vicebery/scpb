@@ -23,6 +23,7 @@
 						</div>
 						<div class="input-div">
 							<label for="userPassword">密码:</label><input type="password" id="pwd" name="pwd" placeholder="请输入密码">
+							<span style="color:red;">${msg}</span>
 						</div>
 						
 						<div class="btn-container">
