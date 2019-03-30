@@ -101,8 +101,9 @@ public class EnterpriseController {
 	
 	@RequestMapping(value = "/registerFin", method = RequestMethod.POST)
 	public ModelAndView register(String id, String account, String pwd, String bank, String name, String UCC,
-			String LPC, int type) {
+			String LPC, int type,  HttpSession session) {
 		Enterprise enterprise = new Enterprise(id, account, pwd, bank, name, UCC, LPC, type);
+		session.setAttribute("id", id);
 		enterpriseService.addEnterprise(enterprise);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("id", id);
