@@ -23,7 +23,7 @@
     <form action="<%=request.getContextPath()%>/supplier/transferCTSuccess" method="get">
         <%--链票ID：<input type="text" name="ctid"/><br>--%>
         <p>转让金额：<input type="text" name="amount"/></p>
-        <p>转让企业：<input type="text" name="factor"/></p>
+        <p>转让企业：<input type="text" name="secondParty"/></p>
         <p>申请备注：<input type="text" name="tradeRemark"/></p>
         <p><input type="submit" value="确认转让" /></p>
         
