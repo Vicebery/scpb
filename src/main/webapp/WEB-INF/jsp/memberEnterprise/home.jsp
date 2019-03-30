@@ -12,6 +12,7 @@
 		<link rel="stylesheet" type="text/css" href="css/chengyuan.css">
 		<script src="js/jquery-3.3.1.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+		<script src="js/queryLimitForME.js" type="text/javascript"></script>
 	</head>
 	<body>
 		<div class="container">
@@ -25,7 +26,7 @@
 						<ul>
 							<li data-toggle="collapse" data-target="#ex1"><a>我的额度</a>
 								<ul id="ex1" class="collapse">
-									<li id="limitquery"><a>额度查询</a></li>
+									<li id="limitquery"><a href="javascript:void(0)" onclick="queryLimit()">额度查询</a></li>
 										
 								</ul>
 							</li>
@@ -51,7 +52,11 @@
 
 						<div id="limitquery-page">
 							<p>我的额度:</p>
-							<div id="limitquery-sc"></div>
+							<div id="limitquery-showcontent">
+								 <label style="font-size:2em;margin-left:30%;">
+    								    敞口额度：<span id="limitResult" value="${limitResult}"></span> 
+    							</label>
+							</div>
 						</div>
 
 						<div id="ctquery-page" style="display:none">
