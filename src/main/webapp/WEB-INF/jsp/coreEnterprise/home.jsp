@@ -33,7 +33,7 @@
 							</li>
 							<li data-toggle="collapse" data-target="#ex2"><a>我的链票</a>
 								<ul id="ex2" class="collapse">
-									<li id="ctquery"><a target="ctquery-sc" href="coreEnterprise/chainTickets">链票查询</a></li>
+									<li id="ctquery"><a target="ctquery-sc" href="chainTickets">链票查询</a></li>
 									<li id="drawct"><a target="drawct-sc" href="coreEnterprise/coreEnterpriseDrawCT">链票开具</a></li>
 								</ul>
 							</li>

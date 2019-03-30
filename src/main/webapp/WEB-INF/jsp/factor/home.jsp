@@ -27,7 +27,7 @@
 								<ul id="ex1" class="collapse">
 									<li id="limitset"><a target="limitset-sc" href="factor/goSetLimit">额度设置</a></li>
 									<li id="ctcollect"><a>链票催收</a></li>
-									<li id="ctquery"><a>链票查询</a></li>
+									<li id="ctquery"><a target="ctquery-sc" href="chainTickets">链票查询</a></li>
 								</ul>
 							</li>
 							<li data-toggle="collapse" data-target="#ex2"><a>审查业务</a>
@@ -40,9 +40,9 @@
 
 							<li data-toggle="collapse" data-target="#ex3"><a>产品管理</a>
 								<ul id="ex3" class="collapse">
-									<li id="qyInforManage"><a>企业信息管理</a></li>
+									<li id="qyInforManage"><a target="qyInforManage-sc" href="managerInfo">企业信息管理</a></li>
 									<li id="qyUserManage"><a>企业用户管理</a></li>
-									<li id="bankManage"><a>银行账户管理</a></li>
+									<li id="bankManage"><a target="bankManage-sc" href="bankInfo">银行账户管理</a></li>
 									<li id="sureInforManage"><a>认证资料管理</a></li>
 									<li id="supply"><a>我的供应商</a></li>
 								</ul>
@@ -68,7 +68,10 @@
 
 						<div id="ctquery-page" style="display:none">
 							<p>链票查询:</p>
-							<div id="ctquery-showcontent"></div>
+							<div id="ctquery-showcontent">
+								<iframe name="ctquery-sc" width="100%">
+	    						</iframe>
+							</div>
 						</div>
 
 						<div id="ctSecondExam-page" style="display:none">
@@ -91,7 +94,10 @@
 
 						<div id="qyInforManage-page" style="display:none">
 							<p>企业信息管理:</p>
-							<div id="qyInforManage-showcontent"></div>
+							<div id="qyInforManage-showcontent">
+								<iframe name="qyInforManage-sc" width="100%">
+    							</iframe>
+							</div>
 						</div>
 
 						<div id="qyUserManage-page" style="display:none">
@@ -101,7 +107,10 @@
 
 						<div id="bankManage-page" style="display:none">
 							<p>银行账户管理:</p>
-							<div id="bankManage-showcontent"></div>
+							<div id="bankManage-showcontent">
+								<iframe name="bankManage-sc" width="100%">
+								</iframe>
+							</div>
 						</div>
 
 						<div id="sureInforManage-page" style="display:none">

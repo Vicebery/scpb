@@ -5,16 +5,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>链票开具</title>
+<link rel="stylesheet" type="text/css" href="../css/page.css">
 </head>
 <body>
  	<form action="<%=request.getContextPath()%>/memberEnterprise/drawCT" method="get">
-	         开票企业：<input type="text" name="drawEnterprise"/><br>
-	         申请企业：<input type="text" name="applicant"/><br>
-	         链票金额：<input type="text" name="amount"/><br>
-	         到期日：<input type="text" name="deadline"/><br>
-	         开具备注：<input type="text" name="tradeRemark"/><br>
+	        <label>开票企业:</label><input type="text" name="drawEnterprise"/><br>
+	        <label>申请企业:</label><input type="text" name="applicant"/><br>
+	        <label>链票金额:</label><input type="text" name="amount"/><br>
+	        <label>到期日:</label><input type="text" name="deadline"/><br>
+	        <label>开具备注</label><input type="text" name="tradeRemark"/><br>
 
-       <input type="submit" value="确认开具" />
+       <input style="margin-left:66px;margin-top:8px" type="submit" value="确认开具" />
     </form>
 </body>
 </html>

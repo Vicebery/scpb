@@ -100,17 +100,17 @@ public class SupplierController {
 		return "supplier/financingApplySuccess";
 	}
 
-	@RequestMapping(value = "/queryCT", method = RequestMethod.GET)
-	public ModelAndView queryCT(HttpSession session) {
-		String id = (String) session.getAttribute("id");
-		List<ChainTicket> chainTicketList = chainTicketService.getChainTicketsByEnterpriseId(id);
-		// 测试是否获取查询结果集
-		// System.out.println(Arrays.toString(chainTicketList.toArray()));
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("chainTicketList", chainTicketList);
-		mav.setViewName("supplier/queryCT");
-		return mav;
-	}
+//	@RequestMapping(value = "/queryCT", method = RequestMethod.GET)
+//	public ModelAndView queryCT(HttpSession session) {
+//		String id = (String) session.getAttribute("id");
+//		List<ChainTicket> chainTicketList = chainTicketService.getChainTicketsByEnterpriseId(id);
+//		// 测试是否获取查询结果集
+//		// System.out.println(Arrays.toString(chainTicketList.toArray()));
+//		ModelAndView mav = new ModelAndView();
+//		mav.addObject("chainTicketList", chainTicketList);
+//		mav.setViewName("supplier/queryCT");
+//		return mav;
+//	}
 
 	@RequestMapping("/transferCTSuccess")
 	public String transferCT( String amount, String secondParty, String tradeRemark, HttpSession session) {

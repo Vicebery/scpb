@@ -23,10 +23,10 @@
 						<ul>
 							<li data-toggle="collapse" data-target="#ex2"><a>我的链票</a>
 								<ul id="ex2" class="collapse">
-									<li id="ctfinance"><a target="ctfinance-showcontent" href="supplier/chooseFinancCT">链票融资</a></li>
-									<li id="ctsign"><a target="ctsign-showcontent" href="supplier/receiveCT">链票签收</a></li>
-									<li id="cttransfer"><a target="cttransfer-showcontent" href="supplier/chooseTransferCT">链票转让</a></li>
-									<li id="ctquery"><a target="ctquery-showcontent" href="supplier/queryCT">链票查询</a></li>
+									<li id="ctfinance"><a target="ctfinance-sc" href="supplier/chooseFinancCT">链票融资</a></li>
+									<li id="ctsign"><a target="ctsign-sc" href="supplier/receiveCT">链票签收</a></li>
+									<li id="cttransfer"><a target="cttransfer-sc" href="supplier/chooseTransferCT">链票转让</a></li>
+									<li id="ctquery"><a target="ctquery-sc" href="chainTickets">链票查询</a></li>
 								</ul>
 							</li>
 
@@ -47,7 +47,7 @@
 						<div id="ctfinance-page" style="display:none">
 							<p>链票融资:</p>
 							<div id="ctfinance-showcontent">
-								<iframe name="ctfinance-showcontent" width="100%">
+								<iframe name="ctfinance-sc" width="100%">
 								</iframe>
 
 							</div>
@@ -56,7 +56,7 @@
 						<div id="ctsign-page" style="display:none">
 							<p>链票签收:</p>
 							<div id="ctsign-showcontent">
-								<iframe name="ctsign-showcontent" width="100%">
+								<iframe name="ctsign-sc" width="100%">
 								</iframe>
 							</div>
 						</div>
@@ -64,7 +64,7 @@
 						<div id="cttransfer-page" style="display:none">
 							<p>链票转让:</p>
 							<div id="cttransfer-showcontent">
-								<iframe name="cttransfer-showcontent" width="100%">
+								<iframe name="cttransfer-sc" width="100%">
 								</iframe>
 							</div>
 						</div>
@@ -73,7 +73,7 @@
 						<div id="ctquery-page" style="display:none">
 							<p>链票查询:</p>
 							<div id="ctquery-showcontent">
-								<iframe name="ctquery-showcontent" width="100%">
+								<iframe name="ctquery-sc" width="100%">
 								</iframe>
 							</div>
 						</div>

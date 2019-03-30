@@ -8,6 +8,6 @@
 
 </head>
 <body>
-该企业ID不存在
+<p style="font-size:1.4em;text-align:center">企业ID不存在</p>
 </body>
 </html>

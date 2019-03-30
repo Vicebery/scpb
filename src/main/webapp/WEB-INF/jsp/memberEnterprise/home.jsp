@@ -39,9 +39,9 @@
 							
 							<li data-toggle="collapse" data-target="#ex4"><a>产品管理</a>
 								<ul id="ex4" class="collapse">
-									<li id="qyInforManage"><a target="showcontent" href="managerInfo">企业信息管理</a></li>
+									<li id="qyInforManage"><a target="qyInforManage-sc" href="managerInfo">企业信息管理</a></li>
 									<li id="qyUserManage"><a>企业用户管理</a></li>
-									<li id="bankManage"><a>银行账户管理</a></li>
+									<li id="bankManage"><a target="bankManage-sc" href="bankInfo">银行账户管理</a></li>
 									<li id="sureInforManage"><a>认证资料管理</a></li>
 									<li id="supply"><a>我的供应商</a></li>
 								</ul>
@@ -78,7 +78,10 @@
 
 						<div id="qyInforManage-page" style="display:none">
 							<p>企业信息管理:</p>
-							<div id="qyInforManage-showcontent"></div>
+							<div id="qyInforManage-showcontent">
+								<iframe name="qyInforManage-sc" width="100%">
+    							</iframe>
+							</div>
 						</div>
 
 						<div id="qyUserManage-page" style="display:none">
@@ -88,7 +91,10 @@
 
 						<div id="bankManage-page" style="display:none">
 							<p>银行账户管理:</p>
-							<div id="bankManage-showcontent"></div>
+							<div id="bankManage-showcontent">
+								<iframe name="bankManage-sc" width="100%">
+    							</iframe>
+							</div>
 						</div>
 
 						<div id="sureInforManage-page" style="display:none">

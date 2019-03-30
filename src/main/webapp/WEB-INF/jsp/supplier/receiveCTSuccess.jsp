@@ -9,15 +9,22 @@
 <html>
 <head>
     <title>签收状态</title>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+	<style>
+	   p{fint-size:1.4em;text-align:center;}
+	</style>
 </head>
 <body>
-    链票签收成功！<br/>
-    链票信息如下：<br/>
-    链票ID: ${chainTicket.id}<br/>
-    链票金额：${chainTicket.amount}<br/>
-    开具时间：${chainTicket.drawTime}<br/>
-    开票企业：${chainTicket.drawEnterprise}<br/>
-    到期日：${chainTicket.deadline}<br/>
-    <input type="button" value="返回" onclick="window.location.href='receiveCT'" />
+    
+    <p>链票签收成功！</p>
+    <p>链票信息如下：<p/>
+    <p>链票ID: ${chainTicket.id}</p>
+    <P>链票金额：${chainTicket.amount}<p/>
+    <p>开具时间：${chainTicket.drawTime}<p/>
+    <p>开票企业：${chainTicket.drawEnterprise}<p/>
+    <p>到期日：${chainTicket.deadline}<p/>
+    <p><input class="btn btn-primary" type="button" value="返回" onclick="window.location.href='receiveCT'" /></p>
 </body>
 </html>
