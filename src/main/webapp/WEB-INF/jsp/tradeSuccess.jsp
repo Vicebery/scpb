@@ -4,17 +4,27 @@
 <html>
 <head>
     <title>交易成功</title>
+    <style>
+    div{
+     width:50%;
+     margin:0 auto;
+     }
+     p{
+       font-size:1.4em;
+     }
+    </style>
 </head>
 <body>
-    交易信息如下：<br/>
-    交易ID: ${tradeInformation.id}<br/>
-    交易时间：${tradeInformation.tradeTime}<br/>
-    甲方企业：${tradeInformation.firstParty}<br/>
-    乙方企业：${tradeInformation.secondParty}<br/>
-    交易金额：${tradeInformation.sum}<br/>
-    付款链票：${tradeInformation.payCT}<br/>
-    收款链票：${tradeInformation.receiveCT}<br/>
-    结余链票：${tradeInformation.remainCT}<br/>
-    交易备注：${tradeInformation.tradeRemark}<br/>
+<div>
+    <p>交易信息如下：<p/>
+    <p>交易ID: ${tradeInformation.id}</p>
+    <p>交易时间：${tradeInformation.tradeTime}</p>
+    <p>甲方企业：${tradeInformation.firstParty}</p>
+    <P>乙方企业：${tradeInformation.secondParty}</p>
+    <p>交易金额：${tradeInformation.sum}</p>
+    <p>付款链票：${tradeInformation.payCT}</p>
+    <p>收款链票：${tradeInformation.receiveCT}</p>
+    <p>结余链票：${tradeInformation.remainCT}</p>
+    <p>交易备注：${tradeInformation.tradeRemark}</p> </div>
 </body>
 </html>

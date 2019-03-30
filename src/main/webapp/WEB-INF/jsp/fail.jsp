@@ -8,6 +8,6 @@
 <title>查询失败</title>
 </head>
 <body>
-	该用户不存在
+	<p style="font-size:1.4em;text-align:center;">该用户不存在</p>
 </body>
 </html>

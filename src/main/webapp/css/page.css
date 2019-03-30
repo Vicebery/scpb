@@ -1,0 +1,19 @@
+form{
+    width:60%;
+	font-size:1.2em;
+	margin:0 auto;
+}
+label{
+display:inline-block;
+margin-top:3px;
+	width:128px;
+	margin-right:5px;
+	text-align:right;
+}
+input{
+margin-top:3px;
+width:160px;
+height:25px;
+border:2px solid black;
+border-radius:5px;
+}

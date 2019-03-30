@@ -6,25 +6,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>额度分配</title>
 <style>
-form{
-    width:60%;
-	font-size:1.2em;
-	margin:0 auto;
+p{
+    
+	font-size:1.4em;
+	text-align:center;
+	margin-top:3px;
 }
-label{
 
-    display:inline-block;
-	width:128px;
-	margin-right:5px;
-	margin-top:4px;
-	text-align:right;
-}
 </style>
 </head>
 <body>
-额度设置成功
-       <label>企业id:${id}</label><br>
-       <label>额度设置：${limit}</label><br>
+       <p>额度设置成功</p>
+       <p>企业id:${id}</p>
+      <p>额度设置：${limit}</p>
 
 </body>
 </html>

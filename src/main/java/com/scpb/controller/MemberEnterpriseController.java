@@ -1,5 +1,8 @@
 package com.scpb.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
@@ -9,6 +12,7 @@ import com.scpb.service.TradeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.scpb.entity.ChainTicket;
@@ -110,4 +114,18 @@ public class MemberEnterpriseController {
         return "memberEnterprise/deleteSuccess";
     }
     
+	@RequestMapping("/queryLimit")
+	@ResponseBody
+	public Map<String, String> queryLimit(HttpSession session) {		
+		String id = (String) session.getAttribute("id");
+		
+		String result = memberEnterpriseService.getLimitById(id);
+		Map<String,String> resultMap = new HashMap<String, String>();  
+		if(result==null){
+			resultMap.put("limitResult", "暂无额度");
+		}else{
+			resultMap.put("limitResult", result);
+		}		
+		return resultMap;
+	}
 }
