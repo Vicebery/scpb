@@ -1,10 +1,13 @@
 package com.scpb.controller;
 
 import com.scpb.entity.ChainTicket;
+import com.scpb.entity.Enterprise;
+import com.scpb.entity.Supplier;
 import com.scpb.entity.TradeInformation;
 import com.scpb.service.ChainTicketService;
 import com.scpb.service.CoreEnterpriseService;
 import com.scpb.service.EnterpriseService;
+import com.scpb.service.SupplierService;
 import com.scpb.service.TradeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +28,9 @@ public class SupplierController {
 
 	@Resource(name = "enterpriseService")
 	private EnterpriseService enterpriseService;
+
+	@Resource(name = "supplierService")
+	private SupplierService supplierService;
 
 	@Resource(name = "coreEnterpriseService")
 	private CoreEnterpriseService coreEnterpriseService;
@@ -187,5 +193,49 @@ public class SupplierController {
 			coreEnterpriseService.modifyLimitById(newLimit, enterpriseId);
 		}
 		return "supplier/receiveCTFail";
+	}
+
+	@RequestMapping(value = "/mySupplier")
+	public ModelAndView mySupplier(HttpSession session){
+		String id = (String)session.getAttribute("id");
+//		System.out.println(id);
+		List<Enterprise> suppliers = supplierService.getSuppliersById(id);
+//		System.out.println(suppliers.toString());
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("suppliers",suppliers);
+		mav.setViewName("supplier/mySupplier");
+		return mav;
+	}
+
+	@RequestMapping(value = "/detailedSupplier")
+	public ModelAndView detailedSupplier(String account,HttpSession session){
+		String id = enterpriseService.getEnterpriseIdByAccount(account);
+		session.setAttribute("supplierId",id);
+//		System.out.println(account);
+		Enterprise supplier = enterpriseService.getEnterpriseById(id);
+//		System.out.println(supplier);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("supplier",supplier);
+		mav.setViewName("supplier/detailedSupplier");
+		return mav;
+	}
+
+	@RequestMapping(value = "/goaddSupplier")
+	public String goaddSupplier(){
+		return "supplier/addMySupplier";
+	}
+	@RequestMapping(value = "/addMySupplier")
+	public String addMySupplier(String name,String account,HttpSession session){
+		String id = (String)session.getAttribute("id");
+		String mySupplier = enterpriseService.getEnterpriseIdByAccount(account);
+		supplierService.addSupplier(id,mySupplier);
+		return "supplier/addSuccess";
+	}
+	@RequestMapping(value = "/deleteSupplier")
+	public String deleteSupplier(HttpSession session){
+		String mySupplier = (String)session.getAttribute("supplierId");
+		String id = (String)session.getAttribute("id");
+		supplierService.deleteSupplier(id,mySupplier);
+		return "supplier/deleteSuccess";
 	}
 }

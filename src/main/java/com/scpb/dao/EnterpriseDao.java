@@ -2,6 +2,8 @@ package com.scpb.dao;
 
 import com.scpb.entity.Enterprise;
 
+import java.util.List;
+
 public interface EnterpriseDao {
 	int deleteByPrimaryKey(String id);
 	 
@@ -14,4 +16,6 @@ public interface EnterpriseDao {
 	int selectEnterpriseTypeById(String owerId);
 
 	void updateEnterprise(Enterprise enterprise);
+
+    String selectEnterpriseIdByAccount(String account);
 }
