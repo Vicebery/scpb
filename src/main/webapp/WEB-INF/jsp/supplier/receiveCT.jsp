@@ -54,15 +54,6 @@
 		<td>过期时间</td>
 		<td>链票状态</td>
 	</tr>
-	<c:forEach items="${chainTicketList }" var="chainTicket">
-		<tr>
-			<td>链票ID</td>
-			<td>金额</td>
-			<td>生成时间</td>
-			<td>开票企业</td>
-			<td>过期时间</td>
-			<td>链票状态</td>
-		</tr>
 		<c:forEach items="${chainTicketList }" var="chainTicket">
 			<tr>
 				<td>${chainTicket.id }</td>

@@ -40,14 +40,14 @@
 			<td>链票状态</td>
 		</tr>
 		<c:forEach items="${chainTicketList }" var="chainTicket">
-		<tr>
-			<td>${chainTicket.id }</td>
-			<td>${chainTicket.amount }</td>
-			<td>${chainTicket.drawTime}</td>
-			<td>${chainTicket.drawEnterprise }</td>
-			<td>${chainTicket.deadline }</td>
-			<td>${chainTicket.state }</td>
-		</tr>
+			<tr>
+				<td>${chainTicket.id }</td>
+				<td>${chainTicket.amount }</td>
+				<td>${chainTicket.drawTime}</td>
+				<td>${chainTicket.drawEnterprise }</td>
+				<td>${chainTicket.deadline }</td>
+				<td>${chainTicket.state }</td>
+			</tr>
 		</c:forEach>
 		
 		</table>
