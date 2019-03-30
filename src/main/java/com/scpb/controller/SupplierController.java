@@ -169,6 +169,7 @@ public class SupplierController {
 		ChainTicket chainTicket = chainTicketService.getChainTicketById(receiveCT);
 		TradeInformation tradeInformation = tradeService.getTradeInfByReceiveCT(receiveCT);
 		chainTicketService.modifyCTOwnerIdById(tradeInformation.getSecondParty(), tradeInformation.getReceiveCT());
+		chainTicketService.modifyCTStateById(3,receiveCT);
 		tradeService.modifyTradeInfStateById(tradeInformation.getId(), 3);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("chainTicket",chainTicket);

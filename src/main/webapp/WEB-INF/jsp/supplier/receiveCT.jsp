@@ -10,9 +10,7 @@
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 	<script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
-</head>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+
 <%--<script type="text/javascript">
 	function received(obj) {
 		var thisTR=obj.parentNode.parentNode;
@@ -40,21 +38,11 @@
         });
 	}
 </script>--%>
-
-
+</head>
 
 <body>
 待签收链票列表：
-<table width="100%" class="table table-bordered table-hover">
-	<tr>
-		<td>链票ID</td>
-		<td>金额</td>
-		<td>生成时间</td>
-		<td>开票企业</td>
-		<td>过期时间</td>
-		<td>链票状态</td>
-	</tr>
-	<c:forEach items="${chainTicketList }" var="chainTicket">
+	<table width="100%" class="table table-bordered table-hover">
 		<tr>
 			<td>链票ID</td>
 			<td>金额</td>
