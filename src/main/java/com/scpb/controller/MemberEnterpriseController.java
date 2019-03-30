@@ -50,8 +50,9 @@ public class MemberEnterpriseController {
         return "memberEnterprise/drawCT";
     }
     @RequestMapping("/drawCT")
-    public ModelAndView drawCT(String drawEnterprise, String applicant, String amount,
-                               String deadline, String tradeRemark) {
+    public ModelAndView drawCT(String applicant, String amount,
+                               String deadline, String tradeRemark, HttpSession session) {
+    	String drawEnterprise = (String) session.getAttribute("id");
     	//生成处于审核状态的链票，statue为0
         ChainTicket chainTicket = new ChainTicket(amount, deadline, drawEnterprise, drawEnterprise);
         chainTicketService.addChainTicket(chainTicket);
@@ -59,10 +60,12 @@ public class MemberEnterpriseController {
         double limit = Double.valueOf(memberEnterpriseService.getLimitById(drawEnterprise));
         String newLimit = Double.toString(limit-Double.valueOf(amount));
         memberEnterpriseService.modifyLimitById(newLimit,drawEnterprise);
+        ChainTicket receiveCT = chainTicket;
+		ChainTicket remainCT = new ChainTicket(6, "0", chainTicket.getDeadline(), drawEnterprise, drawEnterprise);
         //生成新的交易记录，状态为0--审核中
-        TradeInformation tradeInformation = new TradeInformation(drawEnterprise,applicant,amount,
-                tradeRemark,chainTicket.getId(),chainTicket.getId(),"0");
-        tradeService.addPartTradeInformation(tradeInformation);
+		TradeInformation tradeInformation = new TradeInformation(drawEnterprise, applicant, amount, tradeRemark,
+				chainTicket.getId(), receiveCT.getId(), remainCT.getId());
+		tradeService.addTradeInformation(tradeInformation);
         
         ModelAndView mav = new ModelAndView();
         mav.addObject(chainTicket);

@@ -9,7 +9,6 @@
 </head>
 <body>
  	<form action="<%=request.getContextPath()%>/memberEnterprise/drawCT" method="get">
-	        <label>开票企业:</label><input type="text" name="drawEnterprise"/><br>
 	        <label>申请企业:</label><input type="text" name="applicant"/><br>
 	        <label>链票金额:</label><input type="text" name="amount"/><br>
 	        <label>到期日:</label><input type="text" name="deadline"/><br>

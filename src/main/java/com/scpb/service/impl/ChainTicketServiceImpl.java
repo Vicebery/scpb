@@ -34,7 +34,7 @@ public class ChainTicketServiceImpl implements ChainTicketService{
 
 	@Transactional
 	public void modifyCTStateById(int state, String id) {
-		chainTicketDao.updateCTStateById(state,id);
+		chainTicketDao.updateCTStateById(id,state);
   }
 
 	@Transactional
@@ -54,11 +54,12 @@ public class ChainTicketServiceImpl implements ChainTicketService{
 
 	@Transactional
 	public void setStateByChainTicketId(String chainTicketId, int state) {
-		chainTicketDao.updateCTStateById(state,chainTicketId);
+		chainTicketDao.updateCTStateById(chainTicketId,state);
 	}
 
-	@Override
+	@Transactional
 	public List<ChainTicket> getAliveChainTicketsByEnterpriseId(String id) {
 		return chainTicketDao.selectAliveCTByEnterpriseId(id);
 	}
+
 }

@@ -50,19 +50,6 @@ public class CoreEnterpriseController {
 		this.tradeService = tradeService;
 	}
 
-//	@RequestMapping(value = "/chainTickets", method = RequestMethod.GET)
-//	public ModelAndView queryCT(HttpSession session) {
-//		String id = (String) session.getAttribute("id");
-//		List<ChainTicket> chainTicketList = chainTicketService.getChainTicketsByEnterpriseId(id);
-//		// 测试是否获取查询结果集
-//		// System.out.println(Arrays.toString(chainTicketList.toArray()));
-//		ModelAndView mav = new ModelAndView();
-//		mav.addObject("chainTicketList", chainTicketList);
-//
-//		mav.setViewName("chainTickets");
-//		return mav;
-//	}
-
 	@RequestMapping(value = "/coreEnterpriseDrawCT", method = RequestMethod.GET)
 	public String goCoreEnterpriseDrawCT() {
 		return "coreEnterprise/drawCT";
@@ -73,14 +60,14 @@ public class CoreEnterpriseController {
 			String tradeRemark) {
 
 		String drawEnterprise = (String) session.getAttribute("id");
-		ChainTicket chainTicket = new ChainTicket(1, amount, deadline, drawEnterprise, drawEnterprise);
+		ChainTicket chainTicket = new ChainTicket(2, amount, deadline, drawEnterprise, drawEnterprise);
 		chainTicketService.addChainTicket(chainTicket);
 		double limit = Double.valueOf(coreEnterpriseService.getLimitById(drawEnterprise));
 		String newLimit = Double.toString(limit - Double.valueOf(amount));
 		coreEnterpriseService.modifyLimitById(newLimit, drawEnterprise);
 
 		ChainTicket receiveCT = chainTicket;
-		ChainTicket remainCT = new ChainTicket(3, "0", chainTicket.getDeadline(), drawEnterprise, drawEnterprise);
+		ChainTicket remainCT = new ChainTicket(6, "0", chainTicket.getDeadline(), drawEnterprise, drawEnterprise);
 		TradeInformation tradeInformation = new TradeInformation(drawEnterprise, applicant, amount, tradeRemark,
 				chainTicket.getId(), receiveCT.getId(), remainCT.getId());
 		tradeService.addTradeInformation(tradeInformation);
@@ -108,6 +95,8 @@ public class CoreEnterpriseController {
 		coreEnterpriseService.modifyLimitById(currentLimitForCE, coreEnterpriseId);
 		//成员企业额度加上limit
 		String oldLimitForME = memberEnterpriseService.getLimitById(memberId);
+		if(oldLimitForME==null||oldLimitForME.length()==0)//如果没有记录，则默认额度为0
+			oldLimitForME="0";
 		double oldLimitME = Double.valueOf(oldLimitForME);
 		String currentLimitForME = Double.toString(oldLimitME+Double.valueOf(limit));
 		memberEnterpriseService.modifyLimitById(currentLimitForME, memberId);
@@ -119,15 +108,6 @@ public class CoreEnterpriseController {
 		return mav;
 	}
 
-//	@RequestMapping("/queryLimit")
-//	public ModelAndView queryLimit(HttpSession session) {
-//		String id = (String) session.getAttribute("id");
-//		String result = coreEnterpriseService.getLimitById(id);
-//		ModelAndView mav = new ModelAndView();
-//		mav.addObject("result", result);
-//		mav.setViewName("coreEnterprise/Limit");
-//		return mav;
-//	}
 	@RequestMapping("/queryLimit")
 	@ResponseBody
 	public Map<String, String> queryLimit(HttpSession session) {		
@@ -147,16 +127,12 @@ public class CoreEnterpriseController {
 	@RequestMapping("/checkCTs")
 	public ModelAndView checkCTs(HttpSession session) {
 		String coreEnterpriseId = (String) session.getAttribute("id");
-
 		// test code
-		System.out.println("当前企业:" + coreEnterpriseId);
-
+//		System.out.println("当前企业:" + coreEnterpriseId);
 		// 获取当前企业的成员企业开具的未审核的链票
 		List<ChainTicket> chainTicketList = chainTicketService.getUncheckedCTsByCEId(coreEnterpriseId);
-
 		// 测试是否获取查询结果集
-		System.out.println(Arrays.toString(chainTicketList.toArray()));
-
+//		System.out.println(Arrays.toString(chainTicketList.toArray()));
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("chainTicketList", chainTicketList);
 		mav.setViewName("coreEnterprise/checkCTs");
