@@ -9,6 +9,7 @@ import com.scpb.entity.ChainTicket;
 import com.scpb.entity.Enterprise;
 import com.scpb.service.ChainTicketService;
 import com.scpb.service.EnterpriseService;
+import com.scpb.utils.StateMap;
 
 import java.util.List;
 import java.util.Map;
@@ -104,7 +105,7 @@ public class EnterpriseController {
 		List<ChainTicket> chainTicketList = chainTicketService.getChainTicketsByEnterpriseId(id);
 		// 测试是否获取查询结果集
 //		System.out.println(Arrays.toString(chainTicketList.toArray()));
-
+		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("chainTicketList", chainTicketList);
 

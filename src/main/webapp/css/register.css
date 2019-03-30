@@ -38,10 +38,11 @@ span{
 label{
 	font-size: 1em;
     width:18%;
-	margin-left:5%;
+	margin-left:26%;
+	text-align:right;
 }
 input{
-	width:70%;
+	width:40%;
 	height:1.6em;
 	font-size:1.2em;
 	margin-left: 8px;
@@ -50,5 +51,17 @@ input{
 }
 #register{
 	background:#fff;
-	margin-left:15%;
+	margin-left:30%;
+}
+select{
+	width:40%;
+	height:1.6em;
+	font-size:1.2em;
+	margin-left: 8px;
+	margin-top: 20px;
+	border-radius:8px;
+}
+form{
+	width:90%;
+	margin:0 auto;
 }

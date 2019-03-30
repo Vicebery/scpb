@@ -139,6 +139,20 @@ public class CoreEnterpriseController {
 		return mav;
 	}
 
+	@RequestMapping("/checkCTDetails")
+	public ModelAndView checkCTDetails(String id) {
+		// test code
+//		System.out.println("当前企业:" + coreEnterpriseId);
+		// 获取当前企业的成员企业开具的未审核的链票
+		ChainTicket selectedCT = chainTicketService.getChainTicketById(id);
+		// 测试是否获取查询结果集
+//		System.out.println(Arrays.toString(chainTicketList.toArray()));
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("chainTicket", selectedCT);
+		mav.setViewName("coreEnterprise/selectedCTDetails");
+		return mav;
+	}
+	
 	@RequestMapping("/passCheckCT")
 	public ModelAndView passCheckCT(String id, String state) {
 		String chainTicketId = id;
