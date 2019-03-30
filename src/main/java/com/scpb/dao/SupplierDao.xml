@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.scpb.dao.SupplierDao">
+
+	<select id="selectSupplierById" resultType="Enterprise">
+		select enterprise.id,account,pwd,bank,name,UCC,LPC,type from enterprise,supplier
+		where supplier.id = #{id} and enterprise.id = supplier.mySupplier
+	</select>
+
+	<insert id="insertSupplier">
+		insert into supplier(id,mySupplier) values (#{id},#{mySupplier})
+	</insert>
+
+	<delete id="deleteSupplier">
+		delete from supplier where id = #{id} and mySupplier = #{mySupplier}
+	</delete>
+</mapper>

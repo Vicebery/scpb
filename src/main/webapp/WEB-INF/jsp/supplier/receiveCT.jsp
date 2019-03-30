@@ -41,31 +41,31 @@
 
 
 <body>
-待签收链票列表：
-<table width="100%" border=1>
-	<tr>
-		<td>链票ID</td>
-		<td>金额</td>
-		<td>生成时间</td>
-		<td>开票企业</td>
-		<td>过期时间</td>
-		<td>链票状态</td>
-	</tr>
-	<c:forEach items="${chainTicketList }" var="chainTicket">
+	待签收链票列表：
+	<table width="100%" border=1>
 		<tr>
-			<td>${chainTicket.id }</td>
-			<td>${chainTicket.amount }</td>
-			<td>${chainTicket.drawTime}</td>
-			<td>${chainTicket.drawEnterprise }</td>
-			<td>${chainTicket.deadline }</td>
-			<td>${chainTicket.state }</td>
-			<td> <a href="receiveCTSuccess?id=${chainTicket.id}">签收</a></td>
-			<td> <a href="receiveCTFail?id=${chainTicket.id}">拒签</a></td>
-			<%--<td><input name="received" type="submit" value="签收" onclick="received(this)"></td>
-			<td><input name="unreceived" type="submit" value="拒签" onclick="unreceived(this)"></td>--%>
+			<td>链票ID</td>
+			<td>金额</td>
+			<td>生成时间</td>
+			<td>开票企业</td>
+			<td>过期时间</td>
+			<td>链票状态</td>
 		</tr>
-	</c:forEach>
-</table>
+		<c:forEach items="${chainTicketList }" var="chainTicket">
+			<tr>
+				<td>${chainTicket.id }</td>
+				<td>${chainTicket.amount }</td>
+				<td>${chainTicket.drawTime}</td>
+				<td>${chainTicket.drawEnterprise }</td>
+				<td>${chainTicket.deadline }</td>
+				<td>${chainTicket.state }</td>
+				<td> <a href="receiveCTSuccess?id=${chainTicket.id}">签收</a></td>
+				<td> <a href="receiveCTFail?id=${chainTicket.id}">拒签</a></td>
+				<%--<td><input name="received" type="submit" value="签收" onclick="received(this)"></td>
+				<td><input name="unreceived" type="submit" value="拒签" onclick="unreceived(this)"></td>--%>
+			</tr>
+		</c:forEach>
+	</table>
 
 </body>
 </html>

@@ -16,39 +16,39 @@
 
 	<select id="selectTradeInfById" resultType="TradeInformation">
 		select id,tradeTime,firstParty,secondParty,sum,tradeRemark,payCT,receiveCT,remainCT,verifyInf
-		from tradeinformation where id = #{id}
+		from tradeInformation where id = #{id}
 	</select>
 
 	<select id="selectPayCTidBySecondParty" resultType="String">
-		select payCT from tradeinformation where secondParty = #{id} and verifyInf = 2
+		select payCT from tradeInformation where secondParty = #{id} and verifyInf = 2
 	</select>
 
 	<select id="selectReceiveCTidBySecondParty" resultType="String">
-		select ReceiveCT from tradeinformation where secondParty = #{id} and verifyInf = 2
+		select ReceiveCT from tradeInformation where secondParty = #{id} and verifyInf = 2
 	</select>
 
 	<select id="selectTradeInfByPayCT" resultType="TradeInformation">
 		select id,tradeTime,firstParty,secondParty,sum,tradeRemark,payCT,receiveCT,remainCT,verifyInf
-		from tradeinformation where payCT = #{payCT}
+		from tradeInformation where payCT = #{payCT}
 	</select>
 
 	<select id="selectTradeInfByReceiveCT" resultType="TradeInformation">
 		select id,tradeTime,firstParty,secondParty,sum,tradeRemark,payCT,receiveCT,remainCT,verifyInf
-		from tradeinformation where receiveCT = #{receiveCT}
+		from tradeInformation where receiveCT = #{receiveCT}
 	</select>
 
 	<update id="updateTradeInfById">
-		update tradeinformation set verifyInf = #{verifyInf}, receiveCT = #{receiveCT},
+		update tradeInformation set verifyInf = #{verifyInf}, receiveCT = #{receiveCT},
 		remainCT = #{remainCT} where id = #{id}
 	</update>
 
 	<update id="updateTradeInfStateById">
-		update tradeinformation set verifyInf = #{verifyInf}
+		update tradeInformation set verifyInf = #{verifyInf}
 		 where id = #{id}
 	</update>
 	
 	<update id="updateVerifyInfByPayCTId">
-		update tradeinformation set verifyInf = #{verifyInf} where payCT = #{payCT}
+		update tradeInformation set verifyInf = #{verifyInf} where payCT = #{payCT}
 	</update>
 
 </mapper>

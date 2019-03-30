@@ -9,6 +9,7 @@ import com.scpb.service.EnterpriseService;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 
 @Service("enterpriseService")
@@ -43,5 +44,10 @@ public class EnterpriseServiceImpl implements EnterpriseService{
 	public void updateEnterprise(Enterprise enterprise) {
 
 		enterpriseDao.updateEnterprise(enterprise);
+	}
+
+	@Transactional
+	public String getEnterpriseIdByAccount(String account) {
+		return enterpriseDao.selectEnterpriseIdByAccount(account);
 	}
 }

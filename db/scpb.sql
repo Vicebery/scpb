@@ -11,7 +11,7 @@
  Target Server Version : 50724
  File Encoding         : 65001
 
- Date: 22/03/2019 15:59:21
+ Date: 30/03/2019 14:17:39
 */
 
 SET NAMES utf8mb4;
@@ -20,8 +20,8 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 -- Table structure for chainticket
 -- ----------------------------
-DROP TABLE IF EXISTS `chainticket`;
-CREATE TABLE `chainticket`  (
+DROP TABLE IF EXISTS `chainTicket`;
+CREATE TABLE `chainTicket`  (
   `id` varchar(80) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `amount` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `drawTime` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -35,26 +35,18 @@ CREATE TABLE `chainticket`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of chainticket
--- ----------------------------
-INSERT INTO `chainticket` VALUES ('20190308163928', '500', '2019-03-08', 0, '2019001', '20191111', '2019001');
-INSERT INTO `chainticket` VALUES ('20190308215931', '300', '2019-03-08', 0, '2019002', '20200101', '2019002');
-INSERT INTO `chainticket` VALUES ('2019032022460280', '120', '2019-03-20', 0, '2019001', '20190202', '2019001');
-
--- ----------------------------
 -- Table structure for coreenterprise
 -- ----------------------------
-DROP TABLE IF EXISTS `coreenterprise`;
-CREATE TABLE `coreenterprise`  (
+DROP TABLE IF EXISTS `coreEnterprise`;
+CREATE TABLE `coreEnterprise`  (
   `id` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `limit` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
+  `mySupplier` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`id`, `mySupplier`) USING BTREE,
+  INDEX `mySupplier`(`mySupplier`) USING BTREE,
+  INDEX `id`(`id`) USING BTREE,
+  CONSTRAINT `coreEnterprise_ibfk_1` FOREIGN KEY (`mySupplier`) REFERENCES `enterprise` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of coreenterprise
--- ----------------------------
-INSERT INTO `coreenterprise` VALUES ('2019001', '49240.0');
 
 -- ----------------------------
 -- Table structure for enterprise
@@ -73,15 +65,6 @@ CREATE TABLE `enterprise`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of enterprise
--- ----------------------------
-INSERT INTO `enterprise` VALUES ('2019001', '13612345678', '123456', '62080000', '核心企业1', '10000001', '123456789012345678', 1);
-INSERT INTO `enterprise` VALUES ('2019002', '13123886950', '123456', '111', '核心企业2', 'qulain', '11', 1);
-INSERT INTO `enterprise` VALUES ('2019003', '13045009900', '123456', '1111', '成员企业1', '1111', '1111', 2);
-INSERT INTO `enterprise` VALUES ('2019004', '15071429552', '123456', '2333', '供应商1', '11', '1', 3);
-INSERT INTO `enterprise` VALUES ('2019005', '15938870043', '123456', '11111', '保理商1', '11111', '11111', 4);
-
--- ----------------------------
 -- Table structure for factor
 -- ----------------------------
 DROP TABLE IF EXISTS `factor`;
@@ -93,14 +76,17 @@ CREATE TABLE `factor`  (
 -- ----------------------------
 -- Table structure for memberenterprise
 -- ----------------------------
-DROP TABLE IF EXISTS `memberenterprise`;
-CREATE TABLE `memberenterprise`  (
+DROP TABLE IF EXISTS `memberEnterprise`;
+CREATE TABLE `memberEnterprise`  (
   `id` varchar(40) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL,
   `limit` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `coreEnterprise` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE,
+  `mySupplier` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`id`, `mySupplier`) USING BTREE,
   INDEX `ceId`(`coreEnterprise`) USING BTREE,
-  CONSTRAINT `ceId` FOREIGN KEY (`coreEnterprise`) REFERENCES `coreenterprise` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  INDEX `mySupplier`(`mySupplier`) USING BTREE,
+  CONSTRAINT `ceId` FOREIGN KEY (`coreEnterprise`) REFERENCES `coreenterprise` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `memberEnterprise_ibfk_1` FOREIGN KEY (`mySupplier`) REFERENCES `enterprise` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -109,14 +95,16 @@ CREATE TABLE `memberenterprise`  (
 DROP TABLE IF EXISTS `supplier`;
 CREATE TABLE `supplier`  (
   `id` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE
+  `mySupplier` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`id`, `mySupplier`) USING BTREE,
+  INDEX `mySupplier`(`mySupplier`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for tradeinformation
 -- ----------------------------
-DROP TABLE IF EXISTS `tradeinformation`;
-CREATE TABLE `tradeinformation`  (
+DROP TABLE IF EXISTS `tradeInformation`;
+CREATE TABLE `tradeInformation`  (
   `id` varchar(80) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `tradeTime` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `firstParty` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -133,11 +121,5 @@ CREATE TABLE `tradeinformation`  (
   CONSTRAINT `firstParty` FOREIGN KEY (`firstParty`) REFERENCES `enterprise` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `secondParty` FOREIGN KEY (`secondParty`) REFERENCES `enterprise` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of tradeinformation
--- ----------------------------
-INSERT INTO `tradeinformation` VALUES ('20190309121237', '2019-03-09', '2019001', '2019002', '100', '测试', '20190308163928', '2019030912123685', '2019030912123666', NULL);
-INSERT INTO `tradeinformation` VALUES ('20190320224602', '2019-03-20', '2019001', '2019004', '120', '测试开具功能', '2019032022460280', NULL, NULL, 0);
 
 SET FOREIGN_KEY_CHECKS = 1;

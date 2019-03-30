@@ -4,10 +4,23 @@
 <mapper namespace="com.scpb.dao.MemberEnterpriseDao">
 
 	<select id="selectLimitById" resultType="java.lang.String">
-		select `limit` from memberenterprise where id = #{id}
+		select `limit` from memberEnterprise where id = #{id}
+	</select>
+
+	<select id="selectSupplierById" resultType="Enterprise">
+		select enterprise.id,account,pwd,bank,name,UCC,LPC,type from enterprise,memberEnterprise
+		where memberEnterprise.id = #{id} and enterprise.id = memberEnterprise.mySupplier
 	</select>
 
 	<update id="updateLimitById">
 		update memberEnterprise set `limit` = #{limit} where id = #{id}
 	</update>
+
+	<insert id="insertSupplier">
+		insert into memberEnterprise(id,mySupplier) values (#{id},#{mySupplier})
+	</insert>
+
+	<delete id="deleteSupplier">
+		delete from memberEnterprise where id = #{id} and mySupplier = #{mySupplier}
+	</delete>
 </mapper>
