@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.scpb.entity.ChainTicket;
 import com.scpb.service.ChainTicketService;
 import com.scpb.service.EnterpriseService;
+import com.scpb.utils.StateMap;
 
 @Controller
 @RequestMapping("/chainTicket")
@@ -35,7 +36,7 @@ public class ChainTicketController {
         mav.addObject("id", chainTicket.getId());
         mav.addObject("drawTime", chainTicket.getDrawTime());
         mav.addObject("amount", amount);
-        mav.addObject("state", chainTicket.getState());
+        mav.addObject("state", StateMap.getState(chainTicket.getState()));
         mav.addObject("drawEnterprise", drawEnterprise);
         mav.addObject("ownerEnterprise", ownerId);
         mav.addObject("deadline", deadline);

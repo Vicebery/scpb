@@ -44,7 +44,7 @@ public class factorController {
 		// System.out.println(Arrays.toString(chainTicketList.toArray()));
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("chainTicketList", chainTicketList);
-
+		
 		mav.setViewName("factor/financingExamine");
 		return mav;
 	}

@@ -12,6 +12,8 @@ import com.scpb.entity.TradeInformation;
 import com.scpb.service.ChainTicketService;
 import com.scpb.service.CoreEnterpriseService;
 import com.scpb.service.TradeService;
+import com.scpb.utils.StateMap;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -112,7 +114,7 @@ public class CoreEnterpriseController {
 	@ResponseBody
 	public Map<String, String> queryLimit(HttpSession session) {		
 		String id = (String) session.getAttribute("id");
-		System.out.println("核心企业 "+id);
+//		System.out.println("核心企业 "+id);
 		String result = coreEnterpriseService.getLimitById(id);
 		Map<String,String> resultMap = new HashMap<String, String>();  
 		if(result==null){
@@ -149,6 +151,7 @@ public class CoreEnterpriseController {
 //		System.out.println(Arrays.toString(chainTicketList.toArray()));
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("chainTicket", selectedCT);
+		mav.addObject("chainTicketState", StateMap.getState(selectedCT.getState()));
 		mav.setViewName("coreEnterprise/selectedCTDetails");
 		return mav;
 	}
@@ -157,19 +160,20 @@ public class CoreEnterpriseController {
 	public ModelAndView passCheckCT(String id, String state) {
 		String chainTicketId = id;
 		int changedState = Integer.parseInt(state);
+		ChainTicket currentCT = chainTicketService.getChainTicketById(id);
 		// test code
-		System.out.println("当前企业:" + chainTicketId + "state:" + state);
+//		System.out.println("当前企业:" + chainTicketId + "state:" + state);
 
 		// 修改当前选中链票状态
 		chainTicketService.setStateByChainTicketId(chainTicketId, changedState);
 		// 修改交易信息状态
 		tradeService.setVerifyInfByPayCTId(chainTicketId, changedState);
 		// 测试是否获取查询结果集
-		System.out.println("修改状态成功");
+//		System.out.println("修改状态成功");
 		ModelAndView mav = new ModelAndView();
-		// mav.addObject("chainTicketList",chainTicketList);
-		mav.setViewName("coreEnterprise/checkCTs");
-
+		mav.addObject("chainTicket", currentCT);
+		mav.addObject("chainTicketState", StateMap.getState(changedState));
+		mav.setViewName("coreEnterprise/selectedCTDetails");
 		return mav;
 	}
 

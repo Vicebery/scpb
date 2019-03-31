@@ -38,7 +38,8 @@ public class EnterpriseController {
 		return "login";
 	}
 	@RequestMapping(value = "/signout", method = RequestMethod.GET)
-	public String signout() {
+	public String signout(HttpSession session) {
+		session.invalidate();
 		return "login";
 	}
 
@@ -113,17 +114,6 @@ public class EnterpriseController {
 		mav.setViewName("chainTickets");
 		return mav;
 	}
-
-//	@RequestMapping(value = "/modifyInfo", method = RequestMethod.GET)
-//	public ModelAndView modifyInfo(HttpSession session) {
-//		String id = (String) session.getAttribute("id");
-//		Enterprise enterprise = enterpriseService.getEnterpriseById(id);
-//		ModelAndView mav = new ModelAndView();
-//		if (enterprise != null)
-//			mav.addObject(enterprise);
-//		mav.setViewName("modifyInfo");
-//		return mav;
-//	}
 
 	@RequestMapping(value = "/managerInfo", method = RequestMethod.GET)
 	public ModelAndView goManagerInfo(HttpSession session) {
