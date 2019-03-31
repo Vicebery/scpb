@@ -52,12 +52,12 @@ public class CoreEnterpriseController {
 		this.tradeService = tradeService;
 	}
 
-	@RequestMapping(value = "/coreEnterpriseDrawCT", method = RequestMethod.GET)
+	@RequestMapping(value = "/goDrawCT", method = RequestMethod.GET)
 	public String goCoreEnterpriseDrawCT() {
 		return "coreEnterprise/drawCT";
 	}
 
-	@RequestMapping("/coreEnterpriseDrawSuccess")
+	@RequestMapping("/drawSuccess")
 	public ModelAndView drawCT(String applicant, String amount, HttpSession session, String deadline,
 			String tradeRemark) {
 
@@ -65,20 +65,29 @@ public class CoreEnterpriseController {
 		ChainTicket chainTicket = new ChainTicket(2, amount, deadline, drawEnterprise, drawEnterprise);
 		chainTicketService.addChainTicket(chainTicket);
 		double limit = Double.valueOf(coreEnterpriseService.getLimitById(drawEnterprise));
-		String newLimit = Double.toString(limit - Double.valueOf(amount));
-		coreEnterpriseService.modifyLimitById(newLimit, drawEnterprise);
+		//判断开具金额是否大于当前所拥有额度
+		if((limit - Double.valueOf(amount))>0){
+			String newLimit = Double.toString(limit - Double.valueOf(amount));
+			coreEnterpriseService.modifyLimitById(newLimit, drawEnterprise);
 
-		ChainTicket receiveCT = chainTicket;
-		ChainTicket remainCT = new ChainTicket(6, "0", chainTicket.getDeadline(), drawEnterprise, drawEnterprise);
-		TradeInformation tradeInformation = new TradeInformation(drawEnterprise, applicant, amount, tradeRemark,
-				chainTicket.getId(), receiveCT.getId(), remainCT.getId());
-		tradeService.addTradeInformation(tradeInformation);
-		tradeService.modifyTradeInfStateById(tradeInformation.getId(), 2);
+			ChainTicket receiveCT = chainTicket;
+			ChainTicket remainCT = new ChainTicket(6, "0", chainTicket.getDeadline(), drawEnterprise, drawEnterprise);
+			TradeInformation tradeInformation = new TradeInformation(drawEnterprise, applicant, amount, tradeRemark,
+					chainTicket.getId(), receiveCT.getId(), remainCT.getId());
+			tradeService.addTradeInformation(tradeInformation);
+			tradeService.modifyTradeInfStateById(tradeInformation.getId(), 2);
 
-		ModelAndView mav = new ModelAndView();
-		mav.addObject(chainTicket);
-		mav.setViewName("coreEnterprise/drawCTSuccess");
-		return mav;
+			ModelAndView mav = new ModelAndView();
+			mav.addObject(chainTicket);
+			mav.setViewName("coreEnterprise/drawCTSuccess");
+			return mav;
+		}else{ //如果开具金额设置过大，则返回错误信息
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("msg","当前设置金额过大");
+			mav.setViewName("coreEnterprise/drawCT");
+			return mav;
+		}
+		
 	}
 
 	@RequestMapping("/goAllocateLimit")

@@ -16,13 +16,14 @@
     </style>
 </head>
     <body>
-    <div>
-        <p>链票信息如下：</p>
+    <div>  
+        <p>开具成功！链票信息如下：</p>
         <p>链票ID: ${chainTicket.id}</p>
        <p> 链票金额：${chainTicket.amount}</p>
         <p>开具时间：${chainTicket.drawTime}</p>
        <p>开票企业：${chainTicket.drawEnterprise}</p>
         <p>到期日：${chainTicket.deadline}</p>
+        <P> <a class="btn btn-primary btn-lg"  href="goDrawCT">返回</a></P>
      </div>
     </body>
 </html>

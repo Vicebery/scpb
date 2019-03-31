@@ -30,11 +30,11 @@ border-radius:5px;
 </style>
 </head>
 <body>
-     <form action="<%=request.getContextPath()%>/coreEnterprise/coreEnterpriseDrawSuccess" method="get">
-        <%--<label>开票企业：</label><input type="text" name="drawEnterprise"/><br>--%>
+     <form action="<%=request.getContextPath()%>/coreEnterprise/drawSuccess" method="get">
          <label>申请企业:</label><input type="text" name="applicant"/><br>
-         <label>链票金额：</label><input type="text" name="amount"/><br>
-         <label>到期日：</label></label><input type="text" name="deadline"/><br>
+         <label>链票金额：</label><input type="text" name="amount"/>
+         <span style="color:red;font-size:16px;">${msg}</span><br>
+         <label>到期日：</label><input type="text" name="deadline"/><br>
          <label>开具备注：</label><input type="text" name="tradeRemark"/><br>
 
          <input style="margin-left:66px;margin-top:8px"type="submit" value="确认开具" />

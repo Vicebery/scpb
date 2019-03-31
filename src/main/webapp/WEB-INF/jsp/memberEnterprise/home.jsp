@@ -43,7 +43,7 @@
 									<li id="qyUserManage"><a>企业用户管理</a></li>
 									<li id="bankManage"><a target="bankManage-sc" href="bankInfo">银行账户管理</a></li>
 									<li id="sureInforManage"><a>认证资料管理</a></li>
-									<li id="supply"><a target="supply-showcontent" href="memberEnterprise/mySupplier">我的供应商</a></li>
+									<li id="supply"><a target="supply-sc" href="memberEnterprise/mySupplier">我的供应商</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -105,7 +105,7 @@
 						<div id="supply-page" style="display:none">
 							<p>我的供应商:</p>
 							<div id="supply-showcontent">
-								<iframe name="supply-showcontent" width="100%">
+								<iframe name="supply-sc" width="100%">
 								</iframe>
 							</div>
 						</div>
