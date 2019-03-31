@@ -24,7 +24,7 @@
 	<!-- 企业链票查询  -->
 	<select id="selectChainTicketsByEnterpriseId" resultType="ChainTicket">
 		select id,amount,drawTime,state,ownerId,deadline,drawEnterprise from chainTicket
-		where ownerId = #{ownerId}
+		where ownerId = #{ownerId} and state!=6
 	</select>
 
 	<select id="selectAliveCTByEnterpriseId" resultType="ChainTicket">

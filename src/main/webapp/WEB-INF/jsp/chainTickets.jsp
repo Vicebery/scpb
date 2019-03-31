@@ -34,7 +34,7 @@
 		</c:forEach>
 		
 		</table>
-
+		<script type="text/javascript" src="js/changeState.js"></script>
 </body>
 </html>
 <!-- <td><fmt:formatDate value="${chainTicket.drawTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>  -->

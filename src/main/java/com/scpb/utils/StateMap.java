@@ -3,7 +3,7 @@ package com.scpb.utils;
 import java.util.HashMap;
 
 public class StateMap {
-	static String getState(int state){
+	public static String getState(int state){
 		HashMap<Integer, String> stateMap = new HashMap<>();
 		stateMap.put(0, "审核中");
 		stateMap.put(1, "审核未通过");
