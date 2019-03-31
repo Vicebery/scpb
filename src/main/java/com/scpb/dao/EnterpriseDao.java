@@ -1,6 +1,7 @@
 package com.scpb.dao;
 
 import com.scpb.entity.Enterprise;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -18,4 +19,10 @@ public interface EnterpriseDao {
 	void updateEnterprise(Enterprise enterprise);
 
     String selectEnterpriseIdByAccount(String account);
+
+    List<Enterprise> selectMySupplierById(String id);
+
+    void insertMySupplier(@Param("id")String id, @Param("mySupplier")String mySupplier);
+
+    void deleteMySupplier(@Param("id")String id, @Param("mySupplier")String mySupplier);
 }
