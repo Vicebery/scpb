@@ -26,18 +26,7 @@ public class CoreEnterpriseServiceImpl implements CoreEnterpriseService {
     }
 
     @Transactional
-    public List<Enterprise> getSuppliersById(String id) {
-        return coreEnterpriseDao.selectSupplierById(id);
-    }
-
-    @Transactional
-    public void addSupplier(String id, String mySupplier) {
-        coreEnterpriseDao.insertSupplier(id,mySupplier);
-
-    }
-
-    @Transactional
-    public void deleteSupplier(String id, String mySupplier) {
-        coreEnterpriseDao.deleteSupplier(id,mySupplier);
+    public void addCoreEnterprise(String id) {
+        coreEnterpriseDao.insertCoreEnterprise(id);
     }
 }

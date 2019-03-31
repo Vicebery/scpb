@@ -7,20 +7,12 @@
 		select `limit` from coreEnterprise where id = #{id}
 	</select>
 
-	<select id="selectSupplierById" resultType="Enterprise">
-		select enterprise.id,account,pwd,bank,name,UCC,LPC,type from enterprise,coreEnterprise
-		where coreEnterprise.id = #{id} and enterprise.id = coreEnterprise.mySupplier
-	</select>
-
 	<update id="updateLimitById">
 		update coreEnterprise set `limit` = #{limit} where id = #{id}
 	</update>
 
-	<insert id="insertSupplier">
-		insert into coreEnterprise(id,mySupplier) values (#{id},#{mySupplier})
+	<insert id="insertCoreEnterprise">
+		insert into coreEnterprise(id) values (#{id})
 	</insert>
 
-	<delete id="deleteSupplier">
-		delete from coreEnterprise where id = #{id} and mySupplier = #{mySupplier}
-	</delete>
 </mapper>

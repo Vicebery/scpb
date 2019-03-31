@@ -10,9 +10,5 @@ public interface MemberEnterpriseDao {
 
     void updateLimitById(@Param("limit")String limit, @Param("id")String id);
 
-    List<Enterprise> selectSupplierById(String id);
-
-    void insertSupplier(@Param("id")String id, @Param("mySupplier")String mySupplier);
-
-    void deleteSupplier(@Param("id")String id, @Param("mySupplier")String mySupplier);
+    void insertMemberEnterprise(String id);
 }
