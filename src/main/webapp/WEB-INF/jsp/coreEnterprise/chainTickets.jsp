@@ -15,12 +15,13 @@
 		链票列表：
 		<table width="100%" class="table table-bordered table-hover">
 		<thead><tr>
-			<td>链票ID</td>
-			<td>金额</td>
-			<td>生成时间</td>
-			<td>开票企业</td>
-			<td>过期时间</td>
-			<td>链票状态</td>
+			<th>链票ID</th>
+			<th>金额</th>
+			<th>生成时间</th>
+			<th>开票企业</th>
+			<th>过期时间</th>
+			<th>链票状态</th>
+
 		</tr>
 		</thead>
 		<c:forEach items="${chainTicketList }" var="chainTicket">
