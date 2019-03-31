@@ -11,10 +11,4 @@ public interface EnterpriseService {
 	public void updateEnterprise(Enterprise enterprise);
 
 	String getEnterpriseIdByAccount(String account);
-
-    List<Enterprise> getSuppliersById(String id);
-
-	void addSupplier(String id, String mySupplier);
-
-	void deleteSupplier(String id, String mySupplier);
 }

@@ -1,9 +1,5 @@
 package com.scpb.controller;
 
-import com.scpb.service.CoreEnterpriseService;
-import com.scpb.service.FactorService;
-import com.scpb.service.MemberEnterpriseService;
-import com.scpb.service.SupplierService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,18 +21,6 @@ import javax.servlet.http.HttpSession;
 public class EnterpriseController {
 	@Resource(name = "enterpriseService")
 	private EnterpriseService enterpriseService;
-
-	@Resource(name = "coreEnterpriseService")
-	private CoreEnterpriseService coreEnterpriseService;
-
-	@Resource(name = "memberEnterpriseService")
-	private MemberEnterpriseService memberEnterpriseService;
-
-	@Resource(name = "supplierService")
-	private SupplierService supplierService;
-
-	@Resource(name = "factorService")
-	private FactorService factorService;
 
 	@Resource(name = "chainTicketService")
 	private ChainTicketService chainTicketService;
@@ -100,10 +84,6 @@ public class EnterpriseController {
 		Enterprise enterprise = new Enterprise(id, account, pwd, bank, name, UCC, LPC, type);
 		session.setAttribute("id", id);
 		enterpriseService.addEnterprise(enterprise);
-		if(type==1) coreEnterpriseService.addCoreEnterprise(id);
-		if(type==2) memberEnterpriseService.addMemberEnterprise(id);
-		if(type==3) supplierService.addSupplier(id);
-		if(type==4) factorService.addFactor(id);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("id", id);
 		mav.addObject("account", account);
@@ -176,49 +156,5 @@ public class EnterpriseController {
 		mav.addObject(enterprise);
 		mav.setViewName("modifyInfo");
 		return mav;
-	}
-
-	@RequestMapping(value = "/mySupplier")
-	public ModelAndView mySupplier(HttpSession session){
-		String id = (String)session.getAttribute("id");
-//		System.out.println(id);
-		List<Enterprise> suppliers = enterpriseService.getSuppliersById(id);
-//		System.out.println(suppliers.toString());
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("suppliers",suppliers);
-		mav.setViewName("mySupplier");
-		return mav;
-	}
-
-	@RequestMapping(value = "/detailedSupplier")
-	public ModelAndView detailedSupplier(String account,HttpSession session){
-		String id = enterpriseService.getEnterpriseIdByAccount(account);
-		session.setAttribute("supplierId",id);
-//		System.out.println(account);
-		Enterprise supplier = enterpriseService.getEnterpriseById(id);
-//		System.out.println(supplier);
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("supplier",supplier);
-		mav.setViewName("detailedSupplier");
-		return mav;
-	}
-
-	@RequestMapping(value = "/goaddSupplier")
-	public String goaddSupplier(){
-		return "addMySupplier";
-	}
-	@RequestMapping(value = "/addMySupplier")
-	public String addMySupplier(String name,String account,HttpSession session){
-		String id = (String)session.getAttribute("id");
-		String mySupplier = enterpriseService.getEnterpriseIdByAccount(account);
-		enterpriseService.addSupplier(id,mySupplier);
-		return "addSuccess";
-	}
-	@RequestMapping(value = "/deleteSupplier")
-	public String deleteSupplier(HttpSession session){
-		String mySupplier = (String)session.getAttribute("supplierId");
-		String id = (String)session.getAttribute("id");
-		enterpriseService.deleteSupplier(id,mySupplier);
-		return "deleteSuccess";
 	}
 }

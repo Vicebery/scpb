@@ -22,7 +22,11 @@
         <p>链票金额：${chainTicket.amount}</p>
         <p>开具时间：${chainTicket.drawTime}</p>
         <p>开票企业：${chainTicket.drawEnterprise}</p>
+<<<<<<< HEAD
        <p>链票状态：${chainTicketState}</p>
+=======
+       <p>链票状态：${chainTicket.state}</p>
+>>>>>>> parent of a057170... 注册分辨功能以及我的供应商修改、数据库修改
        <p> 到期日：${chainTicket.deadline}</p>
     </div>
     </body>
