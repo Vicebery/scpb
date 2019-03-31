@@ -9,9 +9,5 @@ public interface MemberEnterpriseService {
 
     String getLimitById(String id);
 
-    List<Enterprise> getSuppliersById(String id);
-
-    void addSupplier(String id, String mySupplier);
-
-    void deleteSupplier(String id, String mySupplier);
+    void addMemberEnterprise(String id);
 }

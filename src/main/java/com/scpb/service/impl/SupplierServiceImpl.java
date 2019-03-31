@@ -1,6 +1,5 @@
 package com.scpb.service.impl;
 
-import com.scpb.dao.EnterpriseDao;
 import com.scpb.dao.SupplierDao;
 import com.scpb.entity.Enterprise;
 import com.scpb.service.SupplierService;
@@ -14,19 +13,9 @@ import java.util.List;
 public class SupplierServiceImpl implements SupplierService {
     @Resource(name = "supplierDao")
     private SupplierDao supplierDao;
-    @Transactional
-    public List<Enterprise> getSuppliersById(String id) {
-
-        return supplierDao.selectSupplierById(id);
-    }
 
     @Transactional
-    public void addSupplier(String id, String mySupplier) {
-        supplierDao.insertSupplier(id,mySupplier);
-    }
-
-    @Transactional
-    public void deleteSupplier(String id, String mySupplier) {
-        supplierDao.deleteSupplier(id,mySupplier);
+    public void addSupplier(String id) {
+        supplierDao.insertSupplier(id);
     }
 }
