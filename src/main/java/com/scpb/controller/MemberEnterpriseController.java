@@ -9,6 +9,8 @@ import javax.servlet.http.HttpSession;
 import com.scpb.entity.TradeInformation;
 import com.scpb.service.ChainTicketService;
 import com.scpb.service.TradeService;
+import com.scpb.utils.StateMap;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -69,6 +71,7 @@ public class MemberEnterpriseController {
         
         ModelAndView mav = new ModelAndView();
         mav.addObject(chainTicket);
+        mav.addObject("chainTicketState", StateMap.getState(chainTicket.getState()));
         mav.setViewName("memberEnterprise/drawCTSuccess");
         return mav;
     }
@@ -102,6 +105,7 @@ public class MemberEnterpriseController {
     public String goaddSupplier(){
         return "memberEnterprise/addMySupplier";
     }
+    
     @RequestMapping(value = "/addMySupplier")
     public String addMySupplier(String name,String account,HttpSession session){
         String id = (String)session.getAttribute("id");
@@ -109,6 +113,7 @@ public class MemberEnterpriseController {
         memberEnterpriseService.addSupplier(id,mySupplier);
         return "memberEnterprise/addSuccess";
     }
+    
     @RequestMapping(value = "/deleteSupplier")
     public String deleteSupplier(HttpSession session){
         String mySupplier = (String)session.getAttribute("supplierId");

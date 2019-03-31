@@ -25,10 +25,8 @@
         <p>开具时间：${chainTicket.drawTime}</p>
        <p>开票企业：${chainTicket.drawEnterprise}</p>      
          <p>到期日：${chainTicket.deadline}</p>
-         <p>当前状态：${chainTicket.state}</p>
+         <p>当前状态：${chainTicketState}</p>
      </div>
-     <button onclick="passCheckCT()">通过审核</button>
-     <button onclick="passCheckCT()">审核不通过</button>
       <a href="passCheckCT?id=${chainTicket.id}&state=2">通过审核</a>
       <a href="passCheckCT?id=${chainTicket.id}&state=1">审核不通过</a>
 </body>

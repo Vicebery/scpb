@@ -22,7 +22,7 @@
         <p>链票金额：${chainTicket.amount}</p>
         <p>开具时间：${chainTicket.drawTime}</p>
         <p>开票企业：${chainTicket.drawEnterprise}</p>
-       <p>链票状态：${chainTicket.state}</p>
+       <p>链票状态：${chainTicketState}</p>
        <p> 到期日：${chainTicket.deadline}</p>
     </div>
     </body>

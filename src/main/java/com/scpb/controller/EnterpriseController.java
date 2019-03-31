@@ -115,17 +115,6 @@ public class EnterpriseController {
 		return mav;
 	}
 
-//	@RequestMapping(value = "/modifyInfo", method = RequestMethod.GET)
-//	public ModelAndView modifyInfo(HttpSession session) {
-//		String id = (String) session.getAttribute("id");
-//		Enterprise enterprise = enterpriseService.getEnterpriseById(id);
-//		ModelAndView mav = new ModelAndView();
-//		if (enterprise != null)
-//			mav.addObject(enterprise);
-//		mav.setViewName("modifyInfo");
-//		return mav;
-//	}
-
 	@RequestMapping(value = "/managerInfo", method = RequestMethod.GET)
 	public ModelAndView goManagerInfo(HttpSession session) {
 		String id = (String) session.getAttribute("id");
