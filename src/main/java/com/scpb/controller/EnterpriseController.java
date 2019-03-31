@@ -38,7 +38,8 @@ public class EnterpriseController {
 		return "login";
 	}
 	@RequestMapping(value = "/signout", method = RequestMethod.GET)
-	public String signout() {
+	public String signout(HttpSession session) {
+		session.invalidate();
 		return "login";
 	}
 

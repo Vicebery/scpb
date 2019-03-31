@@ -10,34 +10,6 @@
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 	<script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
-
-<%--<script type="text/javascript">
-	function received(obj) {
-		var thisTR=obj.parentNode.parentNode;
-		var chainTicketId=thisTR.getElementsByTagName('td')[0].innerHTML;
-		// alert(chainTicketId);
-        $.ajax({
-            type:"POST",
-            url:"receiveCTSuccess",
-            data:{'chainTicketId':chainTicketId},
-            success:function(data){
-                alert("签收成功");
-            }
-        });
-	}
-	function unreceived(obj) {
-		var thisTR=obj.parentNode.parentNode;
-		var chainTicketId=thisTR.getElementsByTagName('td')[0].innerHTML;
-        $.ajax({
-            type:"POST",
-            url:"receiveCTFail",
-            data:{'chainTicketId':chainTicketId},
-            success:function(data){
-                alert("拒签成功");
-            }
-        });
-	}
-</script>--%>
 </head>
 
 <body>
@@ -60,12 +32,10 @@
 				<td>${chainTicket.deadline }</td>
 				<td>${chainTicket.state }</td>
 				<td> <a href="receiveCTSuccess?id=${chainTicket.id}">签收</a></td>
-				<td> <a href="receiveCTFail?id=${chainTicket.id}">拒签</a></td>
-				<%--<td><input name="received" type="submit" value="签收" onclick="received(this)"></td>
-				<td><input name="unreceived" type="submit" value="拒签" onclick="unreceived(this)"></td>--%>
+				<td> <a href="receiveCTFail?id=${chainTicket.id}">拒签</a></td>		
 			</tr>
 		</c:forEach>
 	</table>
-
+	<script type="text/javascript" src="../js/changeState.js"></script>
 </body>
 </html>
