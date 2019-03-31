@@ -11,7 +11,7 @@
     <title>添加供应商</title>
 </head>
 <body>
-    <form action="<%=request.getContextPath()%>/supplier/addMySupplier" method="get">
+    <form action="<%=request.getContextPath()%>/addMySupplier" method="get">
         供应商名字：<input type="text" name="name"/><br>
         供应商账号：<input type="text" name="account"/><br>
         <input type="submit" value="确认添加" />
