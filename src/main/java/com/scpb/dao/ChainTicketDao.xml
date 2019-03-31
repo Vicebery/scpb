@@ -29,7 +29,7 @@
 
 	<select id="selectAliveCTByEnterpriseId" resultType="ChainTicket">
 		select id,amount,drawTime,state,ownerId,deadline,drawEnterprise from chainTicket
-		where ownerId = #{id} and state = 3
+		where ownerId = #{id} and state = 3 and amount != 0.0
 	</select>
 
 	<select id="selectUncheckedCTsByCEId" resultType="ChainTicket">

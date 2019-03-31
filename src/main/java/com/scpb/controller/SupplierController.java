@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/supplier")
@@ -85,12 +86,16 @@ public class SupplierController {
 	}
 
 	@RequestMapping("/financing")
-	public String financing( String amount, String factor, String tradeRemark, HttpSession session) {
+	public String financing( String amount, String factor, String tradeRemark,Map<String, Object> map, HttpSession session) {
 
 		String ctid = (String) session.getAttribute("ctid");
 		String ownerId = (String) session.getAttribute("id");
 		String firstParty = (String) session.getAttribute("id");
 		ChainTicket chainTicket = chainTicketService.getChainTicketById(ctid);
+        if(Double.valueOf(amount)>Double.valueOf(chainTicket.getAmount())){
+            map.put("msg","融资金额超出链票原有金额，请重新选择");
+            return "supplier/financing";
+        }
 		ChainTicket receiveCT = new ChainTicket(0, amount, chainTicket.getDeadline(), firstParty,
 				chainTicket.getDrawEnterprise());
 		String remainCTAmount = Double.toString((Double.valueOf(chainTicket.getAmount()) - Double.valueOf(amount)));
@@ -119,12 +124,16 @@ public class SupplierController {
 //	}
 
 	@RequestMapping("/transferCTSuccess")
-	public String transferCT( String amount, String secondParty, String tradeRemark, HttpSession session) {
+	public String transferCT(String amount, String secondParty, String tradeRemark, Map<String, Object> map, HttpSession session) {
 
 		String ctid = (String) session.getAttribute("ctid");
 		String ownerId = (String) session.getAttribute("id");
 		String firstParty = (String) session.getAttribute("id");
 		ChainTicket chainTicket = chainTicketService.getChainTicketById(ctid);
+		if(Double.valueOf(amount)>Double.valueOf(chainTicket.getAmount())){
+		    map.put("msg","转让金额超出链票原有金额，请重新选择");
+		    return "supplier/transfer";
+        }
 		chainTicketService.modifyCTStateById(2, ctid);
 		ChainTicket receiveCT = new ChainTicket(1, amount, chainTicket.getDeadline(), firstParty,
 				chainTicket.getDrawEnterprise());
