@@ -13,7 +13,7 @@
 </head>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-<script type="text/javascript">
+<%--<script type="text/javascript">
     function examined(obj) {
         var thisTR=obj.parentNode.parentNode;
         var chainTicketId=thisTR.getElementsByTagName('td')[0].innerHTML;
@@ -40,7 +40,7 @@
             }
         });
     }
-</script>
+</script>--%>
 
 
 
@@ -63,8 +63,7 @@
             <td>${chainTicket.drawEnterprise }</td>
             <td>${chainTicket.deadline }</td>
             <td>${chainTicket.state }</td>
-            <td><input name="examined" type="submit" value="审核通过" onclick="examined(this)"></td>
-            <td><input name="unexamined" type="submit" value="审核未通过" onclick="unexamined(this)"></td>
+            <td> <a href="checkCTDetails?id=${chainTicket.id}">查看详情</a></td>
         </tr>
     </c:forEach>
 
@@ -72,4 +71,3 @@
 <script type="text/javascript" src="../js/changeState.js"></script>
 </body>
 </html>
-<!-- <td><fmt:formatDate value="${chainTicket.drawTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>  -->

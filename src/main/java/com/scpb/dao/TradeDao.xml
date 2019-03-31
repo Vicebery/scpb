@@ -27,6 +27,10 @@
 		select ReceiveCT from tradeInformation where secondParty = #{id} and verifyInf = 2
 	</select>
 
+	<select id="selectUnchekedReceiveCTidBySecondParty" resultType="String">
+		select ReceiveCT from tradeInformation where secondParty = #{id} and verifyInf = 0
+	</select>
+
 	<select id="selectTradeInfByPayCT" resultType="TradeInformation">
 		select id,tradeTime,firstParty,secondParty,sum,tradeRemark,payCT,receiveCT,remainCT,verifyInf
 		from tradeInformation where payCT = #{payCT}

@@ -43,7 +43,7 @@
 									<li id="qyUserManage"><a>企业用户管理</a></li>
 									<li id="bankManage"><a target="bankManage-sc" href="bankInfo">银行账户管理</a></li>
 									<li id="sureInforManage"><a>认证资料管理</a></li>
-									<li id="supply"><a target="supply-sc" href="memberEnterprise/mySupplier">我的供应商</a></li>
+									<li id="supply"><a target="supply-sc" href="mySupplier">我的供应商</a></li>
 								</ul>
 							</li>
 						</ul>
