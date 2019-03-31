@@ -39,14 +39,15 @@
                         <label for="LPC">法人证件号：</label><input type="text" id="LPC" name="LPC">
                     </div>
                     <div>
-                        企业类型：
-                        <%--<label for="qiyeType">企业类型：</label><input type="text" id="type" name="type">--%>
-                            <select id="enterpriseType" ><input type="text" id="type" name="type">
 
-                                <option value='1' >1. 核心企业</option>
-                                <option value='2' >2. 成员企业</option>
-                                <option value='3' >3. 供应商</option>
-                                <option value='4' >4. 保理商</option>
+                        <label for="qiyeType">企业类型：</label>
+                        <select name="type">
+                        <option value="1">核心企业</option>
+                        <option value="2">成员企业</option>
+                        <option value="3">供应商</option>
+                        <option value="4">保理商</option>
+                        </select>
+
                     </div>
                     <div>
                     <input type="submit" value="用户注册" id="register">

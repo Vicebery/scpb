@@ -33,8 +33,8 @@
 	</select>
 
 	<select id="selectUncheckedCTsByCEId" resultType="ChainTicket">
-		select chainTicket.id,amount,drawTime,state,ownerId,deadline,drawEnterprise from chainTicket,memberenterprise
-		where memberenterprise.coreEnterprise = #{coreEnterpriseId} and memberenterprise.id = chainTicket.drawEnterprise
+		select chainTicket.id,amount,drawTime,state,ownerId,deadline,drawEnterprise from chainTicket,memberEnterprise
+		where memberEnterprise.coreEnterprise = #{coreEnterpriseId} and memberEnterprise.id = chainTicket.drawEnterprise
 		and chainTicket.state = 0
 	</select>
 

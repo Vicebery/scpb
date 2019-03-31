@@ -4,14 +4,26 @@
 <html>
 <head>
     <title>链票开具成功</title>
+    <style>
+         div{
+             width:50%;
+             margin:0 auto;    
+         }
+         p{
+         font-size:1.4em;
+         text-align:left;
+         }
+    </style>
 </head>
     <body>
-        链票信息如下：<br/>
-        链票ID: ${chainTicket.id}<br/>
-        链票金额：${chainTicket.amount}<br/>
-        开具时间：${chainTicket.drawTime}<br/>
-        开票企业：${chainTicket.drawEnterprise}<br/>
-       链票状态：${chainTicket.state}<br/>
-        到期日：${chainTicket.deadline}<br/>
+    <div>
+       <p> 链票信息如下：</p>
+        <p>链票ID: ${chainTicket.id}</p>
+        <p>链票金额：${chainTicket.amount}</p>
+        <p>开具时间：${chainTicket.drawTime}</p>
+        <p>开票企业：${chainTicket.drawEnterprise}</p>
+       <p>链票状态：${chainTicket.state}</p>
+       <p> 到期日：${chainTicket.deadline}</p>
+    </div>
     </body>
 </html>

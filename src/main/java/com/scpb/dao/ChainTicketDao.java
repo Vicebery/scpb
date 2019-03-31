@@ -13,7 +13,7 @@ public interface ChainTicketDao {
 
     void updateCTState(ChainTicket chainTicket);
 
-    void updateCTStateById(@Param("state") int state, @Param("id") String id);
+    void updateCTStateById(@Param("id") String id, @Param("state") int state);
 
     //查找某企业的所有链票
     List<ChainTicket> selectChainTicketsByEnterpriseId(String ownerId);

@@ -1,9 +1,22 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <h1 align = "center">尊敬的<%=session.getAttribute("id")%>，您已注册成功，请前往登陆</h1>
+
+    <title>用户注册信息</title>
+    <style>
+     div{
+     width:50%;
+     margin:0 auto;
+     }
+     p{
+       font-size:1.4em;
+     }
+    </style>
+
 </head>
+ 
 <body>
+ <h1 align = "center">尊敬的<%=session.getAttribute("id")%>，您已注册成功，请前往登陆</h1>
     <div style="text-align:center">
     <a href="login" align ="center">
         <button >前往登陆</button>
@@ -19,5 +32,6 @@
     <%--UCC：${UCC}<br/>--%>
     <%--LPC：${LPC}<br/>--%>
     <%--企业类型：${type}<br/>--%>
+
 </body>
 </html>

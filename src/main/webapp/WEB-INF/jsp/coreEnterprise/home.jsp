@@ -12,6 +12,7 @@
 		<link rel="stylesheet" type="text/css" href="css/heixin.css">
 		<script src="js/jquery-3.3.1.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+		<script src="js/queryLimitForCE.js" type="text/javascript"></script>
 	</head>
 	<body>
 		<div class="container">
@@ -25,14 +26,14 @@
 						<ul>
 							<li data-toggle="collapse" data-target="#ex1"><a>我的额度</a>
 								<ul id="ex1" class="collapse">
-									<li id="limitquery"><a target="limitquery-sc" href="coreEnterprise/queryLimit">额度查询</a></li>
-									<li id="limitdistribution"><a target="limitdistribution-sc" href="coreEnterprise/allocateLimit">额度分配</a></li>	
+									<li id="limitquery"><a href="javascript:void(0)" onclick="queryLimit()">额度查询</a></li>
+									<li id="limitdistribution"><a target="limitdistribution-sc" href="coreEnterprise/goAllocateLimit">额度分配</a></li>	
 										
 								</ul>
 							</li>
 							<li data-toggle="collapse" data-target="#ex2"><a>我的链票</a>
 								<ul id="ex2" class="collapse">
-									<li id="ctquery"><a target="ctquery-sc" href="coreEnterprise/chainTickets">链票查询</a></li>
+									<li id="ctquery"><a target="ctquery-sc" href="chainTickets">链票查询</a></li>
 									<li id="drawct"><a target="drawct-sc" href="coreEnterprise/coreEnterpriseDrawCT">链票开具</a></li>
 								</ul>
 							</li>
@@ -48,7 +49,7 @@
 									<li id="qyUserManage"><a>企业用户管理</a></li>
 									<li id="bankManage"><a target="bankManage-sc" href="bankInfo">银行账户管理</a></li>
 									<li id="sureInforManage"><a>认证资料管理</a></li>
-									<li id="supply"><a>我的供应商</a></li>
+									<li id="supply"><a target="supply-showcontent" href="coreEnterprise/mySupplier">我的供应商</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -58,8 +59,9 @@
 						<div id="limitquery-page">
 							<p>我的额度:</p>
 							<div id="limitquery-showcontent">
-								<iframe name="limitquery-sc" width="100%">
-	    						</iframe>
+								<label style="font-size:2em;margin-left:30%;">
+    								    敞口额度：<span id="limitResult" value="${limitResult}"></span> 
+    							</label>
 							</div>
 						</div>
 						
@@ -123,7 +125,10 @@
 						
 						<div id="supply-page" style="display:none">
 							<p>我的供应商:</p>
-							<div id="supply-showcontent"></div>
+							<div id="supply-showcontent">
+								<iframe name="supply-showcontent" width="100%">
+								</iframe>
+							</div>
 						</div>
 					</div>
 

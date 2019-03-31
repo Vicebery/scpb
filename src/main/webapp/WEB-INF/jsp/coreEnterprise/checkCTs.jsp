@@ -7,7 +7,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>待审核链票列表</title>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 	<script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 </head>
@@ -20,7 +20,7 @@
 			<th>生成时间</th>
 			<th>开票企业</th>
 			<th>过期时间</th>
-			<th>链票状态</th>
+			<th>链票详情</th>
 		</tr></thead>
 		<c:forEach items="${chainTicketList }" var="chainTicket">
 		<tbody><tr>
@@ -29,9 +29,8 @@
 			<td>${chainTicket.drawTime}</td>
 			<td>${chainTicket.drawEnterprise }</td>
 			<td>${chainTicket.deadline }</td>
-			<td>${chainTicket.state }</td>
-			<td> <a href="passCheckCT?id=${chainTicket.id}&state=2">审核通过</a></td>
-			<td> <a href="passCheckCT?id=${chainTicket.id}&state=1">不予通过</a></td>
+			<td> <a href="checkCTDetails?id=${chainTicket.id}">查看详情</a></td>
+
 		</tr></tbody>
 		</c:forEach>
 		

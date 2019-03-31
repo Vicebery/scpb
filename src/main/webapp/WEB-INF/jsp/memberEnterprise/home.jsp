@@ -12,6 +12,7 @@
 		<link rel="stylesheet" type="text/css" href="css/chengyuan.css">
 		<script src="js/jquery-3.3.1.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+		<script src="js/queryLimitForME.js" type="text/javascript"></script>
 	</head>
 	<body>
 		<div class="container">
@@ -25,7 +26,7 @@
 						<ul>
 							<li data-toggle="collapse" data-target="#ex1"><a>我的额度</a>
 								<ul id="ex1" class="collapse">
-									<li id="limitquery"><a>额度查询</a></li>
+									<li id="limitquery"><a href="javascript:void(0)" onclick="queryLimit()">额度查询</a></li>
 										
 								</ul>
 							</li>
@@ -38,11 +39,11 @@
 							
 							<li data-toggle="collapse" data-target="#ex4"><a>产品管理</a>
 								<ul id="ex4" class="collapse">
-									<li id="qyInforManage"><a target="showcontent" href="managerInfo">企业信息管理</a></li>
+									<li id="qyInforManage"><a target="qyInforManage-sc" href="managerInfo">企业信息管理</a></li>
 									<li id="qyUserManage"><a>企业用户管理</a></li>
-									<li id="bankManage"><a>银行账户管理</a></li>
+									<li id="bankManage"><a target="bankManage-sc" href="bankInfo">银行账户管理</a></li>
 									<li id="sureInforManage"><a>认证资料管理</a></li>
-									<li id="supply"><a>我的供应商</a></li>
+									<li id="supply"><a target="supply-showcontent" href="memberEnterprise/mySupplier">我的供应商</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -51,7 +52,11 @@
 
 						<div id="limitquery-page">
 							<p>我的额度:</p>
-							<div id="limitquery-sc"></div>
+							<div id="limitquery-showcontent">
+								 <label style="font-size:2em;margin-left:30%;">
+    								    敞口额度：<span id="limitResult" value="${limitResult}"></span> 
+    							</label>
+							</div>
 						</div>
 
 						<div id="ctquery-page" style="display:none">
@@ -73,7 +78,10 @@
 
 						<div id="qyInforManage-page" style="display:none">
 							<p>企业信息管理:</p>
-							<div id="qyInforManage-showcontent"></div>
+							<div id="qyInforManage-showcontent">
+								<iframe name="qyInforManage-sc" width="100%">
+    							</iframe>
+							</div>
 						</div>
 
 						<div id="qyUserManage-page" style="display:none">
@@ -83,7 +91,10 @@
 
 						<div id="bankManage-page" style="display:none">
 							<p>银行账户管理:</p>
-							<div id="bankManage-showcontent"></div>
+							<div id="bankManage-showcontent">
+								<iframe name="bankManage-sc" width="100%">
+    							</iframe>
+							</div>
 						</div>
 
 						<div id="sureInforManage-page" style="display:none">
@@ -93,7 +104,10 @@
 
 						<div id="supply-page" style="display:none">
 							<p>我的供应商:</p>
-							<div id="supply-showcontent"></div>
+							<div id="supply-showcontent">
+								<iframe name="supply-showcontent" width="100%">
+								</iframe>
+							</div>
 						</div>
 					</div>
 

@@ -7,6 +7,9 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>融资待审核列表</title>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 </head>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
@@ -43,7 +46,7 @@
 
 <body>
 待审核链票列表：
-<table width="100%" border=1>
+<table width="100%" class="table table-bordered table-hover">
     <tr>
         <td>链票ID</td>
         <td>金额</td>

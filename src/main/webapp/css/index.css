@@ -46,8 +46,10 @@ span{
 	margin-left:10%;
 }
 label{
+	display:inline-block;
 	font-size: 1.2em;
-     width:14%;
+     width:12%;
+     text-align:right;
 }
 input{
 	width:70%;

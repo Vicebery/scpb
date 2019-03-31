@@ -27,12 +27,13 @@ input{
     border-radius:5px;
 }
 </style>
+
 </head>
 <body>
- <form action="<%=request.getContextPath()%>/coreEnterprise/allocateLimit" method="get">
-       <label>企业id:</label><input type="text" name="id"/><br>
+ <form action="<%=request.getContextPath()%>/coreEnterprise/allocateLimit" method="post">
+       <label>企业id:</label><input type="text" name="memberId"/><br>
        <label>额度设置：</label><input type="text" name="limit"/><br>
-        <input style="margin-left:66px;margin-top:8px"type="submit" value="确认" />
+        <input style="margin-left:66px;margin-top:8px" type="submit" value="确认" />
     </form>
 </body>
 </html>

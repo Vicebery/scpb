@@ -11,6 +11,6 @@
     <title>融资状态</title>
 </head>
 <body>
-	审核通过，同意融资！
+	 <p style="font-size:1.4em;text-align:center">审核通过，同意融资！</p>
 </body>
 </html>

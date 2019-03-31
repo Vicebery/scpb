@@ -9,6 +9,7 @@ import com.scpb.entity.ChainTicket;
 import com.scpb.entity.Enterprise;
 import com.scpb.service.ChainTicketService;
 import com.scpb.service.EnterpriseService;
+import com.scpb.utils.StateMap;
 
 import java.util.List;
 import java.util.Map;
@@ -46,29 +47,7 @@ public class EnterpriseController {
 		return "register";
 	}
 
-	@RequestMapping(value = "/managerInfo", method = RequestMethod.GET)
-	public ModelAndView goManagerInfo(HttpSession session) {
-		String id = (String) session.getAttribute("id");
-		Enterprise enterprise = enterpriseService.getEnterpriseById(id);
-		ModelAndView mav = new ModelAndView();
-		if (enterprise != null)
-			mav.addObject(enterprise);
-		mav.setViewName("modifyInfo");
-		return mav;
-	}
-
-	@RequestMapping(value = "/bankInfo", method = RequestMethod.GET)
-	public ModelAndView gobankManageInfo(HttpSession session) {
-		String id = (String) session.getAttribute("id");
-		Enterprise enterprise = enterpriseService.getEnterpriseById(id);
-		ModelAndView mav = new ModelAndView();
-		if (enterprise != null)
-			mav.addObject(enterprise);
-		mav.setViewName("bankManageInfo");
-		return mav;
-	}
-
-	@RequestMapping(value = "/userLogin", method = RequestMethod.POST)
+	@RequestMapping(value = "/user", method = RequestMethod.POST)
 	public String login(String id, String pwd, Map<String, Object> map, HttpSession session) {
 		Enterprise enterprise = enterpriseService.getEnterpriseById(id);
 		// System.out.println(id);
@@ -127,7 +106,7 @@ public class EnterpriseController {
 		List<ChainTicket> chainTicketList = chainTicketService.getChainTicketsByEnterpriseId(id);
 		// 测试是否获取查询结果集
 //		System.out.println(Arrays.toString(chainTicketList.toArray()));
-
+		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("chainTicketList", chainTicketList);
 
@@ -135,8 +114,19 @@ public class EnterpriseController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/modifyInfo", method = RequestMethod.GET)
-	public ModelAndView modifyInfo(HttpSession session) {
+//	@RequestMapping(value = "/modifyInfo", method = RequestMethod.GET)
+//	public ModelAndView modifyInfo(HttpSession session) {
+//		String id = (String) session.getAttribute("id");
+//		Enterprise enterprise = enterpriseService.getEnterpriseById(id);
+//		ModelAndView mav = new ModelAndView();
+//		if (enterprise != null)
+//			mav.addObject(enterprise);
+//		mav.setViewName("modifyInfo");
+//		return mav;
+//	}
+
+	@RequestMapping(value = "/managerInfo", method = RequestMethod.GET)
+	public ModelAndView goManagerInfo(HttpSession session) {
 		String id = (String) session.getAttribute("id");
 		Enterprise enterprise = enterpriseService.getEnterpriseById(id);
 		ModelAndView mav = new ModelAndView();
@@ -146,6 +136,17 @@ public class EnterpriseController {
 		return mav;
 	}
 
+	@RequestMapping(value = "/bankInfo", method = RequestMethod.GET)
+	public ModelAndView gobankManageInfo(HttpSession session) {
+		String id = (String) session.getAttribute("id");
+		Enterprise enterprise = enterpriseService.getEnterpriseById(id);
+		ModelAndView mav = new ModelAndView();
+		if (enterprise != null)
+			mav.addObject(enterprise);
+		mav.setViewName("bankManageInfo");
+		return mav;
+	}
+	
 	@RequestMapping(value = "/execModifyInfo", method = RequestMethod.GET)
 	public ModelAndView execmodifyInfo(String id, String account, String pwd, String bank, String name, String UCC,
 			String LPC, int type) {
