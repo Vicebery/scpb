@@ -26,8 +26,17 @@ public class MemberEnterpriseServiceImpl implements MemberEnterpriseService {
     }
 
     @Transactional
-    public void addMemberEnterprise(String id) {
-        memberEnterpriseDao.insertMemberEnterprise(id);
+    public List<Enterprise> getSuppliersById(String id) {
+        return memberEnterpriseDao.selectSupplierById(id);
     }
 
+    @Transactional
+    public void addSupplier(String id, String mySupplier) {
+        memberEnterpriseDao.insertSupplier(id,mySupplier);
+    }
+
+    @Transactional
+    public void deleteSupplier(String id, String mySupplier) {
+        memberEnterpriseDao.deleteSupplier(id,mySupplier);
+    }
 }

@@ -10,5 +10,9 @@ public interface CoreEnterpriseDao {
 
     int updateLimitById(@Param("limit")String limit, @Param("id")String id);
 
-    void insertCoreEnterprise(String id);
+    List<Enterprise> selectSupplierById(String id);
+
+    void deleteSupplier(@Param("id")String id, @Param("mySupplier")String mySupplier);
+
+    void insertSupplier(@Param("id")String id, @Param("mySupplier")String mySupplier);
 }
