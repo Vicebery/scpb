@@ -54,14 +54,23 @@ public class MemberEnterpriseController {
     @RequestMapping("/drawCT")
     public ModelAndView drawCT(String applicant, String amount,
                                String deadline, String tradeRemark, HttpSession session) {
-    	String drawEnterprise = (String) session.getAttribute("id");
-    	//生成处于审核状态的链票，statue为0
-        ChainTicket chainTicket = new ChainTicket(amount, deadline, drawEnterprise, drawEnterprise);
-        chainTicketService.addChainTicket(chainTicket);
-        //修改开具链票后生成的新的额度
-        double limit = Double.valueOf(memberEnterpriseService.getLimitById(drawEnterprise));
+    	String drawEnterprise = (String) session.getAttribute("id");  	
+    	String oldLimit = memberEnterpriseService.getLimitById(drawEnterprise);
+		
+		if(oldLimit==null||oldLimit.length()==0||"0".equals(oldLimit)||"0.0".equals(oldLimit)){
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("memberEnterprise/drawCT");		
+			mav.addObject("msg", "当前额度为0，无法开具");
+			return mav;
+		}
+    	
+        double limit = Double.valueOf(oldLimit);
       //判断   当前所拥有额度-开具金额
       	if((limit - Double.valueOf(amount))>=0){
+      		//生成处于审核状态的链票，statue为0
+            ChainTicket chainTicket = new ChainTicket(amount, deadline, drawEnterprise, drawEnterprise);
+            chainTicketService.addChainTicket(chainTicket);
+          //修改开具链票后生成的新的额度
       		String newLimit = Double.toString(limit-Double.valueOf(amount));
             memberEnterpriseService.modifyLimitById(newLimit,drawEnterprise);
             ChainTicket receiveCT = chainTicket;

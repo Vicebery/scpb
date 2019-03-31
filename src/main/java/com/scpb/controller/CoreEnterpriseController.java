@@ -60,13 +60,20 @@ public class CoreEnterpriseController {
 	@RequestMapping("/drawSuccess")
 	public ModelAndView drawCT(String applicant, String amount, HttpSession session, String deadline,
 			String tradeRemark) {
-
 		String drawEnterprise = (String) session.getAttribute("id");
-		ChainTicket chainTicket = new ChainTicket(2, amount, deadline, drawEnterprise, drawEnterprise);
-		chainTicketService.addChainTicket(chainTicket);
-		double limit = Double.valueOf(coreEnterpriseService.getLimitById(drawEnterprise));
-		//判断开具金额是否大于当前所拥有额度
+		String oldLimit = coreEnterpriseService.getLimitById(drawEnterprise);
+		
+		if(oldLimit==null||oldLimit.length()==0||"0".equals(oldLimit)||"0.0".equals(oldLimit)){
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("coreEnterprise/drawCT");		
+			mav.addObject("msg", "当前额度为0，无法开具");
+			return mav;
+		}
+		double limit = Double.valueOf(oldLimit);
+		//判断开具金额是否大于当前所拥有额度,amount的异常情况由前台校验
 		if((limit - Double.valueOf(amount))>=0){
+			ChainTicket chainTicket = new ChainTicket(2, amount, deadline, drawEnterprise, drawEnterprise);
+			chainTicketService.addChainTicket(chainTicket);
 			String newLimit = Double.toString(limit - Double.valueOf(amount));
 			coreEnterpriseService.modifyLimitById(newLimit, drawEnterprise);
 
