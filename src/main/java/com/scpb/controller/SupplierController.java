@@ -104,7 +104,7 @@ public class SupplierController {
 		TradeInformation tradeInformation = new TradeInformation(ownerId, factor, amount, tradeRemark, ctid,
 				receiveCT.getId(), remainCT.getId());
 		tradeService.addTradeInformation(tradeInformation);
-		tradeService.modifyTradeInfStateById(tradeInformation.getId(), 2);
+		tradeService.modifyTradeInfStateById(tradeInformation.getId(), 0);
 		return "supplier/financingApplySuccess";
 	}
 
@@ -120,7 +120,7 @@ public class SupplierController {
 		    return "supplier/transfer";
         }
 		chainTicketService.modifyCTStateById(2, ctid);
-		ChainTicket receiveCT = new ChainTicket(1, amount, chainTicket.getDeadline(), firstParty,
+		ChainTicket receiveCT = new ChainTicket(2, amount, chainTicket.getDeadline(), firstParty,
 				chainTicket.getDrawEnterprise());
 		String remainCTAmount = Double.toString((Double.valueOf(chainTicket.getAmount()) - Double.valueOf(amount)));
 		ChainTicket remainCT = new ChainTicket(3, remainCTAmount, chainTicket.getDeadline(), firstParty,

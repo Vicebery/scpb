@@ -62,4 +62,9 @@ public class TradeServiceImpl implements TradeService {
 	public void setVerifyInfByPayCTId(String chainTicketId, int verifyInf) {
 		tradeDao.updateVerifyInfByPayCTId(chainTicketId, verifyInf);
 	}
+
+    @Override
+    public List<String> getUncheckedReceiveCTidBySecondParty(String id) {
+        return tradeDao.selectUnchekedReceiveCTidBySecondParty(id);
+    }
 }

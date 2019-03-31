@@ -27,4 +27,6 @@ public interface TradeDao {
 	TradeInformation selectTradeInfByReceiveCT(String receiveCT);
 
 	void updateTradeInfStateById(@Param("id") String id, @Param("verifyInf") int verifyInf);
+
+    List<String> selectUnchekedReceiveCTidBySecondParty(String id);
 }

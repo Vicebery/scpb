@@ -6,6 +6,7 @@ import com.scpb.service.ChainTicketService;
 import com.scpb.service.CoreEnterpriseService;
 import com.scpb.service.TradeService;
 
+import com.scpb.utils.StateMap;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,7 +33,7 @@ public class factorController {
 	public ModelAndView receiveCT(HttpSession session) {
 		String id = (String) session.getAttribute("id");
 		System.out.println("session中的id" + id);
-		List<String> ctids = tradeService.getReceiveCTidBySecondParty(id);
+		List<String> ctids = tradeService.getUncheckedReceiveCTidBySecondParty(id);
 		// System.out.println(Arrays.toString(ctids.toArray()));
 		List<ChainTicket> chainTicketList = new ArrayList<>();
 		for (String ctid : ctids) {
@@ -49,29 +50,66 @@ public class factorController {
 		return mav;
 	}
 
-	@RequestMapping("/acceptFinancing")
-	public String acceptFinancing(HttpSession session, HttpServletRequest request) {
-
-		String factorId = (String) session.getAttribute("id");
-		String receiveCT = request.getParameter("chainTicketId");
-		System.out.println("receiveCT" + receiveCT);
-		TradeInformation tradeInformation = tradeService.getTradeInfByReceiveCT(receiveCT);
-		chainTicketService.modifyCTOwnerIdById(factorId, receiveCT);
-		chainTicketService.modifyCTStateById(3, receiveCT);
-		tradeService.modifyTradeInfStateById(tradeInformation.getId(), 3);
-		return "factor/success";
+	@RequestMapping("/checkCTDetails")
+	public ModelAndView checkCTDetails(String id) {
+		// test code
+//		System.out.println("当前企业:" + coreEnterpriseId);
+		// 获取当前企业的成员企业开具的未审核的链票
+		ChainTicket selectedCT = chainTicketService.getChainTicketById(id);
+		// 测试是否获取查询结果集
+//		System.out.println(Arrays.toString(chainTicketList.toArray()));
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("chainTicket", selectedCT);
+		mav.addObject("chainTicketState", StateMap.getState(selectedCT.getState()));
+		mav.setViewName("factor/selectedCTDetails");
+		return mav;
 	}
 
-	@RequestMapping("/rejectFinancing")
-	public String rejectFinancing(HttpServletRequest request) {
+	@RequestMapping("/passCheckCT")
+	public ModelAndView passCheckCT(String id, String state) {
+		String chainTicketId = id;
+		int changedState = Integer.parseInt(state);
+		TradeInformation tradeInformation = tradeService.getTradeInfByReceiveCT(chainTicketId);
+		ChainTicket currentCT = chainTicketService.getChainTicketById(id);
+		// test code
+//		System.out.println("当前企业:" + chainTicketId + "state:" + state);
 
-		String receiveCT = request.getParameter("chainTicketId");
-		System.out.println("receiveCT" + receiveCT);
-		TradeInformation tradeInformation = tradeService.getTradeInfByReceiveCT(receiveCT);
-		chainTicketService.modifyCTStateById(3, receiveCT);
-		tradeService.modifyTradeInfStateById(tradeInformation.getId(), 1);
-		return "factor/fail";
+		// 修改当前选中链票状态
+		chainTicketService.setStateByChainTicketId(chainTicketId, changedState);
+		// 修改交易信息状态
+		tradeService.modifyTradeInfStateById(tradeInformation.getId(),3);
+		// 测试是否获取查询结果集
+//		System.out.println("修改状态成功");
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("chainTicket", currentCT);
+		mav.addObject("chainTicketState", StateMap.getState(changedState));
+		mav.setViewName("factor/selectedCTDetails");
+		return mav;
 	}
+
+//	@RequestMapping("/acceptFinancing")
+//	public String acceptFinancing(HttpSession session, HttpServletRequest request) {
+//
+//		String factorId = (String) session.getAttribute("id");
+//		String receiveCT = request.getParameter("chainTicketId");
+//		System.out.println("receiveCT" + receiveCT);
+//		TradeInformation tradeInformation = tradeService.getTradeInfByReceiveCT(receiveCT);
+//		chainTicketService.modifyCTOwnerIdById(factorId, receiveCT);
+//		chainTicketService.modifyCTStateById(3, receiveCT);
+//		tradeService.modifyTradeInfStateById(tradeInformation.getId(), 3);
+//		return "factor/success";
+//	}
+//
+//	@RequestMapping("/rejectFinancing")
+//	public String rejectFinancing(HttpServletRequest request) {
+//
+//		String receiveCT = request.getParameter("chainTicketId");
+//		System.out.println("receiveCT" + receiveCT);
+//		TradeInformation tradeInformation = tradeService.getTradeInfByReceiveCT(receiveCT);
+//		chainTicketService.modifyCTStateById(3, receiveCT);
+//		tradeService.modifyTradeInfStateById(tradeInformation.getId(), 1);
+//		return "factor/fail";
+//	}
 	
 	@RequestMapping("/goSetLimit")
 	public String goSetLimit() {
