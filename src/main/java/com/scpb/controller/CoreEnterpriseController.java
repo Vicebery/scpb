@@ -66,7 +66,7 @@ public class CoreEnterpriseController {
 		chainTicketService.addChainTicket(chainTicket);
 		double limit = Double.valueOf(coreEnterpriseService.getLimitById(drawEnterprise));
 		//判断开具金额是否大于当前所拥有额度
-		if((limit - Double.valueOf(amount))>0){
+		if((limit - Double.valueOf(amount))>=0){
 			String newLimit = Double.toString(limit - Double.valueOf(amount));
 			coreEnterpriseService.modifyLimitById(newLimit, drawEnterprise);
 
@@ -100,23 +100,39 @@ public class CoreEnterpriseController {
 		//核心企业额度减去limit
 		String coreEnterpriseId = (String) session.getAttribute("id");
 
-		String oldLimitForCE = coreEnterpriseService.getLimitById(coreEnterpriseId);		
-		double oldLimitCE = Double.valueOf(oldLimitForCE);
-		String currentLimitForCE = Double.toString(oldLimitCE - Double.valueOf(limit));
-		coreEnterpriseService.modifyLimitById(currentLimitForCE, coreEnterpriseId);
-		//成员企业额度加上limit
-		String oldLimitForME = memberEnterpriseService.getLimitById(memberId);
-		if(oldLimitForME==null||oldLimitForME.length()==0)//如果没有记录，则默认额度为0
-			oldLimitForME="0";
-		double oldLimitME = Double.valueOf(oldLimitForME);
-		String currentLimitForME = Double.toString(oldLimitME+Double.valueOf(limit));
-		memberEnterpriseService.modifyLimitById(currentLimitForME, memberId);
-		
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("coreEnterprise/allocateLimitSuccess");		
-		mav.addObject("memberId", memberId);
-		mav.addObject("limit",currentLimitForME);
-		return mav;
+		String oldLimitForCE = coreEnterpriseService.getLimitById(coreEnterpriseId);
+		//判断额度为空，或者为0
+		if(oldLimitForCE==null||oldLimitForCE.length()==0||"0".equals(oldLimitForCE)||"0.0".equals(oldLimitForCE)){
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("coreEnterprise/allocateLimit");		
+			mav.addObject("msg", "当前额度为0，无法设置");
+			return mav;
+		}else{
+			double oldLimitCE = Double.valueOf(oldLimitForCE);
+			//判断所设额度是否小于当前拥有额度
+			if((oldLimitCE - Double.valueOf(limit))>=0){
+				String currentLimitForCE = Double.toString(oldLimitCE - Double.valueOf(limit));
+				coreEnterpriseService.modifyLimitById(currentLimitForCE, coreEnterpriseId);
+				//成员企业额度加上limit
+				String oldLimitForME = memberEnterpriseService.getLimitById(memberId);
+				if(oldLimitForME==null||oldLimitForME.length()==0)//如果没有记录，则默认额度为0
+					oldLimitForME="0";
+				double oldLimitME = Double.valueOf(oldLimitForME);
+				String currentLimitForME = Double.toString(oldLimitME+Double.valueOf(limit));
+				memberEnterpriseService.modifyLimitById(currentLimitForME, memberId);
+				
+				ModelAndView mav = new ModelAndView();
+				mav.setViewName("coreEnterprise/allocateLimitSuccess");		
+				mav.addObject("memberId", memberId);
+				mav.addObject("limit",currentLimitForME);
+				return mav;
+			}else{
+				ModelAndView mav = new ModelAndView();
+				mav.setViewName("coreEnterprise/allocateLimit");		
+				mav.addObject("msg", "所设额度大于当前额度");
+				return mav;
+			}		
+		}		
 	}
 
 	@RequestMapping("/queryLimit")
@@ -125,8 +141,9 @@ public class CoreEnterpriseController {
 		String id = (String) session.getAttribute("id");
 //		System.out.println("核心企业 "+id);
 		String result = coreEnterpriseService.getLimitById(id);
+
 		Map<String,String> resultMap = new HashMap<String, String>();  
-		if(result==null){
+		if(result==null||result.length()==0){
 			resultMap.put("limitResult", "暂无额度");
 		}else{
 			resultMap.put("limitResult", result);

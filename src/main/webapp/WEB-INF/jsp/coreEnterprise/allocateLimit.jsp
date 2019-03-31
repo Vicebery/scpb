@@ -32,7 +32,8 @@ input{
 <body>
  <form action="<%=request.getContextPath()%>/coreEnterprise/allocateLimit" method="post">
        <label>企业id:</label><input type="text" name="memberId"/><br>
-       <label>额度设置：</label><input type="text" name="limit"/><br>
+       <label>额度设置：</label><input type="text" name="limit"/>
+       <span style="color:red;font-size:16px;">${msg}</span><br>
         <input style="margin-left:66px;margin-top:8px" type="submit" value="确认" />
     </form>
 </body>

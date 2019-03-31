@@ -10,7 +10,8 @@
 <body>
  	<form action="<%=request.getContextPath()%>/memberEnterprise/drawCT" method="get">
 	        <label>申请企业:</label><input type="text" name="applicant"/><br>
-	        <label>链票金额:</label><input type="text" name="amount"/><br>
+	        <label>链票金额:</label><input type="text" name="amount"/>
+	        <span style="color:red;font-size:16px;">${msg}</span><br>
 	        <label>到期日:</label><input type="text" name="deadline"/><br>
 	        <label>开具备注</label><input type="text" name="tradeRemark"/><br>
 

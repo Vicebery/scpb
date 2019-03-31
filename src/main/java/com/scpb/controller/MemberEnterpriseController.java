@@ -60,20 +60,28 @@ public class MemberEnterpriseController {
         chainTicketService.addChainTicket(chainTicket);
         //修改开具链票后生成的新的额度
         double limit = Double.valueOf(memberEnterpriseService.getLimitById(drawEnterprise));
-        String newLimit = Double.toString(limit-Double.valueOf(amount));
-        memberEnterpriseService.modifyLimitById(newLimit,drawEnterprise);
-        ChainTicket receiveCT = chainTicket;
-		ChainTicket remainCT = new ChainTicket(6, "0", chainTicket.getDeadline(), drawEnterprise, drawEnterprise);
-        //生成新的交易记录，状态为0--审核中
-		TradeInformation tradeInformation = new TradeInformation(drawEnterprise, applicant, amount, tradeRemark,
-				chainTicket.getId(), receiveCT.getId(), remainCT.getId());
-		tradeService.addTradeInformation(tradeInformation);
-        
-        ModelAndView mav = new ModelAndView();
-        mav.addObject(chainTicket);
-        mav.addObject("chainTicketState", StateMap.getState(chainTicket.getState()));
-        mav.setViewName("memberEnterprise/drawCTSuccess");
-        return mav;
+      //判断   当前所拥有额度-开具金额
+      	if((limit - Double.valueOf(amount))>=0){
+      		String newLimit = Double.toString(limit-Double.valueOf(amount));
+            memberEnterpriseService.modifyLimitById(newLimit,drawEnterprise);
+            ChainTicket receiveCT = chainTicket;
+    		ChainTicket remainCT = new ChainTicket(6, "0", chainTicket.getDeadline(), drawEnterprise, drawEnterprise);
+            //生成新的交易记录，状态为0--审核中
+    		TradeInformation tradeInformation = new TradeInformation(drawEnterprise, applicant, amount, tradeRemark,
+    				chainTicket.getId(), receiveCT.getId(), remainCT.getId());
+    		tradeService.addTradeInformation(tradeInformation);
+            
+            ModelAndView mav = new ModelAndView();
+            mav.addObject(chainTicket);
+            mav.addObject("chainTicketState", StateMap.getState(chainTicket.getState()));
+            mav.setViewName("memberEnterprise/drawCTSuccess");
+            return mav;
+      	}else{
+      		ModelAndView mav = new ModelAndView();
+			mav.addObject("msg","当前设置金额过大");
+			mav.setViewName("memberEnterprise/drawCT");
+			return mav;
+      	}
     }
 
 	@RequestMapping("/queryLimit")

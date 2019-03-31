@@ -14,4 +14,14 @@ public class StateMap {
 		stateMap.put(6, "死亡");
 		return stateMap.get(state);
 	}
+	
+	public static String getVerifyInf(int state){
+		HashMap<Integer, String> stateMap = new HashMap<>();
+		stateMap.put(0, "审核中");
+		stateMap.put(1, "审核未通过");
+		stateMap.put(2, "待签收");
+		stateMap.put(3, "已签收");
+		stateMap.put(4, "拒签");
+		return stateMap.get(state);
+	}
 }

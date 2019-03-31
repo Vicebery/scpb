@@ -19,6 +19,6 @@ p{
        <p>额度设置成功</p>
        <p>企业id:${id}</p>
       <p>额度设置：${limit}</p>
-
+	<P> <a class="btn btn-primary btn-lg"  href="goSetLimit">返回</a></P>
 </body>
 </html>
