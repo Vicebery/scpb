@@ -21,6 +21,10 @@ public interface EnterpriseService {
 
 	void addSupplier(String id, String mySupplier);
 
-	void deleteSupplier(String id, String mySupplier);	
-	
+	void deleteSupplier(String id, String mySupplier);
+
+    String getBankById(String id);
+
+	void modifyBankById(String bank,String id);
+
 }
