@@ -2,6 +2,7 @@ package com.scpb.service.impl;
 
 import com.scpb.dao.MemberEnterpriseDao;
 import com.scpb.entity.Enterprise;
+import com.scpb.entity.MemberEnterprise;
 import com.scpb.service.MemberEnterpriseService;
 
 import org.springframework.stereotype.Service;
@@ -29,5 +30,10 @@ public class MemberEnterpriseServiceImpl implements MemberEnterpriseService {
     public void addMemberEnterprise(String id) {
         memberEnterpriseDao.insertMemberEnterprise(id);
     }
+
+	@Override
+	public List<MemberEnterprise> getAllMemberEnterprise() {
+		return memberEnterpriseDao.selectAllMemberEnterprise();
+	}
 
 }
