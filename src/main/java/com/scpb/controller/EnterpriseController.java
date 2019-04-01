@@ -158,14 +158,24 @@ public class EnterpriseController {
 	}
 	
 	@RequestMapping(value = "/execModifyInfo", method = RequestMethod.GET)
-	public ModelAndView execmodifyInfo(String id, String account, String pwd, String bank, String name, String UCC,
-			String LPC, int type) {
+	public ModelAndView execmodifyInfo(String account, String pwd, String name, String UCC,
+			String LPC,HttpSession session) {
+		String id = (String)session.getAttribute("id");
+		String bank = enterpriseService.getBankById(id);
+		int type = enterpriseService.getEnterpriseTypeById(id);
 		Enterprise enterprise = new Enterprise(id, account, pwd, bank, name, UCC, LPC, type);
 		enterpriseService.updateEnterprise(enterprise);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject(enterprise);
-		mav.setViewName("modifyInfo");
+		mav.setViewName("modifyInfoSuccess");
 		return mav;
+	}
+
+	@RequestMapping(value = "/modifyBank", method = RequestMethod.GET)
+	public String modifyBank(String bank,HttpSession session){
+		String id = (String)session.getAttribute("id");
+		enterpriseService.modifyBankById(bank,id);
+		return "modifyBankSuccess";
 	}
 
 	@RequestMapping(value = "/mySupplier")

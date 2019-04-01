@@ -66,8 +66,9 @@ public class factorController {
 	}
 
 	@RequestMapping("/passCheckCT")
-	public ModelAndView passCheckCT(String id, String state) {
+	public ModelAndView passCheckCT(String id, String state,HttpSession session) {
 		String chainTicketId = id;
+		String factorId = (String)session.getAttribute("id");
 		int changedState = Integer.parseInt(state);
 		TradeInformation tradeInformation = tradeService.getTradeInfByReceiveCT(chainTicketId);
 		ChainTicket currentCT = chainTicketService.getChainTicketById(id);
@@ -75,9 +76,14 @@ public class factorController {
 //		System.out.println("当前企业:" + chainTicketId + "state:" + state);
 
 		// 修改当前选中链票状态
-		chainTicketService.setStateByChainTicketId(chainTicketId, changedState);
+        chainTicketService.modifyCTStateById(3,chainTicketId);
+        if(changedState == 3){
+            chainTicketService.modifyCTOwnerIdById(factorId,chainTicketId);
+        }
+//		chainTicketService.setStateByChainTicketId(chainTicketId, changedState);
 		// 修改交易信息状态
-		tradeService.modifyTradeInfStateById(tradeInformation.getId(),3);
+        tradeService.modifyTradeInfStateById(tradeInformation.getId(),changedState);
+//		tradeService.modifyTradeInfStateById(tradeInformation.getId(),3);
 		// 测试是否获取查询结果集
 //		System.out.println("修改状态成功");
 		ModelAndView mav = new ModelAndView();

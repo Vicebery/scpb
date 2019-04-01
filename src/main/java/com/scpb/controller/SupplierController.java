@@ -186,7 +186,9 @@ public class SupplierController {
 			String limit = coreEnterpriseService.getLimitById(enterpriseId);
 			String newLimit = Double.toString(Double.valueOf(limit) + Double.valueOf(chainTicket.getAmount()));
 			coreEnterpriseService.modifyLimitById(newLimit, enterpriseId);
-		}
+		}else{
+		    chainTicketService.modifyCTStateById(3,receiveCT);
+        }
 		return "supplier/receiveCTFail";
 	}
 

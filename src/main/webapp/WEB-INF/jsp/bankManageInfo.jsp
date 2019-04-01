@@ -38,7 +38,7 @@
 </head>
 <body>
 <font color="red">${requestScope.message }</font>
-<form action="<%=request.getContextPath()%>/execModifyInfo" method="get">
+<form action="<%=request.getContextPath()%>/modifyBank" method="get">
 
     <%--<p><label>企业Id:</label><input type="text" name="id" value="${enterprise.id}" readonly="true"/></p>--%>
     <%--<p><label>企业账户:</label> <input type="text" name="account" value="${enterprise.account}"/></p>--%>

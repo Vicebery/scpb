@@ -25,4 +25,8 @@ public interface EnterpriseDao {
     void insertMySupplier(@Param("id")String id, @Param("mySupplier")String mySupplier);
 
     void deleteMySupplier(@Param("id")String id, @Param("mySupplier")String mySupplier);
+
+    String selectBankById(String id);
+
+    void updateBankById(@Param("bank")String bank,@Param("id")String id);
 }

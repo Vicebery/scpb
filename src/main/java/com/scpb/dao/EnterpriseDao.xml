@@ -49,8 +49,16 @@
 		where supplyRelation.id = #{id} and enterprise.id = supplyRelation.mySupplier
 	</select>
 
+	<select id="selectBankById" resultType="String">
+		select bank from enterprise where id = #{id}
+	</select>
+
 	<update id="updateEnterprise">
 		update enterprise set account = #{account}, pwd = #{pwd}, bank = #{bank}, name = #{name}, UCC = #{UCC}, LPC = #{LPC}, type = #{type} where id = #{id}
+	</update>
+
+	<update id="updateBankById">
+		update enterprise set bank = #{bank} where id = #{id}
 	</update>
 
 	<insert id="insertMySupplier">

@@ -51,18 +51,28 @@ public class EnterpriseServiceImpl implements EnterpriseService{
 		return enterpriseDao.selectEnterpriseIdByAccount(account);
 	}
 
-	@Override
+	@Transactional
 	public List<Enterprise> getSuppliersById(String id) {
 		return enterpriseDao.selectMySupplierById(id);
 	}
 
-	@Override
+	@Transactional
 	public void addSupplier(String id, String mySupplier) {
 		enterpriseDao.insertMySupplier(id,mySupplier);
 	}
 
-	@Override
+	@Transactional
 	public void deleteSupplier(String id, String mySupplier) {
 		enterpriseDao.deleteMySupplier(id,mySupplier);
+	}
+
+	@Transactional
+	public String getBankById(String id) {
+		return enterpriseDao.selectBankById(id);
+	}
+
+	@Transactional
+	public void modifyBankById(String bank,String id) {
+		enterpriseDao.updateBankById(bank,id);
 	}
 }
