@@ -19,12 +19,12 @@
 				<div class="login-part">
 					<form  action="<%=request.getContextPath()%>/user" method="post" id="loginForm">
 						<div class="input-div">
-							<label for="userName">企业ID:</label><input type="text" id="id" name="id"  placeholder="请输入企业ID">
-							<span style="color:red;font-size:16px;">${msg}</span>
+							<label for="userName">企业账户:</label><input type="text" id="account" name="account"  placeholder="请输入企业账户">
+							<span style="color:red;font-size:16px;">${msg1}</span>
 						</div>
 						<div class="input-div">
 							<label for="userPassword">密码:</label><input type="password" id="pwd" name="pwd" placeholder="请输入密码">
-							<span style="color:red;font-size:16px;">${msg}</span>
+							<span style="color:red;font-size:16px;">${msg2}</span>
 						</div>
 						
 						<div class="btn-container">

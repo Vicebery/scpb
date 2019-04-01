@@ -1,6 +1,6 @@
 package com.scpb.service;
 
-import com.scpb.entity.Enterprise;
+import com.scpb.entity.MemberEnterprise;
 
 import java.util.List;
 
@@ -10,4 +10,6 @@ public interface MemberEnterpriseService {
     String getLimitById(String id);
 
     void addMemberEnterprise(String id);
+
+	List<MemberEnterprise> getAllMemberEnterprise();
 }

@@ -1,5 +1,6 @@
 package com.scpb.controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -23,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mysql.fabric.xmlrpc.base.Array;
 import com.scpb.entity.ChainTicket;
 import com.scpb.entity.Enterprise;
+import com.scpb.entity.MemberEnterprise;
 import com.scpb.service.EnterpriseService;
 import com.scpb.service.MemberEnterpriseService;
 
@@ -103,7 +105,9 @@ public class CoreEnterpriseController {
 	}
 	
 	@RequestMapping("/allocateLimit")
-	public ModelAndView allocate(String memberId, String limit, HttpSession session) {
+	public ModelAndView allocate(String enterpriseSelect, String limit, HttpSession session) {
+		String memberId = enterpriseSelect;
+//		System.out.println("测试成员企业ID: "+memberId);
 		//核心企业额度减去limit
 		String coreEnterpriseId = (String) session.getAttribute("id");
 
@@ -156,6 +160,16 @@ public class CoreEnterpriseController {
 			resultMap.put("limitResult", result);
 		}		
 		return resultMap;
+	}
+	//加载成员企业集合
+	@RequestMapping("/getMemberEnterpriseList")
+	@ResponseBody
+	public List<MemberEnterprise> getMemberEnterpriseList() {		
+		List<MemberEnterprise> memberEnterpriseList = new ArrayList<>();		
+		memberEnterpriseList = memberEnterpriseService.getAllMemberEnterprise();
+		//test code
+//		System.out.println("成员企业集合： "+memberEnterpriseList.toString());
+		return memberEnterpriseList;
 	}
 
 	// 链票开具初审

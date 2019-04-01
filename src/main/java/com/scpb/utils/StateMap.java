@@ -24,4 +24,13 @@ public class StateMap {
 		stateMap.put(4, "拒签");
 		return stateMap.get(state);
 	}
+	
+	public static String getType(int state){
+		HashMap<Integer, String> stateMap = new HashMap<>();
+		stateMap.put(1, "核心企业");
+		stateMap.put(2, "成员企业");
+		stateMap.put(3, "供应商");
+		stateMap.put(4, "保理商");
+		return stateMap.get(state);
+	}
 }

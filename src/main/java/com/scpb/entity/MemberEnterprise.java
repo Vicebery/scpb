@@ -3,7 +3,7 @@ package com.scpb.entity;
 public class MemberEnterprise {
 	private String id;
 	private String limit;
-	private String coreEnterpriseId;
+	private String name;
 
 	public String getId() {
 		return id;
@@ -21,12 +21,13 @@ public class MemberEnterprise {
 		this.limit = limit;
 	}
 
-	public String getCoreEnterpriseId() {
-		return coreEnterpriseId;
+
+	public String getName() {
+		return name;
 	}
 
-	public void setCoreEnterpriseId(String coreEnterpriseId) {
-		this.coreEnterpriseId = coreEnterpriseId;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Override
@@ -34,7 +35,7 @@ public class MemberEnterprise {
 		return "MemberEnterprise{" +
 				"id='" + id + '\'' +
 				", limit='" + limit + '\'' +
-				", coreEnterpriseId='" + coreEnterpriseId + '\'' +
+				", name='" + name + '\'' +
 				'}';
 	}
 }

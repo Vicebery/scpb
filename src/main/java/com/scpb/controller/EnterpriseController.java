@@ -65,16 +65,16 @@ public class EnterpriseController {
 	}
 
 	@RequestMapping(value = "/user", method = RequestMethod.POST)
-	public String login(String id, String pwd, Map<String, Object> map, HttpSession session) {
-		Enterprise enterprise = enterpriseService.getEnterpriseById(id);
+	public String login(String account, String pwd, Map<String, Object> map, HttpSession session) {
+		Enterprise enterprise = enterpriseService.getEnterpriseByAccount(account);
 		// System.out.println(id);
 		if (enterprise == null) {
-			map.put("msg", "该用户不存在");
+			map.put("msg1", "该用户不存在");
 			return "login";
 		} else {
 			if (pwd!=null && pwd.equals(enterprise.getPwd())) {
 				// 密码匹配成功
-				session.setAttribute("id", id);
+				session.setAttribute("id", enterprise.getId());
 				session.setAttribute("name", enterprise.getName());
 				// 判断企业类型
 //				System.out.println("判断企业类型："+enterprise.getName());
@@ -88,7 +88,7 @@ public class EnterpriseController {
 					return "factor/home";
 
 			} else {
-				map.put("msg", "用户与密码不匹配");
+				map.put("msg2", "用户与密码不匹配");
 				return "login";
 			}
 		}
@@ -96,26 +96,35 @@ public class EnterpriseController {
 	}
 	
 	@RequestMapping(value = "/registerFin", method = RequestMethod.POST)
-	public ModelAndView register(String id, String account, String pwd, String bank, String name, String UCC,
+	public ModelAndView register(String account, String pwd, String bank, String name, String UCC,
 			String LPC, int type,  HttpSession session) {
-		Enterprise enterprise = new Enterprise(id, account, pwd, bank, name, UCC, LPC, type);
-		session.setAttribute("id", id);
-		enterpriseService.addEnterprise(enterprise);
-		if(type==1) coreEnterpriseService.addCoreEnterprise(id);
-		if(type==2) memberEnterpriseService.addMemberEnterprise(id);
-		if(type==3) supplierService.addSupplier(id);
-		if(type==4) factorService.addFactor(id);
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("id", id);
-		mav.addObject("account", account);
-		mav.addObject("pwd", pwd);
-		mav.addObject("bank", bank);
-		mav.addObject("name", name);
-		mav.addObject("UCC", UCC);
-		mav.addObject("LPC", LPC);
-		mav.addObject("type", type);
-		mav.setViewName("registerFin");
-		return mav;
+		Enterprise enterprise = enterpriseService.getEnterpriseByAccount(account);
+		if(enterprise == null){
+			String id = type + account;  //企业ID设置为==企业类型编号+企业账号
+			Enterprise newEnterprise = new Enterprise(id, account, pwd, bank, name, UCC, LPC, type);
+			session.setAttribute("id", id);
+			enterpriseService.addEnterprise(newEnterprise);
+			if(type==1) coreEnterpriseService.addCoreEnterprise(id);
+			else if(type==2) memberEnterpriseService.addMemberEnterprise(id);
+			else if(type==3) supplierService.addSupplier(id);
+			else if(type==4) factorService.addFactor(id);
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("account", account);
+			mav.addObject("pwd", pwd);
+			mav.addObject("bank", bank);
+			mav.addObject("name", name);
+			mav.addObject("UCC", UCC);
+			mav.addObject("LPC", LPC);
+			mav.addObject("type", StateMap.getType(type));
+			mav.setViewName("registerFin");
+			return mav;
+		}else{
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("msg", "该账户已存在");
+			mav.setViewName("register");
+			return mav;
+		}
+		
 	}
 
 	@RequestMapping(value = "/chainTickets", method = RequestMethod.GET)

@@ -14,4 +14,8 @@
 	<insert id="insertMemberEnterprise">
 		insert into memberEnterprise(id) values (#{id})
 	</insert>
+	
+	<select id="selectAllMemberEnterprise" resultType="MemberEnterprise">
+		select * from memberEnterprise 
+	</select>
 </mapper>

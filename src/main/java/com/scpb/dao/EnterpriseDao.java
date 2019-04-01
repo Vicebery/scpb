@@ -13,6 +13,8 @@ public interface EnterpriseDao {
     Enterprise selectByPrimaryKey(String id);
     
     Enterprise selectEnterpriseById(String id);
+    
+	Enterprise selectEnterpriseByAccount(String account);
 
 	int selectEnterpriseTypeById(String owerId);
 
@@ -29,4 +31,5 @@ public interface EnterpriseDao {
     String selectBankById(String id);
 
     void updateBankById(@Param("bank")String bank,@Param("id")String id);
+
 }
