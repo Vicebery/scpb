@@ -27,6 +27,11 @@ public class EnterpriseServiceImpl implements EnterpriseService{
 
 		return enterpriseDao.selectEnterpriseById(id);
 	}
+	
+	@Transactional
+	public Enterprise getEnterpriseByAccount(String account) {
+		return enterpriseDao.selectEnterpriseByAccount(account);
+	}
 
 	@Transactional
 	public void addEnterprise(Enterprise enterprise) {

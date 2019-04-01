@@ -13,6 +13,8 @@ public interface EnterpriseDao {
     Enterprise selectByPrimaryKey(String id);
     
     Enterprise selectEnterpriseById(String id);
+    
+	Enterprise selectEnterpriseByAccount(String account);
 
 	int selectEnterpriseTypeById(String owerId);
 
@@ -25,4 +27,6 @@ public interface EnterpriseDao {
     void insertMySupplier(@Param("id")String id, @Param("mySupplier")String mySupplier);
 
     void deleteMySupplier(@Param("id")String id, @Param("mySupplier")String mySupplier);
+
+
 }

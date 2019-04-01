@@ -17,11 +17,9 @@
             <div class="title-line"><span>注册</span></div>
             <div>
                 <form action="<%=request.getContextPath()%>/registerFin" method="post">
-                    <div >
-                        <label for="qiyeNumber">企业编号:</label><input type="text" id="id" name="id">
-                    </div>
                     <div>
                         <label for="account">企业账号：</label><input type="text" id="account" name="account">
+                    	<span style="color:red;font-size:16px;">${msg}</span>
                     </div>
                     <div>
                         <label for="pwd">账号密码：</label><input type="text" id="pwd" name="pwd">
