@@ -12,7 +12,7 @@
 	</update>
 
 	<insert id="insertCoreEnterprise">
-		insert into coreEnterprise(id) values (#{id})
+		insert into coreEnterprise(id,name) values (#{id},#{name})
 	</insert>
 
 </mapper>

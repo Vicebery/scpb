@@ -6,7 +6,7 @@ import com.scpb.entity.Factor;
 
 public interface FactorService {
 
-    void addFactor(String id);
+    void addFactor(String id,String name);
 
 	List<Factor> getFactorList();
 }
