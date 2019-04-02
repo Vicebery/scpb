@@ -11,6 +11,7 @@ import com.scpb.utils.StateMap;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -156,7 +157,7 @@ public class FactorController {
 	}
 	
 	@RequestMapping("/setLimit")
-	public ModelAndView setLimit(String id, String limit) {
+	public ModelAndView setLimit(@RequestParam("applicant") String id, String limit) {
 		//返回影响行数
 		int result = coreEnterpriseService.modifyLimitById(limit, id);
 		ModelAndView mav = new ModelAndView();
