@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface SupplierDao {
 
-    void insertSupplier(String id);
+    void insertSupplier(@Param("id")String id,@Param("name")String name);
 
 	List<Supplier> selectSupplierById(String id);
 }

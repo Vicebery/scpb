@@ -10,9 +10,10 @@ public interface CoreEnterpriseService {
 
     String getLimitById(String id);
 
-    void addCoreEnterprise(String id);
-
 	List<CoreEnterprise> getAllCoreEnterprise();
 
 	CoreEnterprise getCoreEnterpriseById(String id);
+
+    void addCoreEnterprise(String id,String name);
+
 }

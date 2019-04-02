@@ -11,9 +11,9 @@ public interface CoreEnterpriseDao {
 
     int updateLimitById(@Param("limit")String limit, @Param("id")String id);
 
-    void insertCoreEnterprise(String id);
-
 	List<CoreEnterprise> selectAllCoreEnterprise();
 
 	CoreEnterprise selectCoreEnterpriseById(String id);
+
+    void insertCoreEnterprise(@Param("id")String id,@Param("name")String name);
 }

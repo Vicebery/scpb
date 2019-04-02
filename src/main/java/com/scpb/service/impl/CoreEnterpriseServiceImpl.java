@@ -26,8 +26,9 @@ public class CoreEnterpriseServiceImpl implements CoreEnterpriseService {
     }
 
     @Transactional
-    public void addCoreEnterprise(String id) {
-        coreEnterpriseDao.insertCoreEnterprise(id);
+    public void addCoreEnterprise(String id,String name) {
+
+        coreEnterpriseDao.insertCoreEnterprise(id,name);
     }
 
     @Transactional
