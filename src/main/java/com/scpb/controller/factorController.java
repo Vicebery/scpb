@@ -2,7 +2,6 @@ package com.scpb.controller;
 
 import com.scpb.entity.ChainTicket;
 import com.scpb.entity.CoreEnterprise;
-import com.scpb.entity.Supplier;
 import com.scpb.entity.TradeInformation;
 import com.scpb.service.ChainTicketService;
 import com.scpb.service.CoreEnterpriseService;
@@ -12,7 +11,6 @@ import com.scpb.utils.StateMap;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -29,7 +27,7 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping(value = "/factor")
-public class factorController {
+public class FactorController {
 	@Resource(name = "chainTicketService")
 	private ChainTicketService chainTicketService;
 	@Resource(name = "tradeService")
@@ -89,7 +87,7 @@ public class factorController {
             chainTicketService.modifyCTOwnerIdById(factorId,chainTicketId);
             //融资信息上链
 //			File f = new File("/opt/gopath/src/github.com/hyperledger/fabric-samples/scpb-blockchain/organization/supplier/application/redeem.txt");
-//			String tradeInf = currentCT.getDrawEnterprise()+","+id+","+tradeInformation.getFirstParty()
+//			String tradeInf = currentCT.getDrawEnterprise()+","+tradeInformation.getPayCT()+","+tradeInformation.getFirstParty()
 //					+","+tradeInformation.getSum()+","+tradeInformation.getTradeTime()+","+tradeInformation.getRemainCT();
 //			try {
 //				FileWriter fw = new FileWriter(f);
@@ -97,7 +95,7 @@ public class factorController {
 //				bw.write(tradeInf);
 //				bw.flush();
 //				bw.close();
-//				Runtime.getRuntime().exec("sh startIssue.sh").waitFor();
+//				Runtime.getRuntime().exec("sh startRedeem.sh").waitFor();
 //			} catch (IOException e) {
 //				e.printStackTrace();
 //			} catch (InterruptedException e) {
@@ -115,6 +113,30 @@ public class factorController {
 		mav.setViewName("factor/selectedCTDetails");
 		return mav;
 	}
+
+//	@RequestMapping("/acceptFinancing")
+//	public String acceptFinancing(HttpSession session, HttpServletRequest request) {
+//
+//		String factorId = (String) session.getAttribute("id");
+//		String receiveCT = request.getParameter("chainTicketId");
+//		System.out.println("receiveCT" + receiveCT);
+//		TradeInformation tradeInformation = tradeService.getTradeInfByReceiveCT(receiveCT);
+//		chainTicketService.modifyCTOwnerIdById(factorId, receiveCT);
+//		chainTicketService.modifyCTStateById(3, receiveCT);
+//		tradeService.modifyTradeInfStateById(tradeInformation.getId(), 3);
+//		return "factor/success";
+//	}
+//
+//	@RequestMapping("/rejectFinancing")
+//	public String rejectFinancing(HttpServletRequest request) {
+//
+//		String receiveCT = request.getParameter("chainTicketId");
+//		System.out.println("receiveCT" + receiveCT);
+//		TradeInformation tradeInformation = tradeService.getTradeInfByReceiveCT(receiveCT);
+//		chainTicketService.modifyCTStateById(3, receiveCT);
+//		tradeService.modifyTradeInfStateById(tradeInformation.getId(), 1);
+//		return "factor/fail";
+//	}
 	
 	@RequestMapping("/goSetLimit")
 	public String goSetLimit() {
@@ -134,13 +156,12 @@ public class factorController {
 	}
 	
 	@RequestMapping("/setLimit")
-	public ModelAndView setLimit(@RequestParam("applicant") String id, String limit) {
+	public ModelAndView setLimit(String id, String limit) {
 		//返回影响行数
 		int result = coreEnterpriseService.modifyLimitById(limit, id);
-		CoreEnterprise ce = coreEnterpriseService.getCoreEnterpriseById(id);
 		ModelAndView mav = new ModelAndView();
 		if(result==1){
-			mav.addObject("name", ce.getName());
+			mav.addObject("id", id);
 			mav.addObject("limit", limit);
 			mav.setViewName("factor/setLimitSuccess");
 			return mav;
@@ -149,4 +170,5 @@ public class factorController {
 			return mav; 
 		}
 	}
+
 }

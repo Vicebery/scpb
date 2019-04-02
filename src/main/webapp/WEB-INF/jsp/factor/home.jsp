@@ -26,13 +26,13 @@
 							<li data-toggle="collapse" data-target="#ex1"><a>链票业务</a>
 								<ul id="ex1" class="collapse">
 									<li id="limitset"><a target="limitset-sc" href="factor/goSetLimit">额度设置</a></li>
-									<li id="ctcollect"><a>链票催收</a></li>
+									<%--<li id="ctcollect"><a>链票催收</a></li>--%>
 									<li id="ctquery"><a target="ctquery-sc" href="chainTickets">链票查询</a></li>
 								</ul>
 							</li>
 							<li data-toggle="collapse" data-target="#ex2"><a>审查业务</a>
 								<ul id="ex2" class="collapse">
-									<li id="ctSecondExam"><a>开具复审</a></li>
+									<%--<li id="ctSecondExam"><a>开具复审</a></li>--%>
 									<%--<li id="financeExam"><a>融资初审</a></li>--%>
 									<li id="financeExam"><a target="financeExam-showcontent" href="factor/financingExamine">融资审核</a></li>
 								</ul>
@@ -44,7 +44,7 @@
 									<li id="qyUserManage"><a>企业用户管理</a></li>
 									<li id="bankManage"><a target="bankManage-sc" href="bankInfo">银行账户管理</a></li>
 									<li id="sureInforManage"><a>认证资料管理</a></li>
-									<li id="supply"><a>我的供应商</a></li>
+									<%--<li id="supply"><a>我的供应商</a></li>--%>
 								</ul>
 							</li>
 						</ul>
@@ -52,7 +52,7 @@
 					<div class="col-sm-9 col-md-9 right-part">
 
 
-						<div id="limitset-page" style="display:block">
+						<div id="limitset-page" style="display:none">
 
 							<p>额度设置:</p>
 							<div id="limitset-showcontent">
@@ -61,10 +61,10 @@
 							</div>
 						</div>
 
-						<div id="ctcollect-page" style="display:none">
+						<%--<div id="ctcollect-page" style="display:none">
 							<p>链票催收:</p>
 							<div id="ctcollect-showcontent"></div>
-						</div>
+						</div>--%>
 
 						<div id="ctquery-page" style="display:none">
 							<p>链票查询:</p>
@@ -74,10 +74,10 @@
 							</div>
 						</div>
 
-						<div id="ctSecondExam-page" style="display:none">
+						<%--<div id="ctSecondExam-page" style="display:none">
 							<p>开具复审:</p>
 							<div id="ctSecondExam-showcontent"></div>
-						</div>
+						</div>--%>
 
 						<%--<div id="financeExam-page" style="display:none">
 							<p>融资初审:</p>
@@ -118,10 +118,10 @@
 							<div id="sureInforManage-showcontent"></div>
 						</div>
 
-						<div id="supply-page" style="display:none">
+						<%--<div id="supply-page" style="display:none">
 							<p>我的供应商:</p>
 							<div id="supply-showcontent"></div>
-						</div>
+						</div>--%>
 					</div>
 
 				</div>
