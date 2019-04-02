@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50716
 File Encoding         : 65001
 
-Date: 2019-04-01 15:43:55
+Date: 2019-04-02 11:41:10
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -35,19 +35,16 @@ CREATE TABLE `chainticket` (
 -- ----------------------------
 -- Records of chainticket
 -- ----------------------------
-INSERT INTO `chainticket` VALUES ('2019033122272378', '300', '2019-03-31', '6', '2019003', '2019-12-12', '2019001');
-INSERT INTO `chainticket` VALUES ('2019033122280246', '400', '2019-03-31', '6', '2019001', '2019-12-12', '2019001');
-INSERT INTO `chainticket` VALUES ('2019033122291437', '30', '2019-03-31', '6', '2019003', '2019-10-10', '2019002');
-INSERT INTO `chainticket` VALUES ('201903312229406', '31', '2019-03-31', '1', '2019002', '2019-09-09', '2019002');
-INSERT INTO `chainticket` VALUES ('201903312232598', '100', '2019-03-31', '6', '2019004', '2019-12-12', '2019001');
-INSERT INTO `chainticket` VALUES ('2019033122325982', '200.0', '2019-03-31', '6', '2019003', '2019-12-12', '2019001');
-INSERT INTO `chainticket` VALUES ('2019033122333425', '0.0', '2019-03-31', '3', '2019003', '2019-10-10', '2019002');
-INSERT INTO `chainticket` VALUES ('2019033122333426', '30', '2019-03-31', '3', '2019003', '2019-10-10', '2019002');
-INSERT INTO `chainticket` VALUES ('201903312233524', '100', '2019-03-31', '1', '2019003', '2019-12-12', '2019001');
-INSERT INTO `chainticket` VALUES ('2019033122335266', '100.0', '2019-03-31', '3', '2019003', '2019-12-12', '2019001');
-INSERT INTO `chainticket` VALUES ('2019033122361135', '60.0', '2019-03-31', '3', '2019004', '2019-12-12', '2019001');
-INSERT INTO `chainticket` VALUES ('2019033122361180', '40', '2019-03-31', '2', '2019004', '2019-12-12', '2019001');
-INSERT INTO `chainticket` VALUES ('2019033122491684', '3000', '2019-03-31', '2', '2019001', '2019-12-11', '2019001');
+INSERT INTO `chainticket` VALUES ('2019040122540085', '400', '2019-04-01', '6', '2019003', '2121-09-09', '2019001');
+INSERT INTO `chainticket` VALUES ('2019040122560283', '100', '2019-04-01', '6', '2019004', '2121-09-09', '2019001');
+INSERT INTO `chainticket` VALUES ('2019040122580783', '400', '2019-04-01', '6', '2019002', '2121-09-09', '2019002');
+INSERT INTO `chainticket` VALUES ('2019040122590234', '100', '2019-04-01', '1', '2019002', '2011-09-09', '2019002');
+INSERT INTO `chainticket` VALUES ('2019040123095926', '100', '2019-04-01', '3', '2019003', '2121-09-09', '2019001');
+INSERT INTO `chainticket` VALUES ('2019040123095956', '300.0', '2019-04-01', '6', '2019003', '2121-09-09', '2019001');
+INSERT INTO `chainticket` VALUES ('2019040123125158', '100', '2019-04-01', '3', '2019005', '2121-09-09', '2019001');
+INSERT INTO `chainticket` VALUES ('2019040123125159', '200.0', '2019-04-01', '3', '2019003', '2121-09-09', '2019001');
+INSERT INTO `chainticket` VALUES ('2019040123150153', '20', '2019-04-01', '3', '2019004', '2121-09-09', '2019001');
+INSERT INTO `chainticket` VALUES ('2019040123150167', '80.0', '2019-04-01', '3', '2019004', '2121-09-09', '2019001');
 
 -- ----------------------------
 -- Table structure for coreenterprise
@@ -63,7 +60,7 @@ CREATE TABLE `coreenterprise` (
 -- ----------------------------
 -- Records of coreenterprise
 -- ----------------------------
-INSERT INTO `coreenterprise` VALUES ('2019001', '4400.0');
+INSERT INTO `coreenterprise` VALUES ('2019001', '16500.0');
 
 -- ----------------------------
 -- Table structure for enterprise
@@ -84,12 +81,13 @@ CREATE TABLE `enterprise` (
 -- ----------------------------
 -- Records of enterprise
 -- ----------------------------
-INSERT INTO `enterprise` VALUES ('2019001', '15071429552', '123456', '1', '核心企业', '123321', '123432', '1');
+INSERT INTO `enterprise` VALUES ('2019001', '15071429552', '123456', '290-000-0887', '核心企业', '190000', '123432666', '1');
 INSERT INTO `enterprise` VALUES ('2019002', '15203881534', '123456', '11', '成员企业1', '11', '11', '2');
 INSERT INTO `enterprise` VALUES ('2019003', '13123886950', '123456', '111', '供应商1', '111', '111', '3');
 INSERT INTO `enterprise` VALUES ('2019004', '18222990843', '123456', '1111', '供应商2', '1111', '1111', '3');
 INSERT INTO `enterprise` VALUES ('2019005', '15938870043', '123456', '11111', '保理商', '4444444', '1111144', '4');
 INSERT INTO `enterprise` VALUES ('2019006', '13988888811', '123456', '111111', '供应商3', '111111', '111111', '3');
+INSERT INTO `enterprise` VALUES ('413532323232', '13532323232', '123456', '1111111', '保理商2', '2121212', '21212121', '4');
 INSERT INTO `enterprise` VALUES ('413545264414', '13545264414', '123456', '66666666', '成员企业2', '33333', '2222222', '2');
 
 -- ----------------------------
@@ -98,6 +96,7 @@ INSERT INTO `enterprise` VALUES ('413545264414', '13545264414', '123456', '66666
 DROP TABLE IF EXISTS `factor`;
 CREATE TABLE `factor` (
   `id` varchar(40) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   CONSTRAINT `factor_ibfk_1` FOREIGN KEY (`id`) REFERENCES `enterprise` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
@@ -105,7 +104,8 @@ CREATE TABLE `factor` (
 -- ----------------------------
 -- Records of factor
 -- ----------------------------
-INSERT INTO `factor` VALUES ('2019005');
+INSERT INTO `factor` VALUES ('2019005', '保理商1');
+INSERT INTO `factor` VALUES ('413532323232', null);
 
 -- ----------------------------
 -- Table structure for memberenterprise
@@ -122,8 +122,8 @@ CREATE TABLE `memberenterprise` (
 -- ----------------------------
 -- Records of memberenterprise
 -- ----------------------------
-INSERT INTO `memberenterprise` VALUES ('2019002', '2019.0', '成员企业1');
-INSERT INTO `memberenterprise` VALUES ('413545264414', '120.0', '成员企业2');
+INSERT INTO `memberenterprise` VALUES ('2019002', '2400.0', '成员企业1');
+INSERT INTO `memberenterprise` VALUES ('413545264414', '2120.0', '成员企业2');
 
 -- ----------------------------
 -- Table structure for supplier
@@ -131,6 +131,7 @@ INSERT INTO `memberenterprise` VALUES ('413545264414', '120.0', '成员企业2')
 DROP TABLE IF EXISTS `supplier`;
 CREATE TABLE `supplier` (
   `id` varchar(40) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   CONSTRAINT `supplier_ibfk_1` FOREIGN KEY (`id`) REFERENCES `enterprise` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
@@ -138,7 +139,9 @@ CREATE TABLE `supplier` (
 -- ----------------------------
 -- Records of supplier
 -- ----------------------------
-INSERT INTO `supplier` VALUES ('2019006');
+INSERT INTO `supplier` VALUES ('2019003', '供应商1');
+INSERT INTO `supplier` VALUES ('2019004', '供应商2');
+INSERT INTO `supplier` VALUES ('2019006', '供应商3');
 
 -- ----------------------------
 -- Table structure for supplyrelation
@@ -157,11 +160,13 @@ CREATE TABLE `supplyrelation` (
 -- Records of supplyrelation
 -- ----------------------------
 INSERT INTO `supplyrelation` VALUES ('2019001', '2019003');
+INSERT INTO `supplyrelation` VALUES ('2019002', '2019003');
 INSERT INTO `supplyrelation` VALUES ('2019001', '2019004');
 INSERT INTO `supplyrelation` VALUES ('2019002', '2019004');
 INSERT INTO `supplyrelation` VALUES ('2019003', '2019004');
-INSERT INTO `supplyrelation` VALUES ('2019006', '2019004');
 INSERT INTO `supplyrelation` VALUES ('2019001', '2019006');
+INSERT INTO `supplyrelation` VALUES ('2019003', '2019006');
+INSERT INTO `supplyrelation` VALUES ('2019004', '2019006');
 
 -- ----------------------------
 -- Table structure for tradeinformation
@@ -188,13 +193,11 @@ CREATE TABLE `tradeinformation` (
 -- ----------------------------
 -- Records of tradeinformation
 -- ----------------------------
-INSERT INTO `tradeinformation` VALUES ('20190331222723', '2019-03-31', '2019001', '2019003', '300', '核心企业开具测试', '2019033122272378', '2019033122272378', '2019033122272331', '3');
-INSERT INTO `tradeinformation` VALUES ('20190331222802', '2019-03-31', '2019001', '2019004', '400', '开具测试核心', '2019033122280246', '2019033122280246', '2019033122280287', '4');
-INSERT INTO `tradeinformation` VALUES ('20190331222914', '2019-03-31', '2019002', '2019003', '30', '成员企业开具测试', '2019033122291437', '2019033122291437', '2019033122291495', '3');
-INSERT INTO `tradeinformation` VALUES ('20190331222940', '2019-03-31', '2019002', '2019003', '31', '成员开具测试2', '201903312229406', '201903312229406', '2019033122294089', '1');
-INSERT INTO `tradeinformation` VALUES ('20190331223259', '2019-03-31', '2019003', '2019004', '100', '转让测试3-4', '2019033122272378', '201903312232598', '2019033122325982', '3');
-INSERT INTO `tradeinformation` VALUES ('20190331223334', '2019-03-31', '2019003', '2019005', '30', '融资测试', '2019033122291437', '2019033122333426', '2019033122333425', '3');
-INSERT INTO `tradeinformation` VALUES ('20190331223352', '2019-03-31', '2019003', '2019005', '100', '融资测试2', '2019033122325982', '201903312233524', '2019033122335266', '3');
-INSERT INTO `tradeinformation` VALUES ('20190331223612', '2019-03-31', '2019004', '2019003', '40', '转让测试4--3', '201903312232598', '2019033122361180', '2019033122361135', '4');
-INSERT INTO `tradeinformation` VALUES ('20190331224916', '2019-03-31', '2019001', '2019003', '3000', '开具测试核心企业', '2019033122491684', '2019033122491684', '2019033122491660', '2');
+INSERT INTO `tradeinformation` VALUES ('20190401225400', '2019-04-01', '2019001', '2019003', '400', '测试开具', '2019040122540085', '2019040122540085', '2019040122540091', '3');
+INSERT INTO `tradeinformation` VALUES ('20190401225602', '2019-04-01', '2019001', '2019004', '100', '测试开具2', '2019040122560283', '2019040122560283', '2019040122560242', '3');
+INSERT INTO `tradeinformation` VALUES ('20190401225807', '2019-04-01', '2019002', '2019003', '400', '成员测试开具', '2019040122580783', '2019040122580783', '2019040122580746', '4');
+INSERT INTO `tradeinformation` VALUES ('20190401225902', '2019-04-01', '2019002', '2019003', '100', '成员测试开具2', '2019040122590234', '2019040122590234', '2019040122590299', '1');
+INSERT INTO `tradeinformation` VALUES ('20190401230959', '2019-04-01', '2019003', '2019004', '100', '转让测试', '2019040122540085', '2019040123095926', '2019040123095956', '4');
+INSERT INTO `tradeinformation` VALUES ('20190401231251', '2019-04-01', '2019003', '2019005', '100', '融资测试', '2019040123095956', '2019040123125158', '2019040123125159', '3');
+INSERT INTO `tradeinformation` VALUES ('20190401231501', '2019-04-01', '2019004', '2019006', '20', '转让测试', '2019040122560283', '2019040123150153', '2019040123150167', '4');
 SET FOREIGN_KEY_CHECKS=1;
