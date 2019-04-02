@@ -25,7 +25,7 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping(value = "/factor")
-public class factorController {
+public class FactorController {
 	@Resource(name = "chainTicketService")
 	private ChainTicketService chainTicketService;
 	@Resource(name = "tradeService")
@@ -85,7 +85,7 @@ public class factorController {
             chainTicketService.modifyCTOwnerIdById(factorId,chainTicketId);
             //融资信息上链
 //			File f = new File("/opt/gopath/src/github.com/hyperledger/fabric-samples/scpb-blockchain/organization/supplier/application/redeem.txt");
-//			String tradeInf = currentCT.getDrawEnterprise()+","+id+","+tradeInformation.getFirstParty()
+//			String tradeInf = currentCT.getDrawEnterprise()+","+tradeInformation.getPayCT()+","+tradeInformation.getFirstParty()
 //					+","+tradeInformation.getSum()+","+tradeInformation.getTradeTime()+","+tradeInformation.getRemainCT();
 //			try {
 //				FileWriter fw = new FileWriter(f);
@@ -93,7 +93,7 @@ public class factorController {
 //				bw.write(tradeInf);
 //				bw.flush();
 //				bw.close();
-//				Runtime.getRuntime().exec("sh startIssue.sh").waitFor();
+//				Runtime.getRuntime().exec("sh startRedeem.sh").waitFor();
 //			} catch (IOException e) {
 //				e.printStackTrace();
 //			} catch (InterruptedException e) {
@@ -156,4 +156,5 @@ public class factorController {
 			return mav; 
 		}
 	}
+
 }

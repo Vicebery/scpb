@@ -1,6 +1,6 @@
 $(function(){
 	$.ajax({
-		url:"chainTickets",
+		url:"loadCTs",
 		type:"get",
 		data:{},
 		dataType:"json",
