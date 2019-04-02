@@ -67,7 +67,7 @@ public class CoreEnterpriseController {
 	@RequestMapping("/drawSuccess")
 	public ModelAndView drawCT(String applicant, String amount, HttpSession session, String deadline,
 			String tradeRemark) {
-		System.out.println("测试applicant: "+applicant);
+//		System.out.println("测试applicant: "+applicant);
 		String drawEnterprise = (String) session.getAttribute("id");
 		String oldLimit = coreEnterpriseService.getLimitById(drawEnterprise);
 		

@@ -25,9 +25,9 @@
 </head>
 
 <body>
-<a class="btn btn-primary"  href="#">返回</a>
+<a class="btn btn-primary"  href="chooseFinancCT">返回</a>
     <form action="<%=request.getContextPath()%>/supplier/financing" method="get">
-        <%--链票ID：<input type="text" name="ctid"/><br>--%>
+
       <p>融资金额：<input type="text" name="amount"/></p><span style="color:red;font-size:16px;">${msg}</span>
       <p>融资企业：<select  name="factor" id="factor"/></select></p>
       <p>申请备注：<input type="text" name="tradeRemark"/></p>

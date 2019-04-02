@@ -24,9 +24,8 @@
     </style>
 </head>
 <body>
-    <a class="btn btn-primary"  href="#">返回</a>
+    <a class="btn btn-primary"  href="chooseTransferCT">返回</a>
     <form action="<%=request.getContextPath()%>/supplier/transferCTSuccess" method="get">
-        <%--链票ID：<input type="text" name="ctid"/><br>--%>
         <p>转让金额：<input type="text" name="amount"/></p>
         <p><span style="color:red;font-size:16px;">${msg}</span></p>
         <p>转让企业：<select  name="applicant" id="applicant"/></select></p>

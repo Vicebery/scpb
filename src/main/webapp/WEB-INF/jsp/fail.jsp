@@ -5,9 +5,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>查询失败</title>
+<title>ERROR</title>
 </head>
 <body>
-	<p style="font-size:1.4em;text-align:center;">该用户不存在</p>
+	<p style="font-size:1.4em;text-align:center;">这里可能有BUG出没，谨慎！！！</p>
 </body>
 </html>
