@@ -29,6 +29,7 @@
        <p>开票企业：${chainTicket.drawEnterprise}</p>      
          <p>到期日：${chainTicket.deadline}</p>
          <p>当前状态：${chainTicketState}</p>
+         <p>融资备注：${tradeRemark}</p>
      </div>
      <div>
       <a  class="btn btn-primary"href="passCheckCT?id=${chainTicket.id}&state=3">审核通过，同意融资</a>

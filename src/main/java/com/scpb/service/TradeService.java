@@ -28,4 +28,6 @@ public interface TradeService {
 	void setVerifyInfByPayCTId(String chainTicketId, int verifyInf);
 
     List<String> getUncheckedReceiveCTidBySecondParty(String id);
+
+    String getTradeRemarkByReceiveCT(String id);
 }
