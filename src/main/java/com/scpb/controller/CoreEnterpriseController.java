@@ -204,6 +204,8 @@ public class CoreEnterpriseController {
 //		System.out.println(Arrays.toString(chainTicketList.toArray()));
 		ModelAndView mav = new ModelAndView();
 		String tradeRemark = tradeService.getTradeRemarkByReceiveCT(id);
+		System.out.println("当前企业:" + id);
+		System.out.println("当前企业:" + tradeRemark);
 		mav.addObject("chainTicket", selectedCT);
 		mav.addObject("tradeRemark",tradeRemark);
 		mav.addObject("chainTicketState", StateMap.getState(selectedCT.getState()));
@@ -218,7 +220,7 @@ public class CoreEnterpriseController {
 		ChainTicket currentCT = chainTicketService.getChainTicketById(id);
 		// test code
 //		System.out.println("当前企业:" + chainTicketId + "state:" + state);
-
+		String tradeRemark = tradeService.getTradeRemarkByReceiveCT(id);
 		// 修改当前选中链票状态
 		chainTicketService.setStateByChainTicketId(chainTicketId, changedState);
 		// 修改交易信息状态
@@ -227,6 +229,7 @@ public class CoreEnterpriseController {
 //		System.out.println("修改状态成功");
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("chainTicket", currentCT);
+		mav.addObject("tradeRemark",tradeRemark);
 		mav.addObject("chainTicketState", StateMap.getState(changedState));
 		mav.setViewName("coreEnterprise/selectedCTDetails");
 		return mav;

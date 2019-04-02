@@ -10,6 +10,7 @@ import com.scpb.service.ChainTicketService;
 import com.scpb.service.CoreEnterpriseService;
 import com.scpb.service.EnterpriseService;
 import com.scpb.service.FactorService;
+import com.scpb.service.MemberEnterpriseService;
 import com.scpb.service.SupplierService;
 import com.scpb.service.TradeService;
 import org.springframework.stereotype.Controller;
@@ -42,6 +43,9 @@ public class SupplierController {
 	@Resource(name = "coreEnterpriseService")
 	private CoreEnterpriseService coreEnterpriseService;
 
+	@Resource(name = "memberEnterpriseService")
+	private MemberEnterpriseService memberEnterpriseService;
+	
 	@Resource(name = "tradeService")
 	private TradeService tradeService;
 	
@@ -242,11 +246,16 @@ public class SupplierController {
 		ChainTicket chainTicket = chainTicketService.getChainTicketById(receiveCT);
 		String enterpriseId = tradeInformation.getFirstParty();
 		int enterpriseType = enterpriseService.getEnterpriseById(enterpriseId).getType();
-		if (enterpriseType == 1 || enterpriseType == 2) {
+		if (enterpriseType == 1 ) {
 			chainTicketService.modifyCTStateById(6, receiveCT);
 			String limit = coreEnterpriseService.getLimitById(enterpriseId);
 			String newLimit = Double.toString(Double.valueOf(limit) + Double.valueOf(chainTicket.getAmount()));
 			coreEnterpriseService.modifyLimitById(newLimit, enterpriseId);
+		}else if(enterpriseType == 2 ){
+			chainTicketService.modifyCTStateById(6, receiveCT);
+			String limit = memberEnterpriseService.getLimitById(enterpriseId);
+			String newLimit = Double.toString(Double.valueOf(limit) + Double.valueOf(chainTicket.getAmount()));
+			memberEnterpriseService.modifyLimitById(newLimit, enterpriseId);
 		}else{
 		    chainTicketService.modifyCTStateById(3,receiveCT);
         }

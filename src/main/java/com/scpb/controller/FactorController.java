@@ -65,7 +65,9 @@ public class FactorController {
 		ChainTicket selectedCT = chainTicketService.getChainTicketById(id);
 		// 测试是否获取查询结果集
 //		System.out.println(Arrays.toString(chainTicketList.toArray()));
+		String tradeRemark = tradeService.getTradeRemarkByReceiveCT(id);
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("tradeRemark",tradeRemark);
 		mav.addObject("chainTicket", selectedCT);
 		mav.addObject("chainTicketState", StateMap.getState(selectedCT.getState()));
 		mav.setViewName("factor/selectedCTDetails");
@@ -160,11 +162,14 @@ public class FactorController {
 	
 	@RequestMapping("/setLimit")
 	public ModelAndView setLimit(@RequestParam("applicant") String id, String limit) {
+		System.out.println("核心企业： "+id);
 		//返回影响行数
+		
 		int result = coreEnterpriseService.modifyLimitById(limit, id);
+		CoreEnterprise ce = coreEnterpriseService.getCoreEnterpriseById(id);
 		ModelAndView mav = new ModelAndView();
-		if(result==1){
-			mav.addObject("id", id);
+		if(result==1||coreEnterpriseService.getLimitById(id).equals(limit)){
+			mav.addObject("name", ce.getName());
 			mav.addObject("limit", limit);
 			mav.setViewName("factor/setLimitSuccess");
 			return mav;

@@ -26,7 +26,7 @@
 <body>
 	     <div>
 	     <p>额度设置成功</p>						
-         <p>企业id:${ memberId}</p>
+         <p>成员企业:${ memberId}</p>
          <p>当前额度：${limit }</p>
          <p><a class="btn btn-primary btn-lg"  href="goAllocateLimit">返回</a></p>
 	     </div>
