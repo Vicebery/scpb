@@ -2,16 +2,21 @@ package com.scpb.controller;
 
 import com.scpb.entity.ChainTicket;
 import com.scpb.entity.Enterprise;
+import com.scpb.entity.Factor;
+import com.scpb.entity.MemberEnterprise;
 import com.scpb.entity.Supplier;
 import com.scpb.entity.TradeInformation;
 import com.scpb.service.ChainTicketService;
 import com.scpb.service.CoreEnterpriseService;
 import com.scpb.service.EnterpriseService;
+import com.scpb.service.FactorService;
 import com.scpb.service.SupplierService;
 import com.scpb.service.TradeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
@@ -35,7 +40,13 @@ public class SupplierController {
 
 	@Resource(name = "tradeService")
 	private TradeService tradeService;
-
+	
+	@Resource(name = "supplierService")
+	private SupplierService supplierService;
+	
+	@Resource(name = "factorService")
+	private FactorService factorService;
+	
 	public void setChainTicketService(ChainTicketService chainTicketService) {
 		this.chainTicketService = chainTicketService;
 	}
@@ -109,14 +120,14 @@ public class SupplierController {
 	}
 
 	@RequestMapping("/transferCTSuccess")
-	public String transferCT(String amount, String secondParty, String tradeRemark, Map<String, Object> map, HttpSession session) {
+	public String transferCT(String amount, @RequestParam("applicant") String secondParty, String tradeRemark, Map<String, Object> map, HttpSession session) {
 
 		String ctid = (String) session.getAttribute("ctid");
 		String ownerId = (String) session.getAttribute("id");
 		String firstParty = (String) session.getAttribute("id");
 		ChainTicket chainTicket = chainTicketService.getChainTicketById(ctid);
 		if(Double.valueOf(amount)>Double.valueOf(chainTicket.getAmount())){
-		    map.put("msg","转让金额超出链票原有金额，请重新选择");
+		    map.put("msg","转让金额超出链票原有金额，请重新输入！");
 		    return "supplier/transfer";
         }
 		chainTicketService.modifyCTStateById(2, ctid);
@@ -191,5 +202,26 @@ public class SupplierController {
         }
 		return "supplier/receiveCTFail";
 	}
-
+	//加载供应商集合
+	@RequestMapping("/getSupplierList")
+	@ResponseBody
+	public List<Supplier> getSupplierList(HttpSession session) {		
+		String id = (String) session.getAttribute("id");
+//		System.out.println("当前企业 "+id);
+		List<Supplier> supplierList = new ArrayList<>();		
+		supplierList = supplierService.getSupplierById(id);
+		//test code
+//		System.out.println("供应商企业集合： "+supplierList.toString());
+		return supplierList;
+	}
+	//加载保理商集合
+	@RequestMapping("/getFactorList")
+	@ResponseBody
+	public List<Factor> getFactorList() {		
+		List<Factor> factorList = new ArrayList<>();		
+		factorList = factorService.getFactorList();
+		//test code
+//		System.out.println("baoli商企业集合： "+factorList.toString());
+		return factorList;
+	}
 }

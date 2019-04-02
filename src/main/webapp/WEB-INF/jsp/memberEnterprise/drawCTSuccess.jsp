@@ -3,6 +3,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+   	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
     <title>链票开具成功</title>
     <style>
          div{
@@ -25,7 +28,7 @@
         <p>开票企业：${chainTicket.drawEnterprise}</p>
        <p>链票状态：${chainTicketState}</p>
        <p> 到期日：${chainTicket.deadline}</p>
-       <p><a class="btn btn-primary btn-lg"  href="goDrawCT">返回</a></p>
+       <p><a class="btn btn-primary "  href="goDrawCT">返回</a></p>
     </div>
     </body>
 </html>

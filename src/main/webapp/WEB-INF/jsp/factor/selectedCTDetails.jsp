@@ -4,6 +4,9 @@
 <html>
 <head>
     <title>待审核链票详情</title>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
     <style>
          div{
              width:50%;
@@ -16,7 +19,7 @@
     </style>
 </head>
 <body>
-    <a href="financingExamine">返回</a>
+    <a  class="btn btn-primary"href="financingExamine">返回</a>
     <div>
         <p>链票详情如下：</p>
         <p>链票ID: ${chainTicket.id}</p>
@@ -27,7 +30,9 @@
          <p>到期日：${chainTicket.deadline}</p>
          <p>当前状态：${chainTicketState}</p>
      </div>
-      <a href="passCheckCT?id=${chainTicket.id}&state=3">审核通过，同意融资</a>
-      <a href="passCheckCT?id=${chainTicket.id}&state=1">审核不通过,不予融资</a>
+     <div>
+      <a  class="btn btn-primary"href="passCheckCT?id=${chainTicket.id}&state=3">审核通过，同意融资</a>
+      <a  class="btn btn-primary"href="passCheckCT?id=${chainTicket.id}&state=1">审核不通过,不予融资</a>
+     </div>
 </body>
 </html>

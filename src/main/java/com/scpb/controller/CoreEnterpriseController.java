@@ -25,8 +25,10 @@ import com.mysql.fabric.xmlrpc.base.Array;
 import com.scpb.entity.ChainTicket;
 import com.scpb.entity.Enterprise;
 import com.scpb.entity.MemberEnterprise;
+import com.scpb.entity.Supplier;
 import com.scpb.service.EnterpriseService;
 import com.scpb.service.MemberEnterpriseService;
+import com.scpb.service.SupplierService;
 
 @Controller
 @RequestMapping("/coreEnterprise")
@@ -45,6 +47,9 @@ public class CoreEnterpriseController {
 
 	@Resource(name = "enterpriseService")
 	private EnterpriseService enterpriseService;
+	
+	@Resource(name = "supplierService")
+	private SupplierService supplierService;
 
 	public void setChainTicketService(ChainTicketService chainTicketService) {
 		this.chainTicketService = chainTicketService;
@@ -62,6 +67,7 @@ public class CoreEnterpriseController {
 	@RequestMapping("/drawSuccess")
 	public ModelAndView drawCT(String applicant, String amount, HttpSession session, String deadline,
 			String tradeRemark) {
+		System.out.println("测试applicant: "+applicant);
 		String drawEnterprise = (String) session.getAttribute("id");
 		String oldLimit = coreEnterpriseService.getLimitById(drawEnterprise);
 		
@@ -222,6 +228,18 @@ public class CoreEnterpriseController {
 		mav.addObject("chainTicketState", StateMap.getState(changedState));
 		mav.setViewName("coreEnterprise/selectedCTDetails");
 		return mav;
+	}
+	//加载供应商集合
+	@RequestMapping("/getSupplierList")
+	@ResponseBody
+	public List<Supplier> getSupplierList(HttpSession session) {		
+		String id = (String) session.getAttribute("id");
+//		System.out.println("当前企业 "+id);
+		List<Supplier> supplierList = new ArrayList<>();		
+		supplierList = supplierService.getSupplierById(id);
+		//test code
+//		System.out.println("供应商企业集合： "+supplierList.toString());
+		return supplierList;
 	}
 
 }

@@ -5,4 +5,8 @@
     <insert id="insertFactor">
         insert into factor(id) values (#{id})
     </insert>
+    
+    <select id="selectFactor" resultType="Factor">
+    	select id,name from factor
+    </select>
 </mapper>

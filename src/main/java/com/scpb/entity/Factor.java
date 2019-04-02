@@ -2,12 +2,21 @@ package com.scpb.entity;
 
 public class Factor {
     private String id;
+    private String name;
 
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setId(String id) {
         this.id = id;
     }
 
@@ -15,6 +24,7 @@ public class Factor {
     public String toString() {
         return "Factor{" +
                 "id='" + id + '\'' +
+                "name='" + name + '\'' +
                 '}';
     }
 }

@@ -29,6 +29,13 @@
 	    border:2px solid black;
 	    border-radius:5px;
 	}
+	select{
+       margin-top:3px;
+       width:160px;
+       height:32px;
+       border:2px solid black;
+       border-radius:5px;
+       }
 	</style>
 </head>
 <body>

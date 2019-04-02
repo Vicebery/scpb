@@ -9,9 +9,14 @@
 <html>
 <head>
     <title>添加成功</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 </head>
 <body>
-    添加此供应商成功！<br/>
-    <input type="button" value="返回" onclick="window.location.href='mySupplier'" />
+    <div style="text-align:center">
+    <p style="font-size:1.4em;">添加此供应商成功！</p>
+    <input  class="btn btn-primary"type="button" value="返回" onclick="window.location.href='mySupplier'" />
+    </div>
 </body>
 </html>

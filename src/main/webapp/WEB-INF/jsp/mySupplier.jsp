@@ -5,13 +5,17 @@
 <html>
 <head>
     <title>我的供应商</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 </head>
 <body>
     我的供应商列表：
-    <table width="100%" border=1>
+    <table width="100%" class="table table-bordered table-hover">
         <tr>
             <td>供应商名字</td>
             <td>供应商账号</td>
+            <td></td>
         </tr>
         <c:forEach items="${suppliers }" var="supplier">
             <tr>
@@ -21,6 +25,6 @@
             </tr>
         </c:forEach>
     </table>
-    <input type="button" value="新增供应商" onclick="window.location.href='goaddSupplier'" />
+    <input type="button" style="margin:0 auto"class="btn btn-primary" value="新增供应商" onclick="window.location.href='goaddSupplier'" />
 </body>
 </html>

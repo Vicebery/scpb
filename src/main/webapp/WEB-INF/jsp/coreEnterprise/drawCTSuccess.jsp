@@ -4,6 +4,9 @@
 <html>
 <head>
     <title>链票开具成功</title>
+   <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
     <style>
          div{
              width:50%;
@@ -23,7 +26,7 @@
         <p>开具时间：${chainTicket.drawTime}</p>
        <p>开票企业：${chainTicket.drawEnterprise}</p>
         <p>到期日：${chainTicket.deadline}</p>
-        <P> <a class="btn btn-primary btn-lg"  href="goDrawCT">返回</a></P>
+        <P> <a class="btn btn-primary"  href="goDrawCT">返回</a></P>
      </div>
     </body>
 </html>
