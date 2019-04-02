@@ -8,7 +8,7 @@
     </insert>
     
     <select id="selectSupplierById" resultType="Supplier">
-    	select supplier.id,name from supplyrelation, supplier
-    	where supplyrelation.id = #{id} and mySupplier = supplier.id
+    	select supplier.id,name from supplyRelation, supplier
+    	where supplyRelation.id = #{id} and mySupplier = supplier.id
     </select>
 </mapper>

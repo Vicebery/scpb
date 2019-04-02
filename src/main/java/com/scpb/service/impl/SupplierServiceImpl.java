@@ -20,7 +20,7 @@ public class SupplierServiceImpl implements SupplierService {
         supplierDao.insertSupplier(id,name);
     }
 
-	@Override
+	@Transactional
 	public List<Supplier> getSupplierById(String id) {
 		return supplierDao.selectSupplierById(id);
 	}

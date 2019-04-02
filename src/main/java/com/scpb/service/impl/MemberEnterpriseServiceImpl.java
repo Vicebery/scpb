@@ -32,7 +32,7 @@ public class MemberEnterpriseServiceImpl implements MemberEnterpriseService {
         memberEnterpriseDao.insertMemberEnterprise(id,name);
     }
 
-	@Override
+	@Transactional
 	public List<MemberEnterprise> getAllMemberEnterprise() {
 		return memberEnterpriseDao.selectAllMemberEnterprise();
 	}

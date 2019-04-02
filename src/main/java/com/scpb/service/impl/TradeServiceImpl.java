@@ -35,25 +35,30 @@ public class TradeServiceImpl implements TradeService {
         tradeDao.updateTradeInfById(id,verifyInf,receiveCT,remainCT);
     }
 
+    @Transactional
     public List<String> getPayCTidBySecondParty(String id) {
 
         return tradeDao.selectPayCTidBySecondParty(id);
     }
 
+    @Transactional
     public List<String> getReceiveCTidBySecondParty(String id) {
 
         return tradeDao.selectReceiveCTidBySecondParty(id);
     }
 
+    @Transactional
     public TradeInformation getTradeInfByPayCT(String payCT) {
 
         return tradeDao.selectTradeInfByPayCT(payCT);
     }
 
+    @Transactional
     public TradeInformation getTradeInfByReceiveCT(String receiveCT) {
         return tradeDao.selectTradeInfByReceiveCT(receiveCT);
     }
 
+    @Transactional
     public void modifyTradeInfStateById(String id, int verifyInf) {
         tradeDao.updateTradeInfStateById(id,verifyInf);
     }
@@ -63,7 +68,7 @@ public class TradeServiceImpl implements TradeService {
 		tradeDao.updateVerifyInfByPayCTId(chainTicketId, verifyInf);
 	}
 
-    @Override
+    @Transactional
     public List<String> getUncheckedReceiveCTidBySecondParty(String id) {
         return tradeDao.selectUnchekedReceiveCTidBySecondParty(id);
     }

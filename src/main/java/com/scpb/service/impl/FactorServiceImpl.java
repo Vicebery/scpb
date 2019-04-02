@@ -20,7 +20,7 @@ public class FactorServiceImpl implements FactorService {
         factorDao.insertFactor(id,name);
     }
 
-	@Override
+	@Transactional
 	public List<Factor> getFactorList() {
 		return factorDao.selectFactor();
 	}
