@@ -41,6 +41,10 @@
 		from tradeInformation where receiveCT = #{receiveCT}
 	</select>
 
+	<select id="selectTradeRemarkByReceiveCT" resultType="String">
+		select tradeRemark from tradeInformation where receiveCT = #{receiveCT}
+	</select>
+
 	<update id="updateTradeInfById">
 		update tradeInformation set verifyInf = #{verifyInf}, receiveCT = #{receiveCT},
 		remainCT = #{remainCT} where id = #{id}

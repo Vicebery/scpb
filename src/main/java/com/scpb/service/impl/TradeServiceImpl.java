@@ -72,4 +72,9 @@ public class TradeServiceImpl implements TradeService {
     public List<String> getUncheckedReceiveCTidBySecondParty(String id) {
         return tradeDao.selectUnchekedReceiveCTidBySecondParty(id);
     }
+
+    @Transactional
+    public String getTradeRemarkByReceiveCT(String id) {
+        return tradeDao.selectTradeRemarkByReceiveCT(id);
+    }
 }

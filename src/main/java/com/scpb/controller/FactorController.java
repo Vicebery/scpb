@@ -107,7 +107,9 @@ public class FactorController {
 //		tradeService.modifyTradeInfStateById(tradeInformation.getId(),3);
 		// 测试是否获取查询结果集
 //		System.out.println("修改状态成功");
+		String tradeRemark = tradeService.getTradeRemarkByReceiveCT(id);
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("tradeRemark",tradeRemark);
 		mav.addObject("chainTicket", currentCT);
 		mav.addObject("chainTicketState", StateMap.getState(changedState));
 		mav.setViewName("factor/selectedCTDetails");

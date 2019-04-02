@@ -203,7 +203,9 @@ public class CoreEnterpriseController {
 		// 测试是否获取查询结果集
 //		System.out.println(Arrays.toString(chainTicketList.toArray()));
 		ModelAndView mav = new ModelAndView();
+		String tradeRemark = tradeService.getTradeRemarkByReceiveCT(id);
 		mav.addObject("chainTicket", selectedCT);
+		mav.addObject("tradeRemark",tradeRemark);
 		mav.addObject("chainTicketState", StateMap.getState(selectedCT.getState()));
 		mav.setViewName("coreEnterprise/selectedCTDetails");
 		return mav;

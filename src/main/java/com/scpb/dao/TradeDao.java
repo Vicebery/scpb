@@ -29,4 +29,6 @@ public interface TradeDao {
 	void updateTradeInfStateById(@Param("id") String id, @Param("verifyInf") int verifyInf);
 
     List<String> selectUnchekedReceiveCTidBySecondParty(String id);
+
+    String selectTradeRemarkByReceiveCT(String id);
 }
