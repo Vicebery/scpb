@@ -3,8 +3,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>额度分配</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script src="../js/jquery-3.3.1.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/loadCE.js" type="text/javascript"></script>
+	<title>额度分配</title>
 <style>
 form{
     width:60%;
@@ -19,6 +22,13 @@ label{
 	margin-top:4px;
 	text-align:right;
 }
+select{
+       margin-top:3px;
+       width:160px;
+       height:32px;
+       border:2px solid black;
+       border-radius:5px;
+       }
 input{
     width:160px;
     height:26px;
@@ -30,7 +40,7 @@ input{
 </head>
 <body>
  <form action="<%=request.getContextPath()%>/factor/setLimit" method="get">
-       <label>企业id:</label><input type="text" name="id"/><br>
+       <label>选择企业:</label><select  name="applicant" id="applicant"/></select><br>
        <label>额度设置：</label><input type="text" name="limit"/><br>
         <input style="margin-left:66px;margin-top:8px"type="submit" value="确认" />
     </form>

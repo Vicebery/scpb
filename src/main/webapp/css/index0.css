@@ -1,0 +1,224 @@
+*{
+	margin:0;
+	padding:0;
+}
+.container{
+	width:100%;
+	margin:0;
+	padding:0;
+}
+.header{
+	width:100%;
+	margin: 0px auto;
+	height: 60px;
+	line-height: 60px;
+	z-index: 100;
+	background: #ffffff;
+		
+}
+.header-logo{
+	margin-left:5%;
+	height: 60px;
+	margin-right: 1px;
+	vertical-align: top;
+}
+.logo-text{
+	font-size: 40px;
+	margin-right: 600px;
+
+}
+.right-header{
+	float: right;
+	margin-right: 5%;
+}
+.solution-banner{
+	height:24%;
+	width: 100%;
+	background-position-x: 50%;
+	background-position-y: 50%;
+	background-size: contain;
+}
+.section-solution{
+	position: relative;
+	margin: 0 auto;
+	max-width: 1440px;
+}
+.solution-sector-tradition{
+
+	padding: 80px 160px;
+}
+
+.tradition-part{
+	padding:30px 0;
+	height: 350px;
+	align-content: flex-start;
+	box-sizing: border-box;
+
+}
+.tradition-out-part{
+
+	width: 33.333%;
+	padding: 0 40px;
+	background-color: #ffffff;
+
+
+	float: left;
+	zoom:1;
+	letter-spacing: normal;
+	word-spacing: normal;
+	vertical-align: top;
+	text-rendering: auto;
+
+	box-sizing: border-box;
+
+
+}
+.tradition-in-part{
+	position: relative;
+	padding: 48px 40px;
+	background-color: #f7f7f7;
+	height:342px;
+	text-align: center;
+
+	box-sizing: border-box;
+	display: block;
+
+}
+.tradition-in-part p{
+	margin: 0;
+	font-size: 14px;
+	line-height: 24px;
+	color: #666;
+	text-align: left;
+}
+.solution-sector-introduce{
+
+	padding: 80px 160px;
+}
+.solution-sector-introduce p{
+	margin:20px 0;
+	font-size: 16px;
+	line-height: 24px;
+
+	text-align: left;
+}
+.banner-item-text h1,[class^=section] h1,[class^=section] h2 {
+	font-weight: 400;
+	font-size: 30px;
+	margin: 0;
+}
+.banner-item-text h4,[class^=section] h4 {
+	font-weight: normal;
+	font-size: 20px;
+	margin: 10px;
+	font-family: "Al Nile";
+}
+.break-line{
+	height: 1px;
+	background-color: rgba(0,0,0,.08);
+}
+.center{
+	text-align: center;
+}
+.solution-sector-logical{
+	width:700px;
+	padding: 80px 0;
+	margin:0 auto;
+}
+.logical-pic{
+	margin-top: 20px;
+	max-width: 100%;
+
+}
+.section-blockchain{
+
+	background-color: rgba(0,0,0,.04);
+}
+.blockchain{
+	width:1000px;
+	padding: 80px 0;
+	margin: 0 auto;
+}
+.blockchain-pic{
+	margin-top: 20px;
+	max-width: 100%;
+}
+.section-bottom{
+	padding: 20px 0;
+}
+.section-bottom p{
+	text-align: center;
+	font-size: 12px;
+
+	color: #666;
+}
+
+
+
+.content{
+	width:70%;
+	height:550px;
+	margin:0 auto;
+	border:solid;
+}
+.title-line{
+	height:28px;
+	margin:0 auto;	
+	border-bottom: solid 1px;
+	text-align: center;
+}
+span{
+	
+	height:56px;
+	line-height: 56px;
+	font-size:38px;
+	margin-left:0 auto;
+	text-align: center;
+	background:#fff;
+}
+.login-part{
+	width:100%;
+	height: 450px;
+	
+    margin-top:50px;	
+	
+}
+.input-div{
+	width:80%;
+	margin-left:10%;
+}
+label{
+	font-size: 1.2em;
+     width:14%;
+}
+input{
+	width:70%;
+	height:2em;
+	font-size:1.2em;
+	margin-left: 10px;
+	margin-top: 20px;
+	border-radius: 4px;
+}
+.btn-login{
+	width:40%;
+	height:23m;
+	margin-top:20px;
+	font-size:1.2em;
+	border:1px solid #ff1d34;
+	display:inline-block;
+	border-radius:4px;	
+}
+.btn-reg{
+	width:40%;
+	height:23m;
+	margin-top:20px;
+	margin-left:5%;
+	font-size:1.2em;
+	border:1px solid #6eff53;
+	display:inline-block;
+	border-radius:4px;	
+}
+.btn-container{
+	width:50%;
+	margin-left:25%;
+}

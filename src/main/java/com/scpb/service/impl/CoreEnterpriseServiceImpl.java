@@ -29,4 +29,14 @@ public class CoreEnterpriseServiceImpl implements CoreEnterpriseService {
     public void addCoreEnterprise(String id) {
         coreEnterpriseDao.insertCoreEnterprise(id);
     }
+
+    @Transactional
+	public List<CoreEnterprise> getAllCoreEnterprise() {
+		return coreEnterpriseDao.selectAllCoreEnterprise();
+	}
+
+    @Transactional
+	public CoreEnterprise getCoreEnterpriseById(String id) {
+		return coreEnterpriseDao.selectCoreEnterpriseById(id);
+	}
 }

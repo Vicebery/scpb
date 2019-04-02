@@ -15,4 +15,11 @@
 		insert into coreEnterprise(id) values (#{id})
 	</insert>
 
+	<select id="selectAllCoreEnterprise" resultType="CoreEnterprise">
+		select * from coreEnterprise
+	</select>
+	
+	<select id="selectCoreEnterpriseById" resultType="CoreEnterprise">
+		select * from coreEnterprise where id = #{id}
+	</select>
 </mapper>

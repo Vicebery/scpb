@@ -1,5 +1,6 @@
 package com.scpb.service;
 
+import com.scpb.entity.CoreEnterprise;
 import com.scpb.entity.Enterprise;
 
 import java.util.List;
@@ -10,4 +11,8 @@ public interface CoreEnterpriseService {
     String getLimitById(String id);
 
     void addCoreEnterprise(String id);
+
+	List<CoreEnterprise> getAllCoreEnterprise();
+
+	CoreEnterprise getCoreEnterpriseById(String id);
 }

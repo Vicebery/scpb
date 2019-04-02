@@ -10,16 +10,16 @@ Target Server Type    : MYSQL
 Target Server Version : 50716
 File Encoding         : 65001
 
-Date: 2019-04-02 11:41:10
+Date: 2019-04-02 12:54:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for chainticket
+-- Table structure for chainTicket
 -- ----------------------------
-DROP TABLE IF EXISTS `chainticket`;
-CREATE TABLE `chainticket` (
+DROP TABLE IF EXISTS `chainTicket`;
+CREATE TABLE `chainTicket` (
   `id` varchar(80) NOT NULL,
   `amount` varchar(40) DEFAULT NULL,
   `drawTime` varchar(40) DEFAULT NULL,
@@ -29,38 +29,38 @@ CREATE TABLE `chainticket` (
   `drawEnterprise` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   KEY `ownerId` (`ownerId`) USING BTREE,
-  CONSTRAINT `chainticket_ibfk_1` FOREIGN KEY (`ownerId`) REFERENCES `enterprise` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `chainTicket_ibfk_1` FOREIGN KEY (`ownerId`) REFERENCES `enterprise` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
--- Records of chainticket
+-- Records of chainTicket
 -- ----------------------------
-INSERT INTO `chainticket` VALUES ('2019040122540085', '400', '2019-04-01', '6', '2019003', '2121-09-09', '2019001');
-INSERT INTO `chainticket` VALUES ('2019040122560283', '100', '2019-04-01', '6', '2019004', '2121-09-09', '2019001');
-INSERT INTO `chainticket` VALUES ('2019040122580783', '400', '2019-04-01', '6', '2019002', '2121-09-09', '2019002');
-INSERT INTO `chainticket` VALUES ('2019040122590234', '100', '2019-04-01', '1', '2019002', '2011-09-09', '2019002');
-INSERT INTO `chainticket` VALUES ('2019040123095926', '100', '2019-04-01', '3', '2019003', '2121-09-09', '2019001');
-INSERT INTO `chainticket` VALUES ('2019040123095956', '300.0', '2019-04-01', '6', '2019003', '2121-09-09', '2019001');
-INSERT INTO `chainticket` VALUES ('2019040123125158', '100', '2019-04-01', '3', '2019005', '2121-09-09', '2019001');
-INSERT INTO `chainticket` VALUES ('2019040123125159', '200.0', '2019-04-01', '3', '2019003', '2121-09-09', '2019001');
-INSERT INTO `chainticket` VALUES ('2019040123150153', '20', '2019-04-01', '3', '2019004', '2121-09-09', '2019001');
-INSERT INTO `chainticket` VALUES ('2019040123150167', '80.0', '2019-04-01', '3', '2019004', '2121-09-09', '2019001');
+INSERT INTO `chainTicket` VALUES ('2019040122540085', '400', '2019-04-01', '6', '2019003', '2121-09-09', '2019001');
+INSERT INTO `chainTicket` VALUES ('2019040122560283', '100', '2019-04-01', '6', '2019004', '2121-09-09', '2019001');
+INSERT INTO `chainTicket` VALUES ('2019040122580783', '400', '2019-04-01', '6', '2019002', '2121-09-09', '2019002');
+INSERT INTO `chainTicket` VALUES ('2019040122590234', '100', '2019-04-01', '1', '2019002', '2011-09-09', '2019002');
+INSERT INTO `chainTicket` VALUES ('2019040123095926', '100', '2019-04-01', '3', '2019003', '2121-09-09', '2019001');
+INSERT INTO `chainTicket` VALUES ('2019040123095956', '300.0', '2019-04-01', '6', '2019003', '2121-09-09', '2019001');
+INSERT INTO `chainTicket` VALUES ('2019040123125158', '100', '2019-04-01', '3', '2019005', '2121-09-09', '2019001');
+INSERT INTO `chainTicket` VALUES ('2019040123125159', '200.0', '2019-04-01', '3', '2019003', '2121-09-09', '2019001');
+INSERT INTO `chainTicket` VALUES ('2019040123150153', '20', '2019-04-01', '3', '2019004', '2121-09-09', '2019001');
+INSERT INTO `chainTicket` VALUES ('2019040123150167', '80.0', '2019-04-01', '3', '2019004', '2121-09-09', '2019001');
 
 -- ----------------------------
--- Table structure for coreenterprise
+-- Table structure for coreEnterprise
 -- ----------------------------
-DROP TABLE IF EXISTS `coreenterprise`;
-CREATE TABLE `coreenterprise` (
+DROP TABLE IF EXISTS `coreEnterprise`;
+CREATE TABLE `coreEnterprise` (
   `id` varchar(40) NOT NULL,
   `limit` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  CONSTRAINT `coreenterprise_ibfk_1` FOREIGN KEY (`id`) REFERENCES `enterprise` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `coreEnterprise_ibfk_1` FOREIGN KEY (`id`) REFERENCES `enterprise` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
--- Records of coreenterprise
+-- Records of coreEnterprise
 -- ----------------------------
-INSERT INTO `coreenterprise` VALUES ('2019001', '16500.0');
+INSERT INTO `coreEnterprise` VALUES ('2019001', '16500.0');
 
 -- ----------------------------
 -- Table structure for enterprise
@@ -108,22 +108,22 @@ INSERT INTO `factor` VALUES ('2019005', '保理商1');
 INSERT INTO `factor` VALUES ('413532323232', null);
 
 -- ----------------------------
--- Table structure for memberenterprise
+-- Table structure for memberEnterprise
 -- ----------------------------
-DROP TABLE IF EXISTS `memberenterprise`;
-CREATE TABLE `memberenterprise` (
+DROP TABLE IF EXISTS `memberEnterprise`;
+CREATE TABLE `memberEnterprise` (
   `id` varchar(40) NOT NULL,
   `limit` varchar(20) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  CONSTRAINT `memberenterprise_ibfk_1` FOREIGN KEY (`id`) REFERENCES `enterprise` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `memberEnterprise_ibfk_1` FOREIGN KEY (`id`) REFERENCES `enterprise` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
--- Records of memberenterprise
+-- Records of memberEnterprise
 -- ----------------------------
-INSERT INTO `memberenterprise` VALUES ('2019002', '2400.0', '成员企业1');
-INSERT INTO `memberenterprise` VALUES ('413545264414', '2120.0', '成员企业2');
+INSERT INTO `memberEnterprise` VALUES ('2019002', '2400.0', '成员企业1');
+INSERT INTO `memberEnterprise` VALUES ('413545264414', '2120.0', '成员企业2');
 
 -- ----------------------------
 -- Table structure for supplier
@@ -144,35 +144,35 @@ INSERT INTO `supplier` VALUES ('2019004', '供应商2');
 INSERT INTO `supplier` VALUES ('2019006', '供应商3');
 
 -- ----------------------------
--- Table structure for supplyrelation
+-- Table structure for supplyRelation
 -- ----------------------------
-DROP TABLE IF EXISTS `supplyrelation`;
-CREATE TABLE `supplyrelation` (
+DROP TABLE IF EXISTS `supplyRelation`;
+CREATE TABLE `supplyRelation` (
   `id` varchar(200) NOT NULL,
   `mySupplier` varchar(200) NOT NULL,
   PRIMARY KEY (`id`,`mySupplier`) USING BTREE,
   KEY `mySupplier` (`mySupplier`) USING BTREE,
-  CONSTRAINT `supplyrelation_ibfk_1` FOREIGN KEY (`id`) REFERENCES `enterprise` (`id`),
-  CONSTRAINT `supplyrelation_ibfk_2` FOREIGN KEY (`mySupplier`) REFERENCES `enterprise` (`id`)
+  CONSTRAINT `supplyRelation_ibfk_1` FOREIGN KEY (`id`) REFERENCES `enterprise` (`id`),
+  CONSTRAINT `supplyRelation_ibfk_2` FOREIGN KEY (`mySupplier`) REFERENCES `enterprise` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
--- Records of supplyrelation
+-- Records of supplyRelation
 -- ----------------------------
-INSERT INTO `supplyrelation` VALUES ('2019001', '2019003');
-INSERT INTO `supplyrelation` VALUES ('2019002', '2019003');
-INSERT INTO `supplyrelation` VALUES ('2019001', '2019004');
-INSERT INTO `supplyrelation` VALUES ('2019002', '2019004');
-INSERT INTO `supplyrelation` VALUES ('2019003', '2019004');
-INSERT INTO `supplyrelation` VALUES ('2019001', '2019006');
-INSERT INTO `supplyrelation` VALUES ('2019003', '2019006');
-INSERT INTO `supplyrelation` VALUES ('2019004', '2019006');
+INSERT INTO `supplyRelation` VALUES ('2019001', '2019003');
+INSERT INTO `supplyRelation` VALUES ('2019002', '2019003');
+INSERT INTO `supplyRelation` VALUES ('2019001', '2019004');
+INSERT INTO `supplyRelation` VALUES ('2019002', '2019004');
+INSERT INTO `supplyRelation` VALUES ('2019003', '2019004');
+INSERT INTO `supplyRelation` VALUES ('2019001', '2019006');
+INSERT INTO `supplyRelation` VALUES ('2019003', '2019006');
+INSERT INTO `supplyRelation` VALUES ('2019004', '2019006');
 
 -- ----------------------------
--- Table structure for tradeinformation
+-- Table structure for tradeInformation
 -- ----------------------------
-DROP TABLE IF EXISTS `tradeinformation`;
-CREATE TABLE `tradeinformation` (
+DROP TABLE IF EXISTS `tradeInformation`;
+CREATE TABLE `tradeInformation` (
   `id` varchar(80) NOT NULL,
   `tradeTime` varchar(40) DEFAULT NULL,
   `firstParty` varchar(40) DEFAULT NULL,
@@ -186,18 +186,18 @@ CREATE TABLE `tradeinformation` (
   PRIMARY KEY (`id`) USING BTREE,
   KEY `firstParty` (`firstParty`) USING BTREE,
   KEY `secondParty` (`secondParty`) USING BTREE,
-  CONSTRAINT `tradeinformation_ibfk_1` FOREIGN KEY (`firstParty`) REFERENCES `enterprise` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `tradeinformation_ibfk_2` FOREIGN KEY (`secondParty`) REFERENCES `enterprise` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `tradeInformation_ibfk_1` FOREIGN KEY (`firstParty`) REFERENCES `enterprise` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `tradeInformation_ibfk_2` FOREIGN KEY (`secondParty`) REFERENCES `enterprise` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
--- Records of tradeinformation
+-- Records of tradeInformation
 -- ----------------------------
-INSERT INTO `tradeinformation` VALUES ('20190401225400', '2019-04-01', '2019001', '2019003', '400', '测试开具', '2019040122540085', '2019040122540085', '2019040122540091', '3');
-INSERT INTO `tradeinformation` VALUES ('20190401225602', '2019-04-01', '2019001', '2019004', '100', '测试开具2', '2019040122560283', '2019040122560283', '2019040122560242', '3');
-INSERT INTO `tradeinformation` VALUES ('20190401225807', '2019-04-01', '2019002', '2019003', '400', '成员测试开具', '2019040122580783', '2019040122580783', '2019040122580746', '4');
-INSERT INTO `tradeinformation` VALUES ('20190401225902', '2019-04-01', '2019002', '2019003', '100', '成员测试开具2', '2019040122590234', '2019040122590234', '2019040122590299', '1');
-INSERT INTO `tradeinformation` VALUES ('20190401230959', '2019-04-01', '2019003', '2019004', '100', '转让测试', '2019040122540085', '2019040123095926', '2019040123095956', '4');
-INSERT INTO `tradeinformation` VALUES ('20190401231251', '2019-04-01', '2019003', '2019005', '100', '融资测试', '2019040123095956', '2019040123125158', '2019040123125159', '3');
-INSERT INTO `tradeinformation` VALUES ('20190401231501', '2019-04-01', '2019004', '2019006', '20', '转让测试', '2019040122560283', '2019040123150153', '2019040123150167', '4');
+INSERT INTO `tradeInformation` VALUES ('20190401225400', '2019-04-01', '2019001', '2019003', '400', '测试开具', '2019040122540085', '2019040122540085', '2019040122540091', '3');
+INSERT INTO `tradeInformation` VALUES ('20190401225602', '2019-04-01', '2019001', '2019004', '100', '测试开具2', '2019040122560283', '2019040122560283', '2019040122560242', '3');
+INSERT INTO `tradeInformation` VALUES ('20190401225807', '2019-04-01', '2019002', '2019003', '400', '成员测试开具', '2019040122580783', '2019040122580783', '2019040122580746', '4');
+INSERT INTO `tradeInformation` VALUES ('20190401225902', '2019-04-01', '2019002', '2019003', '100', '成员测试开具2', '2019040122590234', '2019040122590234', '2019040122590299', '1');
+INSERT INTO `tradeInformation` VALUES ('20190401230959', '2019-04-01', '2019003', '2019004', '100', '转让测试', '2019040122540085', '2019040123095926', '2019040123095956', '4');
+INSERT INTO `tradeInformation` VALUES ('20190401231251', '2019-04-01', '2019003', '2019005', '100', '融资测试', '2019040123095956', '2019040123125158', '2019040123125159', '3');
+INSERT INTO `tradeInformation` VALUES ('20190401231501', '2019-04-01', '2019004', '2019006', '20', '转让测试', '2019040122560283', '2019040123150153', '2019040123150167', '4');
 SET FOREIGN_KEY_CHECKS=1;

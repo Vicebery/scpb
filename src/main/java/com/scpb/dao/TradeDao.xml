@@ -24,11 +24,11 @@
 	</select>
 
 	<select id="selectReceiveCTidBySecondParty" resultType="String">
-		select ReceiveCT from tradeInformation where secondParty = #{id} and verifyInf = 2
+		select receiveCT from tradeInformation where secondParty = #{id} and verifyInf = 2
 	</select>
 
 	<select id="selectUnchekedReceiveCTidBySecondParty" resultType="String">
-		select ReceiveCT from tradeInformation where secondParty = #{id} and verifyInf = 0
+		select receiveCT from tradeInformation where secondParty = #{id} and verifyInf = 0
 	</select>
 
 	<select id="selectTradeInfByPayCT" resultType="TradeInformation">

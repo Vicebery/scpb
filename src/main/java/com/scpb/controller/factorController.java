@@ -1,6 +1,8 @@
 package com.scpb.controller;
 
 import com.scpb.entity.ChainTicket;
+import com.scpb.entity.CoreEnterprise;
+import com.scpb.entity.Supplier;
 import com.scpb.entity.TradeInformation;
 import com.scpb.service.ChainTicketService;
 import com.scpb.service.CoreEnterpriseService;
@@ -10,6 +12,8 @@ import com.scpb.utils.StateMap;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
@@ -92,43 +96,32 @@ public class factorController {
 		mav.setViewName("factor/selectedCTDetails");
 		return mav;
 	}
-
-//	@RequestMapping("/acceptFinancing")
-//	public String acceptFinancing(HttpSession session, HttpServletRequest request) {
-//
-//		String factorId = (String) session.getAttribute("id");
-//		String receiveCT = request.getParameter("chainTicketId");
-//		System.out.println("receiveCT" + receiveCT);
-//		TradeInformation tradeInformation = tradeService.getTradeInfByReceiveCT(receiveCT);
-//		chainTicketService.modifyCTOwnerIdById(factorId, receiveCT);
-//		chainTicketService.modifyCTStateById(3, receiveCT);
-//		tradeService.modifyTradeInfStateById(tradeInformation.getId(), 3);
-//		return "factor/success";
-//	}
-//
-//	@RequestMapping("/rejectFinancing")
-//	public String rejectFinancing(HttpServletRequest request) {
-//
-//		String receiveCT = request.getParameter("chainTicketId");
-//		System.out.println("receiveCT" + receiveCT);
-//		TradeInformation tradeInformation = tradeService.getTradeInfByReceiveCT(receiveCT);
-//		chainTicketService.modifyCTStateById(3, receiveCT);
-//		tradeService.modifyTradeInfStateById(tradeInformation.getId(), 1);
-//		return "factor/fail";
-//	}
 	
 	@RequestMapping("/goSetLimit")
 	public String goSetLimit() {
 		return "factor/setLimit";
 	}
 	
+	//加载供应商集合
+	@RequestMapping("/getCEList")
+	@ResponseBody
+	public List<CoreEnterprise> getCEList() {		
+
+		List<CoreEnterprise> ceList = new ArrayList<>();		
+		ceList = coreEnterpriseService.getAllCoreEnterprise();
+		//test code
+//		System.out.println("核心企业集合： "+ceList.toString());
+		return ceList;
+	}
+	
 	@RequestMapping("/setLimit")
-	public ModelAndView setLimit(String id, String limit) {
+	public ModelAndView setLimit(@RequestParam("applicant") String id, String limit) {
 		//返回影响行数
 		int result = coreEnterpriseService.modifyLimitById(limit, id);
+		CoreEnterprise ce = coreEnterpriseService.getCoreEnterpriseById(id);
 		ModelAndView mav = new ModelAndView();
 		if(result==1){
-			mav.addObject("id", id);
+			mav.addObject("name", ce.getName());
 			mav.addObject("limit", limit);
 			mav.setViewName("factor/setLimitSuccess");
 			return mav;

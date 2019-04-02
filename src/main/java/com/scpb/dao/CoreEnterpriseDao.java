@@ -1,5 +1,6 @@
 package com.scpb.dao;
 
+import com.scpb.entity.CoreEnterprise;
 import com.scpb.entity.Enterprise;
 import org.apache.ibatis.annotations.Param;
 
@@ -11,4 +12,8 @@ public interface CoreEnterpriseDao {
     int updateLimitById(@Param("limit")String limit, @Param("id")String id);
 
     void insertCoreEnterprise(String id);
+
+	List<CoreEnterprise> selectAllCoreEnterprise();
+
+	CoreEnterprise selectCoreEnterpriseById(String id);
 }
