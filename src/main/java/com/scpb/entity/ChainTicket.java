@@ -25,7 +25,7 @@ public class ChainTicket {
 		this.amount = amount;
 		this.drawTime = drawTime;
 		this.drawEnterprise = drawEnterprise;
-		this.state = 0;
+		this.state = state;
 		this.ownerId = ownerId;
 		this.deadline = deadline;
 	}

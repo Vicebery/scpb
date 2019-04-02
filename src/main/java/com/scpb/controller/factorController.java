@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,15 +78,30 @@ public class factorController {
 		ChainTicket currentCT = chainTicketService.getChainTicketById(id);
 		// test code
 //		System.out.println("当前企业:" + chainTicketId + "state:" + state);
-
+		tradeService.modifyTradeInfStateById(tradeInformation.getId(),changedState);
 		// 修改当前选中链票状态
         chainTicketService.modifyCTStateById(3,chainTicketId);
         if(changedState == 3){
             chainTicketService.modifyCTOwnerIdById(factorId,chainTicketId);
+            //融资信息上链
+//			File f = new File("/opt/gopath/src/github.com/hyperledger/fabric-samples/scpb-blockchain/organization/supplier/application/redeem.txt");
+//			String tradeInf = currentCT.getDrawEnterprise()+","+id+","+tradeInformation.getFirstParty()
+//					+","+tradeInformation.getSum()+","+tradeInformation.getTradeTime();
+//			try {
+//				FileWriter fw = new FileWriter(f);
+//				BufferedWriter bw = new BufferedWriter(fw);
+//				bw.write(tradeInf);
+//				bw.flush();
+//				bw.close();
+//				Runtime.getRuntime().exec("sh startIssue.sh").waitFor();
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
         }
 //		chainTicketService.setStateByChainTicketId(chainTicketId, changedState);
 		// 修改交易信息状态
-        tradeService.modifyTradeInfStateById(tradeInformation.getId(),changedState);
 //		tradeService.modifyTradeInfStateById(tradeInformation.getId(),3);
 		// 测试是否获取查询结果集
 //		System.out.println("修改状态成功");

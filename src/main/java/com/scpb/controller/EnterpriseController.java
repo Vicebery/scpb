@@ -15,6 +15,15 @@ import com.scpb.service.ChainTicketService;
 import com.scpb.service.EnterpriseService;
 import com.scpb.utils.StateMap;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -223,11 +232,68 @@ public class EnterpriseController {
 		enterpriseService.addSupplier(id,mySupplier);
 		return "addSuccess";
 	}
+
 	@RequestMapping(value = "/deleteSupplier")
 	public String deleteSupplier(HttpSession session){
 		String mySupplier = (String)session.getAttribute("supplierId");
 		String id = (String)session.getAttribute("id");
 		enterpriseService.deleteSupplier(id,mySupplier);
 		return "deleteSuccess";
+	}
+
+	@RequestMapping(value = "/findCTonChain")
+	public ModelAndView findCTonChain(String id,String drawEnterprise,int state) {
+		String queryInf = drawEnterprise + "," + id;
+		File f1 = new File("/opt/gopath/src/github.com/hyperledger/fabric-samples/scpb-blockchain/organization/enterprise/application/query.txt");
+		File f2 = new File("/opt/gopath/src/github.com/hyperledger/fabric-samples/scpb-blockchain/organization/enterprise/application/queryResult.txt");
+		String queryResult = null;
+		try {
+			FileWriter fw = new FileWriter(f1);
+			BufferedWriter bw = new BufferedWriter(fw);
+			bw.write(queryInf);
+			bw.flush();
+			bw.close();
+			Runtime.getRuntime().exec("sh startQuery.sh").waitFor();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		try{
+			FileReader fr = new FileReader(f2);
+			BufferedReader br = new BufferedReader(fr);
+			queryResult=br.readLine();
+			br.close();
+
+			//清空queryResult.txt代码（有问题，也不需要）
+//			ArrayList<String> list = new ArrayList<>();
+//			while ((queryResult=br.readLine())!=null){
+//				list.add(queryResult);
+//			}
+//			list.remove(0);
+//			FileOutputStream fileOutputStream = new FileOutputStream(f2);
+//			OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fileOutputStream);
+//			BufferedWriter bw = new BufferedWriter(outputStreamWriter);
+//
+//			if(list.size() != 0)
+//				for (String string : list) {
+//					bw.write(string);
+//					bw.newLine();
+//					System.out.println(string);
+//				}
+//			else if(list.size() == 0) {
+//				bw.write("");
+//			}
+//			bw.flush();
+//			bw.close();
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+		String CT[] = queryResult.split(",");
+		ChainTicket chainTicket = new ChainTicket(CT[1],CT[6],CT[3],CT[1],state,CT[2],CT[4]);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject(chainTicket);
+		mav.setViewName("detailedCTonChain");
+		return mav;
 	}
 }
