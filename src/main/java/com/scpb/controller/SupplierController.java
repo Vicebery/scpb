@@ -17,6 +17,10 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -165,6 +169,52 @@ public class SupplierController {
 		chainTicketService.modifyCTOwnerIdById(tradeInformation.getSecondParty(), tradeInformation.getReceiveCT());
 		chainTicketService.modifyCTStateById(3,receiveCT);
 		tradeService.modifyTradeInfStateById(tradeInformation.getId(), 3);
+
+		String payCTId = tradeInformation.getPayCT();
+		ChainTicket payCT = chainTicketService.getChainTicketById(payCTId);
+		String drawEnterprise = payCT.getDrawEnterprise();
+		String enterpriseId = tradeInformation.getFirstParty();
+		int enterpriseType = enterpriseService.getEnterpriseById(enterpriseId).getType();
+//		//开具信息上链
+//		if(enterpriseType == 1 || enterpriseType == 2){
+//			String tradeInf = tradeInformation.getFirstParty()+","+tradeInformation.getPayCT()+","+
+//					tradeInformation.getSecondParty()+","+chainTicket.getDrawTime()+","+
+//					chainTicket.getDeadline()+","+tradeInformation.getSum();
+//			File f = new File("/opt/gopath/src/github.com/hyperledger/fabric-samples/scpb-blockchain/organization/enterprise/application/issue.txt");
+//			try {
+//				FileWriter fw = new FileWriter(f);
+//				BufferedWriter bw = new BufferedWriter(fw);
+//				bw.write(tradeInf);
+//				bw.flush();
+//				bw.close();
+//				Runtime.getRuntime().exec("sh startIssue.sh").waitFor();
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//		}
+//		//转让信息上链
+//		if(enterpriseType == 3) {
+//			String tradeInf = drawEnterprise + "," + tradeInformation.getFirstParty() + "," +
+//					tradeInformation.getSecondParty() + "," + tradeInformation.getPayCT() +
+//					"," + tradeInformation.getTradeTime() + "," + tradeInformation.getSum()
+//					+ "," + tradeInformation.getRemainCT() + "," + tradeInformation.getReceiveCT();
+//			File f = new File("/opt/gopath/src/github.com/hyperledger/fabric-samples/scpb-blockchain/organization/supplier/application/buy.txt");
+//			try {
+//				FileWriter fw = new FileWriter(f);
+//				BufferedWriter bw = new BufferedWriter(fw);
+//				bw.write(tradeInf);
+//				bw.flush();
+//				bw.close();
+//				Runtime.getRuntime().exec("sh startBuy.sh").waitFor();
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//		}
+
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("chainTicket",chainTicket);
 		mav.setViewName("supplier/receiveCTSuccess");

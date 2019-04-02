@@ -30,6 +30,8 @@
 			<td>${chainTicket.drawEnterprise }</td>
 			<td>${chainTicket.deadline }</td>
 			<td>${chainTicket.state }</td>
+			<%--<td> <a href="findCTonChain?id=${chainTicket.id}&drawEnterprise=${chainTicket.drawEnterprise}
+				&state=${chainTicket.state}">查看链上信息</a></td>--%>
 		</tr></tbody>
 		</c:forEach>
 		
