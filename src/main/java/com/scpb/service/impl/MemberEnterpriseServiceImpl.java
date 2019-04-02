@@ -27,8 +27,9 @@ public class MemberEnterpriseServiceImpl implements MemberEnterpriseService {
     }
 
     @Transactional
-    public void addMemberEnterprise(String id) {
-        memberEnterpriseDao.insertMemberEnterprise(id);
+    public void addMemberEnterprise(String id,String name) {
+
+        memberEnterpriseDao.insertMemberEnterprise(id,name);
     }
 
 	@Override

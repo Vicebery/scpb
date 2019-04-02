@@ -113,10 +113,10 @@ public class EnterpriseController {
 			Enterprise newEnterprise = new Enterprise(id, account, pwd, bank, name, UCC, LPC, type);
 			session.setAttribute("id", id);
 			enterpriseService.addEnterprise(newEnterprise);
-			if(type==1) coreEnterpriseService.addCoreEnterprise(id);
-			else if(type==2) memberEnterpriseService.addMemberEnterprise(id);
-			else if(type==3) supplierService.addSupplier(id);
-			else if(type==4) factorService.addFactor(id);
+			if(type==1) coreEnterpriseService.addCoreEnterprise(id,name);
+			else if(type==2) memberEnterpriseService.addMemberEnterprise(id,name);
+			else if(type==3) supplierService.addSupplier(id,name);
+			else if(type==4) factorService.addFactor(id,name);
 			ModelAndView mav = new ModelAndView();
 			mav.addObject("account", account);
 			mav.addObject("pwd", pwd);

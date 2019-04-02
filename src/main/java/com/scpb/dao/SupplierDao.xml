@@ -4,7 +4,7 @@
 <mapper namespace="com.scpb.dao.SupplierDao">
 
     <insert id="insertSupplier">
-        insert into supplier(id) values (#{id})
+        insert into supplier(id,name) values (#{id},#{name})
     </insert>
     
     <select id="selectSupplierById" resultType="Supplier">

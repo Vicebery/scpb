@@ -86,7 +86,7 @@ public class factorController {
             //融资信息上链
 //			File f = new File("/opt/gopath/src/github.com/hyperledger/fabric-samples/scpb-blockchain/organization/supplier/application/redeem.txt");
 //			String tradeInf = currentCT.getDrawEnterprise()+","+id+","+tradeInformation.getFirstParty()
-//					+","+tradeInformation.getSum()+","+tradeInformation.getTradeTime();
+//					+","+tradeInformation.getSum()+","+tradeInformation.getTradeTime()+","+tradeInformation.getRemainCT();
 //			try {
 //				FileWriter fw = new FileWriter(f);
 //				BufferedWriter bw = new BufferedWriter(fw);

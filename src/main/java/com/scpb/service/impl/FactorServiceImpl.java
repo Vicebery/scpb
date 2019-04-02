@@ -16,8 +16,8 @@ public class FactorServiceImpl implements FactorService {
     private FactorDao factorDao;
 
     @Transactional
-    public void addFactor(String id) {
-        factorDao.insertFactor(id);
+    public void addFactor(String id,String name) {
+        factorDao.insertFactor(id,name);
     }
 
 	@Override

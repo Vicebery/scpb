@@ -9,7 +9,7 @@ public interface MemberEnterpriseService {
 
     String getLimitById(String id);
 
-    void addMemberEnterprise(String id);
+    void addMemberEnterprise(String id,String name);
 
 	List<MemberEnterprise> getAllMemberEnterprise();
 }

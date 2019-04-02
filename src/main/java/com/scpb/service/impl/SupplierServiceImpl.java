@@ -16,8 +16,8 @@ public class SupplierServiceImpl implements SupplierService {
     private SupplierDao supplierDao;
 
     @Transactional
-    public void addSupplier(String id) {
-        supplierDao.insertSupplier(id);
+    public void addSupplier(String id,String name) {
+        supplierDao.insertSupplier(id,name);
     }
 
 	@Override

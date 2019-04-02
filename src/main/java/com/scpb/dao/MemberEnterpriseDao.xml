@@ -12,7 +12,7 @@
 	</update>
 
 	<insert id="insertMemberEnterprise">
-		insert into memberEnterprise(id) values (#{id})
+		insert into memberEnterprise(id,name) values (#{id},#{name})
 	</insert>
 	
 	<select id="selectAllMemberEnterprise" resultType="MemberEnterprise">

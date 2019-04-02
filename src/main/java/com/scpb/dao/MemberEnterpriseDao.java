@@ -12,7 +12,7 @@ public interface MemberEnterpriseDao {
 
     void updateLimitById(@Param("limit")String limit, @Param("id")String id);
 
-    void insertMemberEnterprise(String id);
+    void insertMemberEnterprise(@Param("id")String id,@Param("name")String name);
 
 	List<MemberEnterprise> selectAllMemberEnterprise();
 }
